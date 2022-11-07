@@ -1,0 +1,182 @@
+﻿
+//CreateMetadataFromScriptDoc(0);
+//CreateMetadataFromScriptDoc(1);
+
+[Conditional("DEBUG")]
+private static void CreateMetadataFromScriptDoc(int fileType)
+{
+	string fileName = fileType switch
+	{
+		0 => "triggers",
+		1 => "effects",
+	};
+	using StreamReader reader = new($@"C:\Users\VIKTORK\Documents\Paradox Interactive\Stellaris\logs\script_documentation\{fileName}.log");
+
+	XNamespace xmlns = "https://github.com/dfan97";
+	XNamespace xsi = "http://www.w3.org/2001/XMLSchema-instance";
+	XDocument doc = new(
+		new XDeclaration("1.0", "utf-8", null),
+		new XElement(xmlns + "references",
+			new XAttribute("xmlns", xmlns),
+			new XAttribute(XNamespace.Xmlns + "xsi", xsi),
+			new XAttribute(xsi + "schemaLocation", "https://github.com/dfan97 ../Xsd/common.xsd")
+		)
+	);
+
+	string file = reader.ReadToEnd();
+	int fileHead = file.IndexOf("==" + Environment.NewLine) + ("==" + Environment.NewLine).Length;
+	int fileFoot = file.LastIndexOf(Environment.NewLine + "==");
+
+	List<XElement> elems = new();
+	string triggers = new XElement("list", new XAttribute("list", "sequence"), new XAttribute("type", "trigger")).ToString();
+	string effects = new XElement("list", new XAttribute("list", "sequence"), new XAttribute("type", "effect")).ToString();
+	
+	string[] fileContent = file[fileHead..fileFoot]
+		.Replace("\r\n\r\nSupported Scopes:", "\r\nSupported Scopes:")
+		.Split("\r\n\r\n", StringSplitOptions.RemoveEmptyEntries);
+	foreach (string el in fileContent)
+	{
+		// Gets name and comment
+		int i = el.IndexOf('-');
+		int j = el.IndexOf(Environment.NewLine);
+		
+		string name = el[..i].Trim();
+		XAttribute nameAttr = new("name", name);
+		if (fileType == 0 && name.ToLowerInvariant().In("not", "and", "or", "nand", "nor", "calc_true_if", "if", "else_if", "else"))
+		{
+			// Manual description
+			continue;
+		}
+		
+		string annotation = el[i..j].TrimStart('-').Trim().TrimEnd('.', ':', ';');
+		XElement annotationElem = new(xmlns + "annotation", annotation);
+
+		// Gets scopes
+		int k = el.LastIndexOf("Supported Scopes:");
+		string[] scope = el[k..].Split(" ", StringSplitOptions.RemoveEmptyEntries)[2..];
+		XAttribute scopeAttr = null;
+		if (scope[0] != "all")
+		{
+			Array.Sort(scope);
+			scopeAttr = new("scope", string.Join(" ", scope));
+		}
+
+		List<object> content = new() { nameAttr, scopeAttr, annotationElem };
+		
+		// Gets type
+		string secondLine = el[j..k].Trim();
+		string elemName = null;
+		if (secondLine.IsNullOrWhiteSpace())
+		{
+			elemName = "simple";
+		}
+		else
+		{
+			string secondLineFormatted = secondLine.Replace(Environment.NewLine, " ").Replace("\t", " ").Replace("  ", " ");
+			if (!secondLineFormatted.Contains('{'))
+			{
+				// Simple
+				XAttribute typeAttr = new("type", "");
+				content.Insert(1, typeAttr);
+
+				string[] simple = secondLineFormatted.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+				if (simple[1].ToCharArray().Intersect(new[] { '>', '<', '!' }).Count() != 0)
+				{
+					// Has boolean relation
+					content.Insert(1, new XAttribute("relation", "bool"));
+				}
+
+				string value = string.Join(" ", simple[2..]);
+				if (value.In("yes", "no", "<yes/no>", "<no/yes>", "yes/no", "no/yes"))
+				{
+					typeAttr.Value = "bool";
+				}
+				else if (decimal.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal result))
+				{
+					typeAttr.Value = (result == decimal.Round(result) ? "int" : "float");
+				}
+				else if (value.StartsWith("<text"))
+				{
+					typeAttr.Value = "string";
+				}
+				else
+				{
+					typeAttr.Value = value.Replace("<", "").Replace(">", "").Replace("&", "").Replace("\"", "").Replace("'", "");
+				}
+				
+				elemName = "simple";
+			}
+			else
+			{
+				string[] complex = secondLineFormatted.Split(new[] { '{', '}' }, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+				if (complex.Length == 2 && !complex[1].Contains(' '))
+				{
+					// List
+					string value = complex[1];
+					XAttribute typeAttr = new("type", "");
+					if (value.Contains("trigger"))
+					{
+						typeAttr.Value = "trigger";
+					}
+					else if (value.Contains("effect"))
+					{
+						typeAttr.Value = "effect";
+					}
+					else
+					{
+						typeAttr.Value = value.Trim('<', '>', '&', '"', '\'');
+					}
+
+					elemName = "list";
+					content.Insert(1, typeAttr);
+				}
+				else
+				{
+					// Complex - manual editing
+					string replaced = secondLine.Replace("<triggers>", triggers).Replace("<effects>", effects);
+					
+					elemName = "complex";
+					content.Add(new XComment(replaced));
+				}
+			}
+		}
+		
+		elems.Add(new XElement(xmlns + elemName, content));
+	}
+	
+	// Sort and insert empty elems
+	string[] chars = elems.DistinctBy(e => GetName(e)[0]).Select(e => GetName(e)[0] + "_").ToArray();
+	foreach (string ch in chars)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			elems.Add(new XElement(xmlns + "empty", new XAttribute("name", ch)));
+		}
+	}
+	elems.Sort((left, right) => GetName(left).CompareTo(GetName(right)));
+	
+	XElement[] empties = elems.Where(e => e.Name.LocalName == "empty").ToArray();
+	foreach (XElement empty in empties)
+	{
+		empty.ReplaceAll(null);
+	}
+	
+	// Save XML
+	doc.Root.Add(
+		new XElement(xmlns + "complex",
+			new XAttribute("name", fileName[..^1]),
+			new XElement(xmlns + "choice",
+				new XAttribute("required", "true"),
+				elems
+			)
+		)
+	);
+
+	string resultFile = $"{doc.Declaration}{Environment.NewLine}{doc}".Replace(new XElement("empty").ToString(), "");
+	
+	File.WriteAllText(fileName + ".xml", resultFile);
+	
+	// Local Funcs
+
+	string GetName(XElement e) => e.Attribute("name").Value;
+}

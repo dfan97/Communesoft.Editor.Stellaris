@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communesoft.Editor.Stellaris", "Communesoft.Editor.Stellaris\Communesoft.Editor.Stellaris.csproj", "{BC7804E3-0400-4B84-B12C-24326C2AED78}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{29894D70-F861-4BFD-92B8-6974BD96C370}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communesoft.Common", "..\Communesoft\Communesoft.Common\Communesoft.Common.csproj", "{F08AA0D3-8895-4E49-B025-89C5D23ED927}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communesoft.Editor.Interface", "..\Communesoft\Communesoft.Editor.Interface\Communesoft.Editor.Interface.csproj", "{5D093E08-4ED7-4600-9955-9AADF0401A17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC7804E3-0400-4B84-B12C-24326C2AED78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC7804E3-0400-4B84-B12C-24326C2AED78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC7804E3-0400-4B84-B12C-24326C2AED78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC7804E3-0400-4B84-B12C-24326C2AED78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F08AA0D3-8895-4E49-B025-89C5D23ED927}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F08AA0D3-8895-4E49-B025-89C5D23ED927}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F08AA0D3-8895-4E49-B025-89C5D23ED927}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F08AA0D3-8895-4E49-B025-89C5D23ED927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D093E08-4ED7-4600-9955-9AADF0401A17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D093E08-4ED7-4600-9955-9AADF0401A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D093E08-4ED7-4600-9955-9AADF0401A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D093E08-4ED7-4600-9955-9AADF0401A17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F08AA0D3-8895-4E49-B025-89C5D23ED927} = {29894D70-F861-4BFD-92B8-6974BD96C370}
+		{5D093E08-4ED7-4600-9955-9AADF0401A17} = {29894D70-F861-4BFD-92B8-6974BD96C370}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<references xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<reference type="{resource}">
+		<list entity="prerequisites" type="{technology}">
+			<annotation>Technology keys to be researched before the empire can exploit this resource</annotation>
+		</list>
+		<complex entity="visibility_prerequisite" type="{trigger}">
+			<annotation>Conditions that determines if the empire should see this resource</annotation>
+		</complex>
+
+		<simple entity="max" type="{int}">
+			<annotation>The initial storage capacity of this resource</annotation>
+		</simple>
+		<simple entity="fixed_max_amount" type="{bool}" default="no">
+			<annotation>If yes, the storage capacity of this resource can't be modified by modifiers</annotation>
+		</simple>
+
+		<simple entity="tooltip_decimals" type="{int}">
+			<annotation>Sets the decimals shown in tooltips</annotation>
+		</simple>
+		<simple entity="deficit_modifier" type="{modifier}">
+			<annotation>A static modifier to be applied if empire is in deficit of this resource</annotation>
+		</simple>
+
+		<simple entity="tradable" type="{bool}">
+			<annotation>Resource is diplomatically tradable (not in the market)</annotation>
+		</simple>
+		<simple entity="market_amount" type="{int}">
+			<annotation>Sets the minimal tradable market bulk for this resource</annotation>
+		</simple>
+		<simple entity="market_price" type="{int}">
+			<annotation>Sets the base price of the minimal tradable market bulk for this resource</annotation>
+		</simple>
+
+		<complex entity="ai_wants" type="{weight}">
+			<annotation>How much the AI wants this resource</annotation>
+		</complex>
+		<complex entity="ai_weight" type="{weight}">
+			<annotation>How valuable should the AI consider this resource to be</annotation>
+		</complex>
+	</reference>
+
+
+	<reference type="{economic}">
+		<simple entity="icon" type="{string}">
+			<annotation>Category icon gfx/interface/icons/modifiers</annotation>
+		</simple>
+		<simple entity="parent" type="{economic}">
+			<annotation>Category parent</annotation>
+		</simple>
+		<simple entity="hidden" type="{bool}">
+			<annotation>Use parent category for display. Resources used by this category are merged into parent category in tooltips</annotation>
+		</simple>
+
+		<list entity="generate_add_modifiers" type="{string}">
+			<annotation>Specify produces/upkeep/cost to create {key}(_{resource})_(produces|upkeep|cost)_add modifiers</annotation>
+			<restriction>
+				<enum value="cost">
+					<annotation>Initial cost for that object</annotation>
+				</enum>
+				<enum value="production">
+					<annotation>Monthly resource production of the object</annotation>
+				</enum>
+				<enum value="upkeep">
+					<annotation>Monthly upkeep cost for that object</annotation>
+				</enum>
+			</restriction>
+		</list>
+		<list entity="generate_mult_modifiers" type=".generate_add_modifiers">
+			<annotation>Specify produces/upkeep/cost to create {key}(_{resource})_(produces|upkeep|cost)_mult modifiers</annotation>
+		</list>
+
+		<complex entity="triggered_cost_modifier" max="*">
+			<annotation>Generates a cost modifier that applies to a subset of this category</annotation>
+
+			<simple entity="key" type="{string}">
+				<!-- TODO: KEY: описать, что это по сути тоже economic, но тут не должно быть выбора, а должен быть наоборот, элемент создания категории 
+				через этот key идет создание модификаторов, точно так же туда добавляются mult/produces, т.е. когда буду делать модификаторы, тогда и надо что-то выдумывать
+				(скорее всего связка будет чисто через комменты, или через код, т.к. само создание модификаторов захардкожено как бэ)-->
+				<annotation>The {key} for this generated modifier category</annotation>
+			</simple>
+			<simple entity="use_parent_icon" type="{bool}">
+				<annotation>This triggered modifier won't have it's own icon set</annotation>
+			</simple>
+			<list entity="modifier_types" type="{string}">
+				<annotation>This triggered modifier type</annotation>
+				<restriction>
+					<enum value="add" />
+					<enum value="mult" />
+				</restriction>
+			</list>
+			<complex entity="trigger" type="{trigger}">
+				<annotation>The trigger conditions to form this subset. The scope depends on the resource block it is assigned to</annotation>
+			</complex>
+		</complex>
+		<complex entity="triggered_produces_modifier" type=".triggered_cost_modifier">
+			<annotation>Generates a produces modifier that applies to a subset of this category</annotation>
+		</complex>
+		<complex entity="triggered_upkeep_modifier" type=".triggered_cost_modifier">
+			<annotation>Generates a upkeep modifier that applies to a subset of this category</annotation>
+		</complex>
+
+		<simple entity="use_for_ai_budget" type="{bool}">
+			<annotation>This category has it's own "ai_budget" entry</annotation>
+		</simple>
+		<list entity="ai_use_parent_for_resources_upkeep" type="{resource}">
+			<annotation>Specify resources that the AI uses the parent to manage upkeep for in the parent category in "ai_budget"</annotation>
+		</list>
+	</reference>
+
+
+	<reference type="{economic-budget}">
+		<annotation>
+			## Categories used in this file must have use_for_ai_budget = yes defined in economic_categories ##
+			## It is possible to have multiple entries with the same category and resource ##
+		</annotation>
+
+		<simple entity="category" type="{economic}">
+			<annotation>Economic category</annotation>
+		</simple>
+		<simple entity="resource" type="{resource}" />
+		<simple entity="type" type="{string}">
+			<restriction>
+				<enum value="expenditure" />
+				<enum value="upkeep" />
+			</restriction>
+		</simple>
+
+		<complex entity="potential" type="{trigger}">
+			<annotation>Conditions to determine </annotation>
+		</complex>
+
+		<complex entity="fraction" type="{weight}">
+			<annotation />
+		</complex>
+		<complex entity="static_min" type="{weight}">
+			<annotation />
+		</complex>
+		<complex entity="static_max" type="{weight}">
+			<annotation />
+		</complex>
+	</reference>
+
+
+	<reference type="{economic-trade}">
+		<simple entity="economic_category" type="{economic}">
+			<annotation>Conversion category</annotation>
+		</simple>
+		<complex entity="potential" type="{trigger}">
+			<annotation>Conditions to determine should this conversion type apply</annotation>
+		</complex>
+
+		<complex entity="conversion_rate">
+			<annotation>Resources of this kind generated from trade routes every month is equal to the number provided here (collected empire trade value total)</annotation>
+			<simple entity="{resource}" type="{float}" max="*">
+				<annotation>Resource</annotation>
+			</simple>
+		</complex>
+
+		<complex entity="weight" type="{weight}">
+			<annotation>If multiple conversions are valid to an empire, one with the highest weight wins</annotation>
+		</complex>
+	</reference>
+</references>

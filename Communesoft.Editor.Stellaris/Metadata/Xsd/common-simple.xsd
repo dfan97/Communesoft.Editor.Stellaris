@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema targetNamespace="https://github.com/dfan97" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:this="https://github.com/dfan97" xmlns:types="https://github.com/dfan97/types">
+
+	<include schemaLocation="common.xsd" />
+	<import namespace="https://github.com/dfan97/types" schemaLocation="types.xsd" />
+
+	<element name="simple">
+		<complexType>
+			<annotation>
+				<documentation xml:lang="en">
+					A simple expression, containing a simple type value.
+				</documentation>
+			</annotation>
+
+			<complexContent>
+				<extension base="this:enum">
+					<attribute name="entity" type="types:entity" use="required" />
+					<attribute name="relation" type="types:relation" default="assign" />
+					<attribute name="type" type="types:simple" use="required" />
+
+					<attributeGroup ref="this:value.interval.attrs" />
+				</extension>
+			</complexContent>
+		</complexType>
+
+		<unique name="UX_simple_enum">
+			<selector xpath="this:extension/this:enum | this:restriction/this:enum" />
+			<field xpath="@value" />
+		</unique>
+	</element>
+</schema>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<references xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<reference type="{army}">
+		<simple entity="icon_frame" type="{int}">
+			<annotation>The icon index this army uses in the shared icon file of all armies (gfx\interface\planetview\army_icon.dds).</annotation>
+		</simple>
+		<simple entity="use_armynames_from" type="{army}">
+			<annotation></annotation>
+		</simple>
+		
+		<complex entity="potential" type="{trigger}">
+			<annotation>Blocks of Conditions to determine if this army is listed / can be built on a planet. If is_pop_spawned = yes or occupation = yes, instead these blocks are determined should a pop spawn this kind of army. (Planet scope; FROM = species if army has species)</annotation>
+		</complex>
+		<complex entity="allow" type="{trigger}">
+			<annotation />
+		</complex>
+
+		<list entity="prerequisites" type="{technology}">
+			<annotation>A list of technology keys to determine the technological prerequisites of this army.</annotation>
+		</list>
+		<complex entity="show_tech_unlock_if" type="{trigger}">
+			<annotation> A block of Conditions. If evaluated false, this army is hidden from the tooltips of the prerequisite techs. (Country scope)</annotation>
+		</complex>
+
+		<simple entity="damage" type="{float}">
+			<annotation>Multiplies the damage. Final damage is: 1.5-3.0 * damage</annotation>
+		</simple>
+		<simple entity="health" type="{float}">
+			<annotation>Multiplies the health. Final health is: 200 * health</annotation>
+		</simple>
+		<simple entity="morale" type="{float}">
+			<annotation>Multiplies the morale. Final morale is: 200 * morale</annotation>
+		</simple>
+		<simple entity="morale_damage" type="{float}">
+			<annotation>Multiplies the morale damage. Final morale damage is: 1.5-3.0 * damage * morale_damage.</annotation>
+		</simple>
+		<simple entity="collateral_damage" type="{float}">
+			<annotation>During a ground combat, the higher the collateral damage is, the more planetary devastation and the higher the chance of pop kills the army will inflict.</annotation>
+		</simple>
+		<simple entity="war_exhaustion" type="{float}">
+			<annotation>Multiplies the war exhaustion gained due to having this army killed. Vanilla defense armies always have 0.</annotation>
+		</simple>
+
+		<simple entity="has_morale" type="{bool}">
+			<annotation>If no, this army has no morale as well as they are not affected by morale damage. They can still deal morale damage.</annotation>
+		</simple>
+		<simple entity="has_species" type="{bool}">
+			<annotation>Determines do this army have a species. If yes, this army is counted towards the assault army clause: an empire can't build more assault armies than the number of pops of that species that empire has. If no, this army is never counted towards any clauses, but it will also not benefit from army enhancing species traits like Strong.png Strong</annotation>
+		</simple>
+		<simple entity="disband_if_species_lacks_rights" type="{bool}">
+			<annotation>i.e. if you resurrect your enemies, you get to keep these armies, even if you are a purifier</annotation>
+		</simple>
+		
+		<simple entity="is_pop_spawned" type="{bool}">
+			<annotation>If yes, this army can't be built, instead it's used for defense army spawning jobs such as Job soldier.png Soldier.</annotation>
+		</simple>
+		<simple entity="pop_limited" type="{bool}">
+			<annotation>If yes, this army is not counted towards any clauses even if it has has_species = yes. Used for Army clone.png Clone Army.</annotation>
+		</simple>
+		<simple entity="defensive" type="{bool}">
+			<annotation>If yes, this army can't be transported.</annotation>
+		</simple>
+		<simple entity="occupation" type="{bool}">
+			<annotation>If yes, this army can't be built, instead it's spawned on each captured planet.</annotation>
+		</simple>
+		<simple entity="rebel" type="{bool}">
+			<annotation>The army is a rebel army</annotation>
+		</simple>
+		<complex entity="spawn_chance">
+			<annotation>only works on defensive armies; pop scope check that lets you give weights for what sort of army should be spawned
+				#		Calculation is health * spawn_chance (default: 1), and it always picks the best one</annotation>
+			<simple entity="factor" type="{int}" />
+		</complex>
+
+		<simple entity="time" type="{int}">
+			<annotation>Days it takes to build this army.</annotation>
+		</simple>
+		<complex entity="resources" type="{resources}">
+			<annotation>An Economy Unit that determines the cost and upkeep of this army.</annotation>
+		</complex>
+
+		<list entity="on_queued" type="{effect}">
+			<annotation>Blocks of Effects to be executed under the planet scope when this army is added to / removed from the planetary construction queue. (Planet scope)</annotation>
+		</list>
+		<list entity="on_unqueued" type="{effect}">
+			<annotation />
+		</list>
+	</reference>
+
+	<reference type="{fleet-stance}">
+		<complex entity="trigger" type="{trigger}">
+			<annotation>A block of Conditions to determine can a fleet have this bombardment stance. (Fleet scope)</annotation>
+		</complex>
+
+		<simple entity="default" type="{bool}">
+			<annotation>This will be default stance for new fleets</annotation>
+		</simple>
+
+		<simple entity="stop_when_armies_dead" type="{bool}" default="no">
+			<annotation> If yes, this bombardment stance will do nothing on planets without any armies</annotation>
+		</simple>
+		<simple entity="abduct_pops" type="{bool}" default="no">
+			<annotation>If yes, pops killed by this bombardment stance are abducted instead. This will trigger the on_pop_abducted on-action.</annotation>
+		</simple>
+
+		<simple entity="planet_damage" type="{float}" default="1">
+			<annotation>This value scales the planetary devastation inflicted by this bombardment stance.</annotation>
+		</simple>
+		<simple entity="army_damage" type="{float}" default="1">
+			<annotation>This value scales the damage dealt to planetary armies by this bombardment stance.</annotation>
+		</simple>
+
+		<!-- try to use all of the weight -->
+		<complex entity="kill_pop_chance" type="{weight}">
+			<annotation>An instance that determines the chance of this bombardment stance to kill pops.</annotation>
+		</complex>
+		<simple entity="min_pops_to_kill_pop" type="{int}" default="0">
+			<annotation>If number of pops is smaller than this, this bombardment stance won't kill pops any further. Doesn't work for nations that doesn't have diplomatic wars!</annotation>
+		</simple>
+
+		<complex entity="ai_weight" type="{weight}">
+			<annotation>AI will use the bombardment stance of highest weight. (ROOT = bombarding fleet, FROM = planet under bombardment)</annotation>
+		</complex>
+	</reference>
+</references>

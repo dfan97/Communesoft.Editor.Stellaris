@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<reference type="{bypass}" xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<simple entity="name" type="{localisation}" />
+	<simple entity="icon_frame" type="{int}" />
+	<simple entity="galactic_map_tooltip_header" type="{localisation}" />
+	<simple entity="galactic_map_tooltip_desc" type="{localisation}" />
+	<simple entity="animation_time" type="{int}" />
+	<simple entity="ftl_ship_effect" type="{entity}" />
+	<simple entity="ftl_bypass_effect" type="{entity}" />
+
+	<simple entity="always_active" type="{bool}" />
+	<simple entity="uses_action" type="{bool}" />
+	<simple entity="is_pathfind" type="{bool}" />
+	<simple entity="extends_sensors" type="{bool}" />
+	<simple entity="remember_instances" type="{bool}" />
+	<simple entity="requires_exploration" type="{bool}" />
+
+	<simple entity="windup_time" type="{int}" />
+	<simple entity="winddown_time" type="{int}" />
+	<simple entity="ftl_multiplier" type="{float}" />
+
+	<simple entity="connection_type" type="{string}">
+		<restriction>
+			<enum value="one_to_one" />
+			<enum value="any_other" />
+			<enum value="scripted_connection" />
+		</restriction>
+	</simple>
+	<complex entity="scripted_connection">
+		<complex entity="node" type="{trigger}" />
+		<complex entity="nexus" type="{trigger}" />
+	</complex>
+
+	<list entity="prerequisites" type="{technology}" />
+	<complex entity="potential" type="{trigger}" />
+
+	<simple entity="on_action" type="{event}" />
+	<list entity="on_pre_explore" type="{effect}" />
+	<complex entity="country_can_use" type="{trigger}" />
+</reference>

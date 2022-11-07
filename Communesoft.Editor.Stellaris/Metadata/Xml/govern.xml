@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<references xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<reference type="{ethic-category}">
+		<annotation>Defines ethic category</annotation>
+	</reference>
+
+	<reference type="{ethic}">
+		<simple entity="cost" type="{int}">
+			<annotation>Number of ethic points this ethic cost</annotation>
+		</simple>
+		<simple entity="category" type="{ethic-category}">
+			<annotation>Ethic category</annotation>
+		</simple>
+		<simple entity="category_value" type="{int}">
+			<annotation>Ethic index under it's category</annotation>
+		</simple>
+
+		<complex entity="playable" type="{trigger}">
+			<annotation>Conditions that determines should this ethic appear in the empire creation view</annotation>
+		</complex>
+		<complex entity="random_weight" type="{weight}">
+			<annotation>The higher the weight, the more likely the randomly generated AI will have this ethic. Random empires will choose ethics at very first</annotation>
+		</complex>
+
+		<simple entity="use_for_pops" type="{bool}" default="yes">
+			<annotation>Ethic can use for pops</annotation>
+		</simple>
+		<simple entity="category_opposite" type="{bool}">
+			<annotation />
+		</simple>
+		<simple entity="regular_variant" type="{ethic}">
+			<annotation>Fanatic ethics only. Designates the regular variant of this fanatic ethic</annotation>
+		</simple>
+		<simple entity="fanatic_variant" type="{ethic}">
+			<annotation>Regular ethics only. Designates the fanatic variant of this ethic</annotation>
+		</simple>
+
+		<complex entity="country_modifier" type="{modifier}">
+			<annotation>Modifiers that applies to the empire</annotation>
+		</complex>
+
+		<list entity="tags" type="{localisation}">
+			<annotation>Localisation keys for a tooltip of ethic principles</annotation>
+		</list>
+		<complex entity="pop_attraction_tag" max="*">
+			<annotation>Adds tooltip in the faction view to show the player what factors are affecting ethics attraction</annotation>
+
+			<simple entity="desc" type="{localisation}" />
+			<complex entity="trigger" type="{trigger}" />
+		</complex>
+
+		<complex entity="country_attraction" type="{weight}">
+			<annotation>Modifies the empire wide ethic attraction</annotation>
+		</complex>
+		<complex entity="pop_attraction" type="{weight}">
+			<annotation>Modifies the ethic attraction for each pop</annotation>
+		</complex>
+	</reference>
+
+
+	<reference type="{government}">
+		<complex entity="possible" type="{trigger}">
+			<annotation>Conditions that determine whether this type of government can be applied to an empire</annotation>
+		</complex>
+
+		<simple entity="ruler_title" type="{localisation}">
+			<annotation>Determines male the ruler title</annotation>
+		</simple>
+		<simple entity="ruler_title_female" type="{localisation}">
+			<annotation>Determines female the ruler title</annotation>
+		</simple>
+		<simple entity="heir_title" type="{localisation}">
+			<annotation>Determines male the ruler title</annotation>
+		</simple>
+		<simple entity="heir_title_female" type="{localisation}">
+			<annotation>Determines female the ruler title</annotation>
+		</simple>
+
+		<simple entity="use_regnal_names" type="{bool}" default="no">
+			<annotation>If yes, the auto-generated ruler names will use regnal last names if the namelist of this species defined any</annotation>
+		</simple>
+		<simple entity="dynastic_last_names" type="{bool}" default="no">
+			<annotation>If yes, the heirs will inherit the last word of the ruler's name for a last name</annotation>
+		</simple>
+		<simple entity="should_force_rename" type="{bool}" default="no">
+			<annotation>Forces the AI empire that reformed into this government to randomize it's empire name</annotation>
+		</simple>
+
+		<complex entity="weight" type="{weight}">
+			<annotation>
+				If an empire is eligible to multiple government types, one with the highest weight wins.
+				Common government forms like Military Dictatorship should have lower weight than specific government forms like Blood Court
+			</annotation>
+		</complex>
+
+		<simple entity="leader_class" type="{leader}">
+			<annotation>
+				If the first ruler of the empire is elected out, that ruler will become a leader of specified class, rather than just disappear.
+				Electoral governments only
+			</annotation>
+		</simple>
+		<complex entity="election_candidates">
+			<annotation>
+				Specifies who should and how likely they should participate the ruler election.
+				Electoral governments only
+			</annotation>
+			<complex entity="modifier">
+				<simple entity="add" type="{int}" />
+				<complex sequence="only" type="{trigger}">
+					<annotation>TODO: Тут специфичный scope и поэтому не так много условий</annotation>
+				</complex>
+			</complex>
+		</complex>
+	</reference>
+
+
+	<reference type="{government-authority}">
+		<!-- почитать в вики и посмотреть в игре, т.к. тут походу могут быть разные условия -->
+		<complex entity="playable" type="{trigger}" />
+		<complex entity="possible" type="{trigger}">
+			<annotation>спец синтаксис, описан на вики и в доке readme_requirements.txt</annotation>
+		</complex>
+		<complex entity="potential" type="{trigger}">
+			<annotation>спец синтаксис, описан на вики и в доке readme_requirements.txt</annotation>
+		</complex>
+		<simple entity="icon" type="{path}">
+			<annotation>???</annotation>
+		</simple>
+
+		<simple entity="can_reform" type="{bool}" default="yes">
+			<annotation>Empires can reform to/from this authority</annotation>
+		</simple>
+		<simple entity="has_factions" type="{bool}" default="yes">
+			<annotation>Empires can have factions</annotation>
+		</simple>
+		<simple entity="valid_for_released_vassal" type="{bool}" default="yes">
+			<annotation>Released vessal can pick this authority</annotation>
+		</simple>
+
+		<simple entity="has_heir" type="{bool}">
+			<annotation>valid if imperial</annotation>
+		</simple>
+		<simple entity="election_type" type="{string}" default="none">
+			<restriction>
+				<enum value="democratic" />
+				<enum value="oligarchic" />
+				<enum value="none" />
+			</restriction>
+		</simple>
+		<simple entity="re_election_allowed" type="{bool}">
+			<annotation>default yes if democratic</annotation>
+		</simple>
+		<simple entity="uses_mandates" type="{bool}" default="no">
+			<annotation>yes for democratic</annotation>
+		</simple>
+		<simple entity="has_agendas" type="{bool}" default="no">
+			<annotation>yes for non-democratic</annotation>
+		</simple>
+
+		<simple entity="can_have_emergency_elections" type="{bool}">
+			<annotation>This empire can initiate an emergency election valid if oligar</annotation>
+		</simple>
+		<simple entity="emergency_election_cost" type="{int}">
+			<annotation>Cost of an emergency election valid if can_have_emergency_elections=yes</annotation>
+		</simple>
+
+		<simple entity="max_election_candidates" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="election_term_years" type="{int}">
+			<annotation>Determines how many years between elections. Actual election term is election_term_years +/- election_term_variance</annotation>
+		</simple>
+		<simple entity="election_term_variance" type="{int}">
+			<annotation>Determines how many years between elections. Actual election term is election_term_years +/- election_term_variance</annotation>
+		</simple>
+
+		<complex entity="country_modifier" type="{modifier}">
+			<annotation>Modifiers that applies to the empire</annotation>
+		</complex>
+		<complex entity="traits">
+			<annotation>A list of species trait keys to be added to the primary species of this empire. In the empire creation menu, these traits can't be removed, but more can be added if there is enough trait points and trait picks. Government reforming doesn't add or remove these traits.</annotation>
+			<simple entity="trait" type="{trait}" max="*" />
+		</complex>
+
+		<list entity="tags" type="{localisation}">
+			<annotation>Localisation keys for a tooltip of ethic principles</annotation>
+		</list>
+		<simple entity="localization_postfix" type="{string}">
+			<annotation>Localization postfix</annotation>
+		</simple>
+
+		<complex entity="random_weight" type="{weight}" default="1">
+			<annotation>Defines how likely this is to be picked randomly if it's valid</annotation>
+		</complex>
+	</reference>
+
+
+	<reference type="{government-civic}">
+		<simple entity="is_origin" type="{bool}" default="no">
+			<annotation />
+		</simple>
+
+		<complex entity="playable" type="{trigger}" />
+		<complex entity="ai_playable" type="{trigger}" />
+		<complex entity="possible" type="{trigger}">
+			<annotation>спец синтаксис, описан на вики и в доке readme_requirements.txt</annotation>
+		</complex>
+		<complex entity="potential" type="{trigger}">
+			<annotation>спец синтаксис, описан на вики и в доке readme_requirements.txt</annotation>
+		</complex>
+
+		<simple entity="icon" type="{path}">
+			<annotation>???</annotation>
+		</simple>
+		<simple entity="picture" type="{path}">
+			<!-- entry -->
+			<annotation>???</annotation>
+		</simple>
+		<simple entity="description" type="{localisation}">
+			<annotation>A localisation key for effects description. This will be displayed before the modifier tooltips</annotation>
+		</simple>
+
+		<simple entity="starting_colony" type="{planet}">
+			<annotation>Changes the empire's starting colony planet class regardless of the player's choice. This statement doesn't affect climate preference trait</annotation>
+		</simple>
+		<simple entity="habitability_preference" type="{planet}">
+			<annotation>Changes the empire's primary species' climate preference trait</annotation>
+		</simple>
+
+		<!-- не учитывается, если origin=yes?? -->
+		<simple entity="pickable_at_start" type="{bool}" default="yes">
+			<annotation>Whether this civic can be selected when you are creating a new empire. If not, it can only be picked by government reforming</annotation>
+		</simple>
+		<!-- не учитывается, если origin=yes?? -->
+		<simple entity="modification" type="{bool}" default="yes">
+			<annotation>The empire can add or remove this civic after the game start</annotation>
+		</simple>
+
+		<complex entity="modifier" type="{modifier}">
+			<annotation />
+		</complex>
+		<complex entity="traits">
+			<annotation>A list of species trait keys to be added to the primary species of this empire. In the empire creation menu, these traits can't be removed, but more can be added if there is enough trait points and trait picks. Government reforming doesn't add or remove these traits.</annotation>
+			<simple entity="trait" type="{trait}" max="*" />
+		</complex>
+
+		<!-- не учитывается, если origin=yes?? -->
+		<simple entity="can_build_ruler_ship" type="{bool}" default="no">
+			<annotation>If set to yes, this empire can build old-school oversized ships for each ruler</annotation>
+		</simple>
+		<simple entity="cost" type="{int}" min-value="0" default="1">
+			<annotation>How many civic points this will cost</annotation>
+		</simple>
+
+		<complex entity="has_secondary_species">
+			<annotation>This Civic or Origin requires a secondary species. It's unclear what if more than one Civics that require a secondary species is selected at the same time. An Origin with a secondary species will override the secondary species for a Civic</annotation>
+
+			<simple entity="title" type="{localisation}">
+				<annotation>A localisation key for the secondary species title</annotation>
+			</simple>
+			<complex entity="traits">
+				<annotation>A list of species trait keys to be added to the secondary species. In the empire creation menu, these traits can't be removed, but more can be added if there is enough trait points and trait picks</annotation>
+				<simple entity="trait" type="{trait}" max="*" />
+			</complex>
+		</complex>
+		<!-- не учитывается, если origin=yes?? -->
+		<complex entity="swap_type">
+			<annotation>Swaps civic name, flavor text and effect tooltip under certain condition</annotation>
+
+			<simple entity="name" type="{localisation}">
+				<annotation>Changes the name and flavor text of this civic</annotation>
+			</simple>
+			<simple entity="description" type="{localisation}">
+				<annotation>Changes the effect tooltip of this civic</annotation>
+			</simple>
+			<complex entity="trigger" type="{trigger}" />
+		</complex>
+
+		<!-- не учитывается, если origin=no?? -->
+		<simple entity="advanced_start" type="{bool}" default="no">
+			<annotation>If set to no, the empire can't have advanced starts</annotation>
+		</simple>
+		<!-- не учитывается, если origin=no?? -->
+		<simple entity="preferred_planet_class_neighbor" type="{bool}" default="yes">
+			<annotation>If set to no, the guaranteed habitable worlds will not be guaranteed to match the empire's climate preference</annotation>
+		</simple>
+		<!-- не учитывается, если origin=no?? -->
+		<simple entity="non_colonizable_planet_class_neighbor" type="{bool}" default="no">
+			<annotation>If set to yes, the empire can't have guaranteed habitable worlds regardless of the galaxy settings</annotation>
+		</simple>
+
+		<!-- не учитывается, если origin=no?? -->
+		<list entity="initializers" type="{system}">
+			<annotation>A list of keys of solar_system_initializer. The solar system initializer the player picked for this empire in the empire creation menu will be ignored. If specified, the empire won't have guaranteed habitable worlds anyway unless the initializer creates some based on the galaxy settings</annotation>
+		</list>
+		<!-- не учитывается, если origin=no?? -->
+		<list entity="flags" type="{string}">
+			<annotation>This empire will have these country flags set at the start of the game</annotation>
+		</list>
+
+		<complex entity="random_weight" type="{weight}">
+			<annotation>Defines how likely this is to be picked randomly if it's valid</annotation>
+		</complex>
+
+		<simple entity="max_once_global" type="{bool}" />
+	</reference>
+
+
+	<reference type="{government-mandate}">
+		<complex entity="valid" type="{trigger}">
+			<annotation>Conditions to check if a leader can have this mandate</annotation>
+		</complex>
+		<complex entity="parameters">
+			<annotation>Actual functionality is unclear</annotation>
+			<!-- self = country enemy = country -->
+			<simple entity="WTF" type="{?}"></simple>
+		</complex>
+		<list entity="on_term_started" type="{effect}">
+			<annotation>Effects to be executed when the term of a leader of this mandate is started</annotation>
+		</list>
+		<list entity="on_term_ended" type="{effect}">
+			<annotation>Effects to be executed when the term of a leader of this mandate is ended</annotation>
+		</list>
+	</reference>
+
+
+	<reference type="{government-agenda}">
+		<complex entity="weight_modifier" type="{weight}" min="1">
+			<annotation>Defines how likely should a leader have this agenda</annotation>
+		</complex>
+		<complex entity="modifier" type="{modifier}" min="1">
+			<annotation>Modifiers to be applied to the empire for as long as this leader remains as ruler</annotation>
+		</complex>
+	</reference>
+</references>

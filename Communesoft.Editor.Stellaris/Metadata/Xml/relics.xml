@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<references xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<reference type="{relic}">
+		<simple entity="portrait" type="{string}">
+			<annotation>A reference to a GFX instance that indicates the icon of this Relic.</annotation>
+		</simple>
+		<simple entity="sound" type="{string}">
+			<annotation>A reference to a sound instance that indicates the sound to be played for activation.</annotation>
+		</simple>
+		<complex entity="possible" type="{trigger}">
+			<annotation>A block of Conditions that determines can this relic be activated.</annotation>
+		</complex>
+
+		<simple entity="score" type="{int}">
+			<annotation>An integer of victory score should this Relic count.</annotation>
+		</simple>
+		<complex entity="resources" type="{resources}">
+			<annotation>An Economy Unit that determines the resource output and activation cost.</annotation>
+		</complex>
+
+		<simple entity="activation_duration" type="{int}">
+			<annotation>An integer of days for this Relic to "shine" if it’s activated.</annotation>
+		</simple>
+		<list entity="active_effect" type="{effect}">
+			<annotation>A block of Effects for the Activation Effect of this relic.</annotation>
+		</list>
+
+		<complex entity="triggered_country_modifier" max="*">
+			<annotation>A block of Modifiers for the Passive Effect of this relic.</annotation>
+
+			<complex entity="potential" type="{trigger}">
+				<annotation>A block of Conditions that determines should the modifier apply. Vanilla relics always have 'always = yes'. It is unclear if relics have country_modifier.</annotation>
+			</complex>
+			<complex sequence="only" type="{modifier}" />
+		</complex>
+
+		<complex entity="ai_weight" type="{weight}">
+			<annotation>Determines how likely the AI will activate this relic</annotation>
+		</complex>
+	</reference>
+
+
+	<reference type="{relic-act}">
+		<complex entity="potential" type="{trigger}">
+			<annotation>A block of Conditions that determines should this action be shown in the UI</annotation>
+		</complex>
+		<complex entity="allow" type="{trigger}">
+			<annotation>A block of Conditions that determines can this action be took by the empire.</annotation>
+		</complex>
+
+		<complex entity="resources" type="{resources}">
+			<annotation>An Economy Unit that determines the action cost. Vanilla actions always cost Minor artifacts.png Minor Artifacts.</annotation>
+		</complex>
+
+		<list entity="effect" type="{effect}">
+			<annotation>A block of Effects to be executed upon action.</annotation>
+		</list>
+
+		<complex entity="ai_weight" type="{weight}">
+			<annotation>Determines how likely the AI will use this action</annotation>
+		</complex>
+	</reference>
+</references>

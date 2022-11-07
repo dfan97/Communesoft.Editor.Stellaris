@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<references xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<reference type="{edict}">
+		<simple entity="length" type="{int}">
+			<annotation>Days of the edict duration. If 0, this Edict immediately ends. If -1, this Edict lasts until manually toggled off.</annotation>
+		</simple>
+		<simple entity="icon" type="{string}">
+			<annotation />
+		</simple>
+		<complex entity="resources" type="{resources}">
+			<annotation>An Economy Unit that determines the cost of this edict. Only the "cost" field is wanted. If length is -1, the cost is paid again when deactivating.</annotation>
+		</complex>
+		<list entity="prerequisites" type="{technology}">
+			<annotation>A list of Technology keys that determines the technology prerequisites of this edict</annotation>
+		</list>
+		<complex entity="show_tech_unlock_if" type="{trigger}">
+			<annotation>A block of Conditions. If evaluated false, this edict will not be shown in the technology tooltip of that technology.</annotation>
+		</complex>
+		<complex entity="modifier" type="{modifier}">
+			<annotation>A block of Modifiers to be applied to the empire for as long as this edict remain active.</annotation>
+		</complex>
+		<complex entity="potential" type="{trigger}">
+			<annotation>A block of Conditions that determines is this edict listed for this empire. (Country scope)</annotation>
+		</complex>
+		<complex entity="allow" type="{trigger}">
+			<annotation>A block of Conditions that determines can this edict be activated by this empire. (Country scope)</annotation>
+		</complex>
+		<list entity="effect" type="{effect}">
+			<annotation>A block of Effects to be executed when this edict become active. (Country scope)</annotation>
+		</list>
+		<simple entity="edict_cap_usage" type="{int}">
+			<annotation>The number of Edict Capacities this Edict will use.</annotation>
+		</simple>
+
+		<complex entity="ai_weight" type="{weight}">
+			<annotation>The higher it is, the more likely the AI will try to activate this edict.</annotation>
+		</complex>
+	</reference>
+
+
+	<reference type="{policy}">
+		<complex entity="potential" type="{trigger}">
+			<annotation>A block of Conditions to determine is an empire able to see this policy. If an empire can't see a policy, it won't have any of its options active.</annotation>
+		</complex>
+		<complex entity="allow" type="{trigger}">
+			<annotation>A block of Conditions to determine is an empire able to change this policy. Vanilla use this to prevent switching diplomatic stance and war philosophy during a war</annotation>
+		</complex>
+
+		<complex entity="option" min="1" max="*">
+			<annotation>An instance that adds an option to this policy. Multiple allowed. A policy should have at least one valid option for each empire.</annotation>
+
+			<simple entity="name" type="{localisation}">
+				<annotation>A localisation key that determines the name and description of this option</annotation>
+			</simple>
+			<simple entity="icon" type="{string}">
+				<annotation>A reference to a GFX entry that determines the icon of this option. Only diplomatic stance has this. Other policy options will never have their icons displayed</annotation>
+			</simple>
+
+			<!-- Blocks of Conditions to determine is an empire able to see / choose this option. If either is rendered false while the empire have this option active, the empire will be forced out of it and switched to a valid choice of highest ai_weight, even for players. -->
+			<complex entity="potential" type="{trigger}" />
+			<complex entity="valid" type="{trigger}" />
+
+			<list entity="policy_flags" type="{string}">
+				<annotation>A list of strings to be checked by the condition has_policy_flag. A policy option without any policy flags can't be checked by Conditions</annotation>
+			</list>
+			<complex entity="modifier" type="{modifier}">
+				<annotation>A block of Modifiers that applies to the empire with this option active.</annotation>
+			</complex>
+
+			<list entity="in_breach_of" type="{resolution-trigger}" />
+
+			<!-- Blocks of Effects to be executed to the empire when this option is selected / switched out. -->
+			<list entity="on_enabled" type="{effect}" />
+			<list entity="on_on_disabled" type="{effect}" />
+
+			<!-- Base AI-weight is 100, if unchanged -->
+			<complex entity="ai_weight" type="{weight}" default="100" />
+		</complex>
+	</reference>
+
+
+	<reference type="{species-rights}">
+		<simple entity="token" type="{string}" />
+		<simple entity="name" type="{string}" />
+		<complex entity="potential" type="{trigger}">
+			<annotation />
+		</complex>
+		<complex entity="allow" type="{trigger}">
+			<annotation />
+		</complex>
+
+		<complex entity="modifier" type="{modifier}">
+			<annotation />
+		</complex>
+
+		<simple entity="new_pop_weight" type="{float}" />
+		<simple entity="pop_escape_chance" type="{float}" />
+		<simple entity="pop_decline_rate" type="{float}" />
+		<complex entity="pop_modifier" type="{modifier}">
+			<annotation />
+		</complex>
+		<complex entity="triggered_pop_modifier" max="*">
+			<annotation />
+
+			<complex entity="potential" type="{trigger}">
+				<annotation />
+			</complex>
+			<!-- скорее всего тут не только это можно! -->
+			<complex sequence="only" type="{modifier}" />
+		</complex>
+		
+		<list entity="in_breach_of" type="{resolution-trigger}" />
+
+		<complex entity="ai_will_do" type="{weight}" />
+	</reference>
+</references>

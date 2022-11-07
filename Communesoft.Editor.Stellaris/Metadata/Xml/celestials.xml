@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<references xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<reference type="{system}">
+		<simple entity="name" type="{localisation}" min="1">
+			<annotation>System name</annotation>
+		</simple>
+		<simple entity="class" type="{star}">
+			<annotation>Specific star class or random list</annotation>
+		</simple>
+
+		<list entity="flags" type="{string}" />
+		<simple entity="prevent_anomalies" type="{bool}" />
+		<simple entity="primitive_system" type="{bool}" />
+
+		<simple entity="usage" type="{string}" max="*">
+			<annotation>Specifies how the game can use this initializer</annotation>
+			<restriction>
+				<enum value="custom_empire">
+					<annotation>Picks this initializer when player choose it in the empire creation screen</annotation>
+				</enum>
+				<enum value="empire_init">
+					<annotation>Picks this initializer randomly to initialize systems for regular empires (i.e the player(s) or regular AI empires) that do not specify a specific initializer</annotation>
+				</enum>
+				<enum value="fallen_empire_init">
+					<annotation>Picks this initializer randomly to initialize systems for fallen empires</annotation>
+				</enum>
+				<enum value="misc_system_init">
+					<annotation>Picks this initializer randomly when initializing misc systems, i.e systems that have not been initialized by empires or fallen empires</annotation>
+				</enum>
+				<enum value="origin">
+					<annotation>Picks this initializer when origin is selected</annotation>
+				</enum>
+			</restriction>
+		</simple>
+		<complex entity="usage_odds" type="{weight}">
+			<annotation>Used to control the odds of this initializer being picked over another</annotation>
+		</complex>
+		<simple entity="max_instances" type="{int}">
+			<annotation>
+				This initializer can at most be used 10 times.
+				Leave blank or negative for infinite times.
+				Note that this limit is also applied when spawning systems from effects
+			</annotation>
+		</simple>
+
+		<complex entity="spawn_chance" type="{weight}">
+			<annotation>
+				# Game will first pick an initializer using usage_odds, but only use it if it passes the spawn_chance check
+				# Even if it fails the spawn_chance check it will still count towards the initializer's max_instances
+			</annotation>
+		</complex>
+		<simple entity="scaled_spawn_chance" type="{int}">
+			<annotation>scales by galaxy size (1000 stars = 10x base)???</annotation>
+		</simple>
+		<simple entity="scaled_spawn_settings" type="{string}">
+			<annotation>scales both the spawn_chance and the max_instances based on the settings value???</annotation>
+		</simple>
+
+		<list entity="init_effect" type="{effect}" max="*">
+			<annotation>
+				#when all planets have been created and the system is initialized the init_effect will be executed
+				#you can use this to spawn mining drones etc
+				#the scope will be a galactic_object scope, with prev being set to the previous system that was initialized by this tree ( if any ). Root will point to the first system in the tree.
+				init_effect = {
+				set_name = "Name set from an effect"
+				}
+			</annotation>
+		</list>
+
+		<simple entity="change_orbit" type="{int}" max="*" />
+		<complex entity="asteroid_belt">
+			<simple entity="type" type="{asteroids}" min="1" />
+			<simple entity="radius" type="{int}" min-value="0" min="1" />
+		</complex>
+		<complex entity="planet" min="1" max="*">
+			<annotation>Create planet or star</annotation>
+
+			<!--
+				starting_planet = yes - unique in all planet scopes??
+				entity = "continental_planet_earth_entity"
+				deposit_blockers = none
+				modifiers = none
+		modifier = "pm_dangerous_wildlife"	#planet modifier
+		anomaly = "IRASSIA"				#anomaly on this planet
+			-->
+
+			<complex entity="count" type="{range-int}" default="1">
+				<annotation>Planet count or range to spawn</annotation>
+			</complex>
+			<simple entity="name" type="{localisation}">
+				<annotation>#leave blank to use the games default naming</annotation>
+			</simple>
+			<simple entity="class" type="{planet}">
+				<annotation>
+					Planet class (include star)
+					
+					###
+					# Please not that all "class = random*" will use the star class' settings for randomization.
+					# This means that if you try to use for instance random_colonizable with planets that are super close to the sun
+					# it will likely fail. Failing leads to the same behavior as scripting 'class = none'.
+					# You can start the game with the -script_debug to get error logs whenever it fails
+					###
+				</annotation>
+				<extension>
+					<enum value="none">
+						<annotation>This planet will not be generated. It will affect orbit of other planets though</annotation>
+					</enum>
+
+					<enum value="star">
+						<annotation>Picks the planet class that matches the systems star class</annotation>
+					</enum>
+					<enum value="ideal_planet_class">
+						<annotation>If initializing for an empire or fallen empire, picks the ideal planet class for their species. Otherwise picks a planet class randomly</annotation>
+					</enum>
+
+					<enum value="random">
+						<annotation>Picks a planet class randomly, based on orbit distance and system star class</annotation>
+					</enum>
+					<enum value="random_colonizable">
+						<annotation>Picks a random colonizable planet class</annotation>
+					</enum>
+					<enum value="random_non_ideal">
+						<annotation>Picks a random class that is not the ideal planet class for the empire/fallen empire currently initializing for</annotation>
+					</enum>
+					<enum value="random_non_colonizable">
+						<annotation>Picks a random non-colonizable planet class</annotation>
+					</enum>
+					<enum value="random_asteroid">
+						<annotation>Picks a random asteroid</annotation>
+					</enum>
+				</extension>
+			</simple>
+			<simple entity="satellite_naming_policy" type="{string}">
+				<annotation>Indicates how this star's planets or this planet's moons will be named</annotation>
+				<restriction>
+					<enum value="upper_case_roman_numerals" />
+					<enum value="lower_case_latin_letters" />
+				</restriction>
+			</simple>
+
+			<simple entity="has_ring" type="{bool}" />
+			<simple entity="home_planet" type="{bool}">
+				<annotation>This is a valid home planet for empires and fallen empires</annotation>
+			</simple>
+			<list entity="flags" type="{string}" />
+
+			<list entity="init_effect" type="{effect}" max="*">
+				<annotation>
+					#when the planet is done initializing the init_effect will be executed
+					#use this to spawn mining drones or whatever else you want to do
+					#The scope will be a planet scope, with prev being the system. prevprev will be the system that triggered this system's initialization ( if any ). Root will be the first system in this initializer tree
+					init_effect = {
+					set_name = "init_effect example name"
+					}
+				</annotation>
+			</list>
+
+			<simple entity="change_orbit" type="{int}" />
+			<complex entity="orbit_distance" type="{range-float}">
+				<annotation>Distance from center, relative to previous planets orbit</annotation>
+			</complex>
+			<complex entity="orbit_angle" type="{range-int}">
+				<annotation>Orbit angle from previous planet, in degrees</annotation>
+			</complex>
+			<complex entity="size" type="{range-int}">
+				<annotation>Planet size</annotation>
+			</complex>
+
+			<choice>
+				<complex entity="planet" type=".planet" max="*">
+					<annotation>Other planets if parent is star</annotation>
+				</complex>
+				<complex entity="moon" type=".planet" max="*">
+					<annotation>Moons if parent is planet</annotation>
+				</complex>
+			</choice>
+		</complex>
+
+		<complex entity="neighbor_system" max="*">
+			<annotation>
+				#The game will test all systems within the distance limit
+				#untill it finds a system that fulfills the trigger ( see below ).
+				#it will do this in a nearest-first order by euclidean distance
+			</annotation>
+
+			<simple entity="initializer" type="{system}">
+				<annotation>Used system initializer</annotation>
+			</simple>
+			<complex entity="trigger" type="{trigger}" default="true">
+				<annotation>
+					if the trigger is left empty it will always succeed. The first closest system that is within the distance limits will be picked
+					#scope = galactic_object ( parent ). root = root gal obj. prev = closest parent. prev prev = grand parent...
+					#check stuff
+				</annotation>
+			</complex>
+			<complex entity="distance" type="{range-int}">
+				<annotation>Euclidean distance</annotation>
+			</complex>
+			<complex entity="hyperlane_distance" type="{range-int}">
+				<annotation>Total hyperlane distance, distance inside systems are not included</annotation>
+			</complex>
+			<complex entity="hyperlane_jumps" type="{range-int}">
+				<annotation>Number of jumps</annotation>
+			</complex>
+		</complex>
+	</reference>
+
+	<reference type="{system-type}">
+		<annotation>System Types are flavor texts to describe a system's functions. While not technically a part of Starbase modding, they are heavily affected by starbase modules. System Types are defined at "common/system_types/xxx.txt".</annotation>
+		
+		<complex entity="potential" type="{trigger}">
+			<annotation>A block of Conditions to check if this System Type is possible. (System scope)</annotation>
+		</complex>
+
+		<complex entity="weight_modifier" type="{weight}">
+			<annotation>The system type with the highest weight becomes the system's system type.</annotation>
+		</complex>
+	</reference>
+
+	<reference type="{star}">
+		<simple entity="class" type="{string}">
+			<annotation>gfx entry</annotation>
+		</simple>
+		<simple entity="icon" type="{string}">
+			<annotation>gfx/map/star_classes</annotation>
+		</simple>
+		<simple entity="icon_scale" type="{float}" />
+		<complex entity="planet" max="*">
+			<annotation>Star type, used by default to this star class</annotation>
+
+			<simple entity="key" type="{planet}" min="1" />
+			<simple entity="class" type="{string}">
+				<annotation>gfx entry (дубль)</annotation>
+			</simple>
+		</complex>
+		<simple entity="spawn_odds" type="{float}">
+			<annotation>The likelihood that this star class will spawn</annotation>
+		</simple>
+		<complex entity="num_planets" type="{range-int}">
+			<annotation>
+				The number of planets that can be found in these systems.
+				The number of planets in the solar system initializer will overwrite this by default, but if a random range is used there it'll use the number from here
+			</annotation>
+		</complex>
+
+		<complex entity="{planet}" max="*">
+			<annotation>Altering the likelihood that certain planet classes will spawn in these systems.</annotation>
+
+			<simple entity="spawn_odds" type="{float}" min="1" />
+		</complex>
+
+		<simple entity="is_environmental_hazard" type="{bool}" />
+		<complex entity="modifier" type="{modifier}" />
+	</reference>
+
+	<reference type="{star-namelist}">
+		<simple entity="name" type="{string}">
+			<annotation>Random list name</annotation>
+		</simple>
+		<list entity="stars" type="{planet}" />
+	</reference>
+
+
+	<reference type="{planet}">
+		<simple entity="icon" type="{string}">
+			<annotation>The icon your planet uses
+				Planet icons can be found in gfx/interface/icons/planet_type_icons.dds,
+				and their sprites are documented in interface/planet.gfx.
+				For reference, here is a list of which values to use for which icon:
+			</annotation>
+		</simple>
+		<simple entity="picture" type="{string}">
+			<annotation>Applies an existing planet's backdrop instead of a custom one</annotation>
+		</simple>
+		<simple entity="entity" type="{string}">
+			<annotation>The planet entities your planet will use by default</annotation>
+		</simple>
+		<simple entity="entity_scale" type="{float}">
+			<annotation>The size of this planet model compared to others</annotation>
+		</simple>
+		<simple entity="fixed_entity_scale" type="{bool}" default="no">
+			<annotation>If yes, this planet's visible size will always be the same regardless of its actual size</annotation>
+		</simple>
+		<simple entity="overlay_entity" type="{string}">
+			<annotation />
+		</simple>
+		<simple entity="preview_entity" type="{string}">
+			<annotation />
+		</simple>
+
+		<simple entity="enable_tilt" type="{bool}" default="yes">
+			<annotation>If no, disables planet tilt for this planet class</annotation>
+		</simple>
+
+		<simple entity="atmosphere_color" type="{color}">
+			<annotation>The color of your planet's atmosphere</annotation>
+		</simple>
+		<simple entity="atmosphere_intensity" type="{float}">
+			<annotation>The saturation of your planet's atmosphere</annotation>
+		</simple>
+		<simple entity="atmosphere_width" type="{float}">
+			<annotation>The thickness of your planet's atmosphere</annotation>
+		</simple>
+
+		<simple entity="show_city" type="{bool}" default="yes">
+			<annotation>If no, any cities on this planet will not be visible in the backdrop</annotation>
+		</simple>
+		<simple entity="city_color_lut" type="{path}">
+			<annotation>A transparent filter that is applied to cities (if habitable) to make it better blend with the background</annotation>
+		</simple>
+		<simple entity="fixed_city_level" type="{int}">
+			<annotation>Permanently applies a fixed amount of infrareference to this planet's backdrop</annotation>
+		</simple>
+		<simple entity="uses_alternative_skies_for_moons" type="{bool}">
+			<annotation>If yes, this moon will have an alternative backdrop in which a ringless or ringed planet is visible in the sky</annotation>
+		</simple>
+		<simple entity="show_health_bar_in_planet_view" type="{bool}">
+			<annotation>Determines whether to display 'surface integrity' gui component</annotation>
+		</simple>
+
+		<simple entity="chance_of_ring" type="{float}" min-value="0" max-value="1">
+			<annotation>The probability that this planet will spawn with a ring system</annotation>
+		</simple>
+		<simple entity="survey_time_factor" type="{float}">
+			<annotation />
+		</simple>
+		<simple entity="extra_orbit_size" type="{int}">
+			<annotation>Increases the size of the planet's orbit</annotation>
+		</simple>
+		<simple entity="extra_planet_count" type="{int}">
+			<annotation>Increases the number of planets this planet counts as</annotation>
+		</simple>
+
+		<simple entity="spawn_odds" type="{float}">
+			<annotation>The likelihood that this planet will randomly spawn if all conditions are met</annotation>
+		</simple>
+
+		<simple entity="max_distance_from_sun" type="{int}" min-value="0">
+			<annotation>The maximum orbital distance at which this planet can randomly spawn</annotation>
+		</simple>
+		<simple entity="min_distance_from_sun" type="{int}" min-value="0">
+			<annotation>The minimum orbital distance at which this planet can randomly spawn</annotation>
+		</simple>
+		<simple entity="orbit_lines" type="{bool}" default="yes">
+			<annotation>If no, disabled orbit lines for this planet class</annotation>
+		</simple>
+
+		<simple entity="can_be_moon" type="{bool}" default="yes">
+			<annotation>This planet class can be a moon</annotation>
+		</simple>
+		<simple entity="star" type="{bool}" default="no">
+			<annotation>This planet class is star</annotation>
+		</simple>
+		<simple entity="star_gfx" type="{bool}" default="yes если star есть!!">
+			<annotation>This star glow brightly</annotation>
+		</simple>
+		<simple entity="asteroid" type="{bool}" default="no">
+			<annotation>This planet class is asteroid</annotation>
+		</simple>
+		<simple entity="habitat" type="{bool}" default="no">
+			<annotation>This planet class is habitat</annotation>
+		</simple>
+		<simple entity="ringworld" type="{bool}" default="no">
+			<annotation>This planet class is ringworld</annotation>
+		</simple>
+		<simple entity="is_artificial_planet" type="{bool}" default="no">
+			<annotation />
+		</simple>
+
+		<simple entity="initial" type="{bool}" default="no">
+			<annotation>Players can choose this planet class as homeworld</annotation>
+		</simple>
+		<simple entity="starting_planet" type="{bool}">
+			<annotation>Players or AI can start on this planet class</annotation>
+		</simple>
+		<simple entity="colonizable" type="{bool}">
+			<annotation>This planet can be colonized by players and AI</annotation>
+		</simple>
+		<simple entity="colonizable_by_event" type="{bool}">
+			<annotation>Ensure colonization mechanics are handled even if the planet cannot be colonized the usual way</annotation>
+		</simple>
+		<simple entity="can_be_invaded" type="{bool}" default="yes">
+			<annotation>This planet can be invaded by players' or AI's army</annotation>
+		</simple>
+		<simple entity="space_monster_target" type="{bool}">
+			<annotation>Country types with space monster AI will wander to this planet type if set to yes</annotation>
+		</simple>
+
+		<simple entity="climate" type="{localisation}">
+			<annotation>The planet's climate type</annotation>
+		</simple>
+		<simple entity="ideal" type="{bool}" default="no">
+			<annotation>If yes, this planet will always be habitable to all species</annotation>
+		</simple>
+		<complex entity="modifier" type="{modifier}">
+			<annotation>Permanent modifiers</annotation>
+		</complex>
+
+		<complex entity="moon_size" type="{range-int}">
+			<annotation>The range of sizes that this planet will use if it is a moon</annotation>
+		</complex>
+		<complex entity="planet_size" type="{range-int}">
+			<annotation>The range of sizes that this planet will use if it is not a moon.</annotation>
+		</complex>
+
+		<simple entity="district_set" type="{string}" />
+		<simple entity="has_colonization_influence_cost" type="{bool}" />
+		<simple entity="default_planet_selection" type="{bool}" />
+		<simple entity="carry_cap_per_free_district" type="{int}" />
+		<simple entity="production_spawn_chance" type="{float}" />
+	</reference>
+
+	<reference type="{planet-namelist}">
+		<simple entity="name" type="{string}">
+			<annotation>Random list name</annotation>
+		</simple>
+		<list entity="planets" type="{planet}" />
+	</reference>
+
+	<reference type="{terraform}">
+		<simple entity="from" type="{planet}" min="1">
+			<annotation>Planet class before terraforming</annotation>
+		</simple>
+		<simple entity="to" type="{planet}" min="1">
+			<annotation>Planet class after terraforming</annotation>
+		</simple>
+
+		<simple entity="duration" type="{int}" min="1">
+			<annotation>Terraforming time</annotation>
+		</simple>
+		<complex entity="resources" type="{resources}">
+			<annotation>Terraforming cost</annotation>
+		</complex>
+
+		<complex entity="condition" type="{trigger}">
+			<annotation>Conditions to perform terraforming</annotation>
+		</complex>
+		<complex entity="potential" type="{trigger}">
+			<annotation>Conditions to perform terraforming</annotation>
+		</complex>
+
+		<list entity="effect" type="{effect}">
+			<annotation>Immediate effects after terraforming</annotation>
+		</list>
+
+		<complex entity="ai_weight" type="{weight}" />
+	</reference>
+</references>

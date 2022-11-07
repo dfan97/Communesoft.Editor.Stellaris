@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<references xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<reference type="{species-archotype}">
+		<simple entity="robotic" type="{bool}" default="no">
+			<annotation>
+				is this archetype's species robotic? Governs various things:
+				#		- does the species count as robotic (for is_robotic = yes, and various hardcoded checks)
+				#		- notably can the species grow, or is just assembled?
+			</annotation>
+		</simple>
+		<simple entity="uses_modifiers" type="{bool}" default="yes">
+			<annotation>should modifiers be generated for this archetype at all?</annotation>
+		</simple>
+
+		<simple entity="species_trait_points" type="{int}">
+			<annotation>base number of species trait points available for this species class</annotation>
+		</simple>
+		<simple entity="species_max_traits" type="{int}">
+			<annotation>maximum number of traits that species of this class can have (doesn't count those with cost == 0)</annotation>
+		</simple>
+
+		<simple entity="inherit_trait_points_from" type="{bool}">
+			<annotation>Has the exact same trait points as BIOLOGICAL</annotation>
+		</simple>
+		<list entity="inherit_traits_from" type="{species-archotype}">
+			<annotation>Will be able to use traits valid for BIOLOGICAL, ROBOT and BIOLOGICAL2</annotation>
+		</list>
+	</reference>
+
+
+	<reference type="{species-class}">
+		<complex entity="playable" type="{trigger}">
+			<annotation>if this species class can is playable</annotation>
+		</complex>
+		<complex entity="possible" type="{trigger}">
+			<annotation>спец синтаксис, описан на вики и в доке readme_requirements.txt</annotation>
+		</complex>
+		<complex entity="possible_secondary" type="{trigger}">
+			<annotation>???</annotation>
+		</complex>
+		<complex entity="randomized" type="{trigger}" short="{bool}">
+			<!--
+				а может ли list по дефолту иметь shorthand всегда, ведь он же однотипный?
+				можно проверить на leader_class
+			-->
+			<annotation>if this species class can is playable</annotation>
+		</complex>
+
+		<simple entity="graphical_culture" type="{string}" />
+		<simple entity="move_pop_sound_effect" type="{string}" />
+
+		<!-- portraits entity??? -->
+		<simple entity="portrait_modding" type="{bool}" default="no">
+			<annotation>whether the portrait can be modified with genemodding/robomodding</annotation>
+		</simple>
+		<list entity="portraits" type="{string}">
+			<annotation />
+		</list>
+		<list entity="non_randomized_portraits" type="{string}">
+			<annotation>These should not be used for randomly generated species</annotation>
+		</list>
+		<complex entity="custom_portraits" max="*">
+			<annotation>add additional portraits when customizing species</annotation>
+			<complex entity="randomized" type="{trigger}">
+				<annotation>to specify if portraits are randomized</annotation>
+			</complex>
+			<complex entity="playable" type="{trigger}">
+				<annotation>to specify if portraits are playable</annotation>
+			</complex>
+			<list entity="portraits" type="{string}">
+				<annotation />
+			</list>
+		</complex>
+
+		<simple entity="archetype" type="{species-archotype}" />
+		<simple entity="gender" type="{bool}" default="yes">
+			<annotation>whether the species have a gender</annotation>
+		</simple>
+		<simple entity="leader_age_min" type="{int}" />
+		<simple entity="leader_age_max" type="{int}" />
+		<simple entity="use_climate_preference" type="{bool}" />
+
+		<simple entity="trait" type="{trait}" />
+		<complex entity="resources" type="{resources}">
+			<annotation>???</annotation>
+		</complex>
+
+		<simple entity="uplifted_into" type="{species-class}" />
+		<list entity="uplifted_portraits" type="{string}">
+			<annotation />
+		</list>
+	</reference>
+
+
+	<reference type="{leader}">
+		<!-- это хардкод, поэтому не должны давать возможность удалять это, добавлять видимо можно, но базовые шесть классов, которые должны быть в enum неприкасаемы -->
+		<simple entity="default_category" type="{leader-category}">
+			<annotation>A newly generated leader of this shell class will fall into the specified hard-code class by default</annotation>
+		</simple>
+		<simple entity="max_trait_points" type="{int}" default="0">
+			<annotation>The number of trait points. Leader traits have "costs" that a newly generated leader can't have more trait points than the number specified here.</annotation>
+		</simple>
+
+		<complex entity="resources" type="{resources}">
+			<annotation>An Economy Unit to define the hiring cost and upkeep of this leader. Though vanilla unused, leaders can also produce resourced.</annotation>
+		</complex>
+
+		<!-- Defines what kind of tasks can this leader be assigned to. Making a leader to do something that's usually not its job will switch its hard-code class and it receives a new set of traits for that class if it doesn't have yet.  -->
+
+		<simple entity="can_govern_planet" type="{bool}" default="no">
+			<annotation />
+		</simple>
+		<simple entity="can_research" type="{bool}" default="no">
+			<annotation />
+		</simple>
+		<simple entity="can_lead_navy" type="{bool}" default="no">
+			<annotation />
+		</simple>
+		<simple entity="can_lead_army" type="{bool}" default="no">
+			<annotation />
+		</simple>
+		<simple entity="can_rule_empire" type="{bool}" default="no">
+			<annotation />
+		</simple>
+		<simple entity="can_be_envoy" type="{bool}" default="no">
+			<annotation />
+		</simple>
+	</reference>
+
+
+	<reference type="{species-class-namelist}">
+		<complex entity="{string}" max="*">
+			<simple entity="language" type="{string}">
+				<annotation />
+			</simple>
+			<simple entity="name" type="{string}">
+				<annotation>is self-evident. This is what the Species is called.</annotation>
+			</simple>
+			<simple entity="plural" type="{string}">
+				<annotation>is the plural name of the species. This is used when multiple instances of one species are addressed collectively</annotation>
+			</simple>
+			<simple entity="home_planet" type="{string}">
+				<annotation>is the first planet this Species starts on when the galaxy is randomly generated</annotation>
+			</simple>
+			<simple entity="home_system" type="{string}">
+				<annotation>is the star the Species’ first planet orbits around when the galaxy is randomly generated</annotation>
+			</simple>
+			<simple entity="name_list" type="{string}">
+				<annotation>
+					These are found in the "name_lists" folder in the "common" folder of Stellaris.[ref entity="STEAMDIRECTORY"]
+					By default, "Stellaris" is located in a certain area depending on what Launcher it is equipped with.
+					For the Steam Launcher Program, it is found in the Steam entry thirty-two bit program directory.
+					The address to this is "C:\Program Files (x86)\Steam\steamapps\common\Stellaris"
+				</annotation>
+			</simple>
+		</complex>
+	</reference>
+	<reference type="{species-class-asclist}">
+		<complex entity="ascension_list">
+			<complex entity="{string}" max="*">
+				<simple entity="name" type="{string}" />
+				<simple entity="plural" type="{string}" />
+			</complex>
+		</complex>
+	</reference>
+</references>

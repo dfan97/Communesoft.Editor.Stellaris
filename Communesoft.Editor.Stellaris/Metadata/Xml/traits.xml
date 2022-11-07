@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<references xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<reference type="{trait}">
+		<simple entity="cost" type="{int}">
+			<annotation>The trait cost</annotation>
+		</simple>
+		<simple entity="icon" type="{path}">
+			<annotation>
+				gfx/interface/icons/traits/[trait key].dds
+				Alternative icon of this trait. gfx/interface/icons/traits/[trait key].dds
+				Leader traits always have this property specified because their icons are stored at "gfx/interface/icons/traits/leader_traits/xxx.dds".
+			</annotation>
+		</simple>
+
+		<simple entity="initial" type="{bool}" default="yes">
+			<annotation>
+				If no, this trait cannot be picked in the empire creator and it cannot be added to a species template.
+				If no, this trait cannot be given to a leader upon leader generation.
+			</annotation>
+		</simple>
+		<simple entity="randomized" type="{bool}" default="yes">
+			<annotation>
+				If no, this trait can't be picked by species random generator.
+				It's still unclear, because Leader trait armchair commander.png Armchair Commander has randomized = no but can stll be given to a newly generated leader.
+			</annotation>
+		</simple>
+		<simple entity="modification" type="{bool}" default="yes">
+			<annotation>
+				If no, this trait cannot be added to or removed from a species template.
+				It's still unclear, because leader traits always have modification = no.
+			</annotation>
+		</simple>
+
+		<!-- species only? -->
+		<simple entity="improves_leaders" type="{bool}" default="no">
+			<annotation>
+				If yes, this trait will have a tooltip that says leaders from this species will have traits that enhance them. Actually, those leader traits must be implemented elsewhere.
+			</annotation>
+		</simple>
+		<!-- species only? -->
+		<simple entity="advanced_trait" type="{bool}" default="no">
+			<annotation>
+				If yes, this trait is considered an advanced trait and can be added to or removed from a species template only if the empire has researched any technology with the feature flag "add_advanced_traits".
+				This permission overrides initial = no, but doesn't override modification = no.
+			</annotation>
+		</simple>
+		<!-- species only? -->
+		<simple entity="forced_happiness" type="{bool}" default="no">
+			<annotation>
+				If yes, Pops of a species with this trait will not be affected by happiness.
+			</annotation>
+		</simple>
+		<!-- species only? -->
+		<simple entity="sapient" type="{bool}" default="yes">
+			<annotation>
+				Vanilla pre-sapient traits have sapient = no. Seems to allow the trait to be selected by trait = random_presapient_trait in a create_species effect
+			</annotation>
+		</simple>
+		<!-- species only? -->
+		<simple entity="infertile" type="{bool}" default="no">
+			<annotation />
+		</simple>
+
+		<!-- host_has_dlc = "Plantoids Species Pack" -->
+		<simple entity="host_has_dlc" type="{string}">
+			<annotation />
+		</simple>
+
+		<!-- species only? -->
+		<simple entity="valid_for_all_ethics" type="{bool}" default="yes">
+			<annotation>
+				Weather this trait is valid for all ethics. Will also need to list which ethics its compatible with.
+			</annotation>
+		</simple>
+		<!-- species only? -->
+		<list entity="allowed_ethics" type="{ethic}">
+			<annotation>
+				The ethics this trait is valid for. Only put this if you have valid_for_all_ethics set to no.
+			</annotation>
+		</list>
+
+		<simple entity="immortal_leaders" type="{bool}" default="no">
+			<annotation>
+				If yes, leaders from a species with this trait will be immortal. This will also generate an entry of "Immortal" in tooltip.
+				If yes, leaders with this trait will be immortal. This will also generate an entry of "Immortal" in tooltip.
+			</annotation>
+		</simple>
+
+		<!-- leader only? -->
+		<simple entity="hide_age" type="{bool}">
+			<annotation>
+				If yes, leaders with this trait will have their age hidden in the leader tooltip. Only work for ruler traits.
+			</annotation>
+		</simple>
+
+
+		<complex entity="modifier" type="{modifier}">
+			<annotation>
+				A block of Modifiers to be applied to Pops, Armies and Leaders of a species with this trait.
+				
+				A block of Modifiers to be applied to the scope this Leader is assigned at.
+				
+				If this leader was a non-heir ruler, its traits will apply to the entire Empire.
+				If this leader was a governor, its traits will apply to the Sector it's governing.
+				If this leader was a scientist leading a research, only modifiers related to research speed will apply to the category it's researching.
+				If this leader was a scientist commanding a science ship, the modifiers will apply to the science ship.
+				If this leader was an admiral, its traits will apply to the fleet it's commanding.
+				If this leader was a general, its traits will apply to the armies it's commanding.
+			</annotation>
+		</complex>
+
+		<!-- species only? -->
+		<complex entity="triggered_pop_modifier">
+			<annotation>Similar to the above, except it only applies if the potential property evaluates true. Multiple allowed (Pop scope). Modifiers in this block will not show in tooltips, and should be used in addition to a custom tooltip. </annotation>
+			<complex entity="potential" type="{trigger}" />
+			<complex sequence="only" type="{modifier}" />
+		</complex>
+		<!-- species only? # To make it be able to evaluate habitability of planet it has not settled yet. Only applies to this species -->
+		<complex entity="triggered_planet_growth_habitability_modifier">
+			<annotation />
+			<complex entity="potential" type="{trigger}" />
+			<complex sequence="only" type="{modifier}" />
+		</complex>
+
+		<!-- species only? -->
+		<complex entity="growing_modifier" type="{modifier}">
+			<annotation>
+				Blocks of Modifiers to be applied to the Planet while a Pop of this species is growing / assembling / declining.
+				
+				The trait Recycled.png Recycled uses assembling_modifier to reduce Robot Assembler jobs upkeep by −20% to implement its effect. 
+			</annotation>
+		</complex>
+
+		<!-- species only? -->
+		<complex entity="assembling_modifier" type="{modifier}">
+			<annotation>
+				Blocks of Modifiers to be applied to the Planet while a Pop of this species is growing / assembling / declining.
+				
+				The trait Recycled.png Recycled uses assembling_modifier to reduce Robot Assembler jobs upkeep by −20% to implement its effect. 
+			</annotation>
+		</complex>
+
+		<!-- species only? -->
+		<complex entity="declining_modifier" type="{modifier}">
+			<annotation>
+				Blocks of Modifiers to be applied to the Planet while a Pop of this species is growing / assembling / declining.
+				
+				The trait Recycled.png Recycled uses assembling_modifier to reduce Robot Assembler jobs upkeep by −20% to implement its effect. 
+			</annotation>
+		</complex>
+
+		<!-- leader only? -->
+		<complex entity="self_modifier" type="{modifier}">
+			<annotation>Modifiers to be applied only to the leader itself</annotation>
+		</complex>
+
+		<simple entity="custom_tooltip" type="{localisation}">
+			<annotation>
+				If specified, it will overwrite the generated tootlips based on modifiers.
+			</annotation>
+		</simple>
+		<simple entity="custom_tooltip_with_modifier" type="{localisation}">
+			<annotation>
+				If specified, will show the given tooltip in addition to the generated tootlips based on modifiers.
+			</annotation>
+		</simple>
+
+		<list entity="prerequisites" type="{technology}">
+			<annotation>
+				This trait can't be added or removed by an Empire unless all technologies listed here have been researched. Vanilla unused.
+				This trait can't be given to a leader upon leader generation unless all technologies listed here have been researched.
+			</annotation>
+		</list>
+		<list entity="opposites" type="{trait}">
+			<annotation>
+				List of trait keys to be mutually exclusive with this trait.
+				Only relevant upon leader generation, but only rulers will generate with 2 traits. This doesn't prevent excluded leader traits from being added by events.
+			</annotation>
+		</list>
+
+		<complex entity="ai_weight" type="{weight}">
+			<annotation>
+				How much should the AI prioritize this trait when modifying species. The block can also contain conditional modifier tags, (empire scope, ROOT is the species).
+				How much should AI prioritize this trait when recruiting leaders and when assigning leaders to tasks. Although Vanilla only uses this on scientist traits it works for all classes.
+			</annotation>
+		</complex>
+
+		<!-- species only? -->
+		<simple entity="leader_age_min" type="{int}">
+			<annotation>
+				New leaders from this species will have their age randomized ranged among these properties. Vanilla use these to make Hive Mind Hive Mind leaders younger than usual and Trait lithoid.png Lithoid leaders older than usual.
+			</annotation>
+		</simple>
+		<!-- species only? -->
+		<simple entity="leader_age_max" type="{int}">
+			<annotation>
+				New leaders from this species will have their age randomized ranged among these properties. Vanilla use these to make Hive Mind Hive Mind leaders younger than usual and Trait lithoid.png Lithoid leaders older than usual.
+			</annotation>
+		</simple>
+		<!-- species only? -->
+		<simple entity="sorting_priority" type="{int}" default="0">
+			<annotation>Species traits with same soring priority are sorted by alphabet order</annotation>
+		</simple>
+		<!-- species only? -->
+		<simple entity="potential_crossbreeding_chance" type="{float}" default="0">
+			<annotation>
+				The chance this trait is inherited by crossbreeding. Relevant to the ascension perk Xeno Compatibility.
+			</annotation>
+		</simple>
+
+		<!-- species only? -->
+		<list entity="allowed_archetypes" type="{species-archotype}" default="all">
+			<annotation>
+				A list of Species Archetype keys that is required by this species trait. See Species modding for details.
+			</annotation>
+		</list>
+
+		<!-- species only? -->
+		<list entity="species_class" type="{species-class}" default="all">
+			<annotation>
+				A list of Species Class keys that is required by this species trait. See Species modding for details.
+			</annotation>
+		</list>
+
+		<!-- species only? -->
+		<list entity="allowed_planet_classes" type="{planet}" default="all">
+			<annotation>
+				A list of Planet Class keys that is required (as preferred planet class) by this species trait.
+			</annotation>
+		</list>
+
+		<!-- species only? <species class key> = <float> -->
+		<complex entity="random_weight" default="1">
+			<annotation>
+				Adjusts the chance of species randomly receiving this trait depending on their species class. However, currently there is a bug where this block works incorrectly if combined with allowed_planet_classes and has no effect if species_potential_add is also present.
+			</annotation>
+			<simple entity="{species-class}" type="{float}" max="*" default="1" />
+		</complex>
+
+		<!-- species only? -->
+		<complex entity="slave_cost" default="0">
+			<annotation>
+				The cost of a Pop of this species on slave market is added by this.
+			</annotation>
+			<simple entity="{resource}" type="{int}" max="*" />
+		</complex>
+
+		<!-- # species_potential_add = {}
+# show the trait to add to species when genemodding or randomizing traits.
+# Scopes are this = species, from = country performing the modification.
+# default = always=yes
+
+# species_possible_remove = {}
+# allow to remove the trait when genemodding.
+# Scopes are this = species, from = country performing the modification.
+# default = always=yes -->
+		<!-- species only? -->
+		<complex entity="species_potential_add" type="{trigger}" default="yes">
+			<annotation>
+				Blocks of Conditions to determine can this trait be added to / removed from a species template. (Species scope, FROM is the empire)
+				
+				With "species_potential_add" be evaluated false, a template with this trait can still be applied to Pops lacking it.
+				
+				Similarly, "species_possible_remove" doesn't prevent Pops with this trait from being applied with a template laking it.
+			</annotation>
+		</complex>
+		<!-- species only? -->
+		<complex entity="species_possible_remove" type="{trigger}" default="yes">
+			<annotation>
+				Blocks of Conditions to determine can this trait be added to / removed from a species template. (Species scope, FROM is the empire)
+				
+				With "species_potential_add" be evaluated false, a template with this trait can still be applied to Pops lacking it.
+				
+				Similarly, "species_possible_remove" doesn't prevent Pops with this trait from being applied with a template laking it.
+			</annotation>
+		</complex>
+		<!-- species only? -->
+		<complex entity="species_possible_merge_add" type="{trigger}" default="yes">
+			<annotation>
+				Blocks of Conditions to determine can this trait be added to / removed from a species template. (Species scope, FROM is the empire)
+				
+				With "species_potential_add" be evaluated false, a template with this trait can still be applied to Pops lacking it.
+				
+				Similarly, "species_possible_remove" doesn't prevent Pops with this trait from being applied with a template laking it.
+			</annotation>
+		</complex>
+
+		<!-- leader only? leader_trait = all-->
+		<list entity="leader_trait" type="{leader}" default="all"><!--short="{all}"-->
+			<annotation>A list of leader classes</annotation>
+		</list>
+		<!-- leader only? а нужен ли, в одном месте есть только leader_trait = all без leader_class -->
+		<list entity="leader_class" type="{leader}">
+			<annotation>A list of leader classes. Vanilla leader traits always have it the same as leader_trait. Actual difference between the two is unclear.</annotation>
+		</list>
+		<!-- leader only? scientists -->
+		<list entity="ai_categories" type="{string}">
+			<annotation>What kind of tasks the AI will consider this leader be suit of. Only relevant to scientists. Can be consist of any number of the following four: engineering, physics, society, survey.</annotation>
+			<restriction>
+				<enum value="survey" />
+				<enum value="physics" />
+				<enum value="society" />
+				<enum value="engineering" />
+			</restriction>
+		</list>
+		<!-- leader only? -->
+		<complex entity="leader_potential_add" type="{trigger}" default="yes">
+			<annotation>
+				A block of Conditions to determine can the trait be added to a leader upon leader generation. (Leader scope, FROM is the empire)
+			</annotation>
+		</complex>
+
+		<!-- species only? -->
+		<simple entity="ideal_planet_class" type="{planet}">
+			<annotation />
+		</simple>
+	</reference>
+</references>

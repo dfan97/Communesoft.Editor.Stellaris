@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<references xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<reference type="{ascension}">
+		<complex entity="potential" type="{trigger}" />
+		<complex entity="possible" type="{trigger}" />
+		<complex entity="modifier" type="{modifier}" />
+		<complex entity="on_enabled" type="{effect}" />
+
+		<complex entity="ai_weight" type="{weight}" />
+	</reference>
+
+
+	<reference type="{tradition}">
+		<complex entity="possible" type="{trigger}" />
+		<complex entity="modifier" type="{modifier}" />
+		<complex entity="on_enabled" type="{effect}" />
+
+		<complex entity="tradition_swap" max="*">
+			<simple entity="name" type="{tradition}" />
+			<simple entity="inherit_effects" type="{bool}" default="no" />
+			<simple entity="inherit_icon" type="{bool}" default="no" />
+			<simple entity="inherit_name" type="{bool}" default="no" />
+			<complex entity="trigger" type="{trigger}" />
+			<complex entity="modifier" type="{modifier}" />
+			<complex entity="weight" type="{weight}" />
+		</complex>
+
+		<complex entity="ai_weight" type="{weight}" />
+	</reference>
+
+
+	<reference type="{tradition-category}">
+		<complex entity="potential" type="{trigger}" />
+		<simple entity="adoption_bonus" type="{tradition}" />
+		<simple entity="finish_bonus" type="{tradition}" />
+		<list entity="traditions" type="{tradition}" />
+
+		<simple entity="tree_template" type="{string}" />
+		<!--TODO: непонятная хня, возможно расположение-->
+		<!--
+	TODO: тоже по-моему нужно в reference
+	desc = {
+		trigger = { is_regular_empire = yes }
+		text =  tradition_prosperity_desc
+	}
+	-->
+
+		<complex entity="ai_weight" type="{weight}" />
+	</reference>
+</references>

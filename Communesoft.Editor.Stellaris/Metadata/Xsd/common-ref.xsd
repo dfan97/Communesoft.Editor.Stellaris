@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema targetNamespace="https://github.com/dfan97" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:this="https://github.com/dfan97" xmlns:types="https://github.com/dfan97/types">
+
+	<include schemaLocation="common.xsd" />
+	<import namespace="https://github.com/dfan97/types" schemaLocation="types.xsd" />
+
+	<complexType name="reference">
+		<complexContent>
+			<extension base="this:appearance">
+				<attribute name="type" type="types:common" use="required">
+					<annotation>
+						<documentation xml:lang="en">
+							A declared type reference.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="short" type="types:short" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="reference">
+		<annotation>
+			<documentation xml:lang="en">
+				Representing complex type reference.
+			</documentation>
+		</annotation>
+
+		<alternative test="exists(@custom)">
+			<complexType>
+				<annotation>
+					<documentation xml:lang="en">
+						The reference is a custom type, containing custom statements.
+					</documentation>
+				</annotation>
+				<complexContent>
+					<extension base="this:reference">
+						<choice maxOccurs="unbounded">
+							<element name="relation">
+								<complexType>
+									<attribute name="value" type="types:relation" default="assign" />
+								</complexType>
+							</element>
+
+							<element name="simple">
+								<complexType>
+									<annotation>
+										<documentation xml:lang="en">
+											A simple statement, containing a simple type value.
+										</documentation>
+									</annotation>
+
+									<complexContent>
+										<extension base="this:enum">
+											<attribute name="type" type="types:simple" use="required" />
+											<attributeGroup ref="this:value.interval.attrs" />
+										</extension>
+									</complexContent>
+								</complexType>
+
+								<unique name="UX_custom_simple_enum">
+									<selector xpath="this:extension/this:enum | this:restriction/this:enum" />
+									<field xpath="@value" />
+								</unique>
+							</element>
+
+							<element name="list">
+								<complexType>
+									<annotation>
+										<documentation xml:lang="en">
+											A complex statement, containing values with identical type.
+										</documentation>
+									</annotation>
+
+									<complexContent>
+										<extension base="this:enum">
+											<attribute name="type" type="types:list" use="required" />
+											<attributeGroup ref="this:value.interval.attrs" />
+											<attributeGroup ref="this:value.count.interval.attrs" />
+										</extension>
+									</complexContent>
+								</complexType>
+
+								<unique name="UX_custom_list_enum">
+									<selector xpath="this:extension/this:enum | this:restriction/this:enum" />
+									<field xpath="@value" />
+								</unique>
+							</element>
+
+							<element name="complex">
+								<complexType>
+									<annotation>
+										<documentation xml:lang="en">
+											A complex statement, containing multiple expressions.
+										</documentation>
+									</annotation>
+
+									<complexContent>
+										<extension base="this:appearance">
+											<group ref="this:scope" />
+
+											<attribute name="type" type="types:common" />
+
+											<assert test="not(exists(@type) and count(this:simple | this:list | this:complex | this:choice) ge 1)">
+												<annotation>
+													<documentation xml:lang="en">
+														A typed complex statement must not has other subexpressions.
+													</documentation>
+												</annotation>
+											</assert>
+										</extension>
+									</complexContent>
+								</complexType>
+							</element>
+						</choice>
+
+						<attribute name="custom" type="boolean" use="required" fixed="true">
+							<annotation>
+								<documentation xml:lang="en">
+									Is a declaration of a custom value type.
+								</documentation>
+							</annotation>
+						</attribute>
+					</extension>
+				</complexContent>
+			</complexType>
+		</alternative>
+
+		<alternative test="true()">
+			<complexType>
+				<complexContent>
+					<extension base="this:reference">
+						<group ref="this:scope" />
+
+						<attribute name="definition" type="this:stringNotNull">
+							<annotation>
+								<documentation xml:lang="en">
+									.
+								</documentation>
+							</annotation>
+						</attribute>
+					</extension>
+				</complexContent>
+			</complexType>
+		</alternative>
+
+		<unique name="UX_reference_name">
+			<selector xpath="this:simple | this:list | this:complex" />
+			<field xpath="@name" />
+		</unique>
+	</element>
+
+
+	<element name="references">
+		<annotation>
+			<documentation xml:lang="en">
+				Contains complex and custom types that can be referenced in other files.
+			</documentation>
+		</annotation>
+
+		<complexType>
+			<sequence>
+				<element ref="this:reference" maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+		<unique name="UX_references_type">
+			<selector xpath="this:reference" />
+			<field xpath="@type" />
+		</unique>
+	</element>
+</schema>

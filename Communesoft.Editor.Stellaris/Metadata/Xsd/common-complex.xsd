@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema targetNamespace="https://github.com/dfan97" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:this="https://github.com/dfan97" xmlns:types="https://github.com/dfan97/types">
+
+	<include schemaLocation="common.xsd" />
+	<import namespace="https://github.com/dfan97/types" schemaLocation="types.xsd" />
+
+	<element name="complex">
+		<alternative test="contains(@sequence, 'only')">
+			<complexType>
+				<annotation>
+					<documentation xml:lang="en">
+						A complex expression unbounded to name and value statement scope (not framed by '{' and '}') and containing a complex type value.
+					</documentation>
+				</annotation>
+
+				<complexContent>
+					<extension base="this:appearance">
+						<attribute name="type" type="types:common" use="required" />
+						<attribute name="sequence" type="this:sequence" use="required" fixed="only" />
+					</extension>
+				</complexContent>
+			</complexType>
+		</alternative>
+
+		<alternative test="true()">
+			<complexType>
+				<annotation>
+					<documentation xml:lang="en">
+						A complex expression, containing multiple expressions.
+					</documentation>
+				</annotation>
+
+				<complexContent>
+					<extension base="this:appearance">
+						<group ref="this:scope" />
+
+						<attribute name="sequence" type="this:sequence" default="unallowed" />
+
+						<attribute name="entity" type="types:entity" use="required" />
+						<attribute name="relation" type="types:relation" default="assign" />
+						<attribute name="type" type="types:common" />
+
+						<attribute name="short" type="types:short" />
+						
+						<assert test="not(exists(@type) and count(this:simple | this:list | this:complex | this:choice) ge 1)">
+							<annotation>
+								<documentation xml:lang="en">
+									A typed complex expression must not has other subexpressions.
+								</documentation>
+							</annotation>
+						</assert>
+					</extension>
+				</complexContent>
+			</complexType>
+		</alternative>
+
+		<unique name="UX_complex">
+			<selector xpath="this:simple | this:list | this:complex" />
+			<field xpath="@name" />
+		</unique>
+	</element>
+
+	<simpleType name="sequence">
+		<annotation>
+			<documentation xml:lang="en">
+				Flags that determine complex type behavior about 'sequence' declaration style.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="unallowed" />
+			<enumeration value="allowed" />
+			<enumeration value="only" />
+		</restriction>
+	</simpleType>
+
+	<group name="scope">
+		<sequence>
+			<choice minOccurs="0" maxOccurs="unbounded">
+				<element ref="this:simple" />
+				<element ref="this:list" />
+				<element ref="this:complex" />
+				<element ref="this:choice" />
+			</choice>
+		</sequence>
+	</group>
+
+	<element name="choice">
+		<annotation>
+			<documentation xml:lang="en">
+				A choice between multiple expressions.
+			</documentation>
+		</annotation>
+
+		<complexType>
+			<complexContent>
+				<extension base="this:appearance">
+					<choice minOccurs="2" maxOccurs="unbounded">
+						<element ref="this:simple" />
+						<element ref="this:list" />
+						<element ref="this:complex" />
+					</choice>
+
+					<assert test="count(this:complex[contains(string(@sequence), 'only')]) le 1">
+						<annotation>
+							<documentation xml:lang="en">
+								A choice cannot contains multiple sequenced expressions.
+							</documentation>
+						</annotation>
+					</assert>
+				</extension>
+			</complexContent>
+		</complexType>
+		<unique name="UX_scope_choice">
+			<selector xpath="this:simple | this:list | this:complex" />
+			<field xpath="@name" />
+		</unique>
+	</element>
+</schema>

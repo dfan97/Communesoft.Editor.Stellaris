@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<references xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<reference type="{anomaly}">
+		<simple entity="portrait" type="{string}">
+			<annotation>A reference to a GFX instance that indicates the icon of this Relic.</annotation>
+		</simple>
+		<simple entity="sound" type="{string}">
+			<annotation>A reference to a sound instance that indicates the sound to be played for activation.</annotation>
+		</simple>
+		<complex entity="possible" type="{trigger}">
+			<annotation>A block of Conditions that determines can this relic be activated.</annotation>
+		</complex>
+
+		<simple entity="score" type="{int}">
+			<annotation>An integer of victory score should this Relic count.</annotation>
+		</simple>
+		<complex entity="resources" type="{resources}">
+			<annotation>An Economy Unit that determines the resource output and activation cost.</annotation>
+		</complex>
+
+		<simple entity="activation_duration" type="{int}">
+			<annotation>An integer of days for this Relic to "shine" if it’s activated.</annotation>
+		</simple>
+		<list entity="active_effect" type="{effect}">
+			<annotation>A block of Effects for the Activation Effect of this relic.</annotation>
+		</list>
+
+		<complex entity="triggered_country_modifier" max="*">
+			<annotation>A block of Modifiers for the Passive Effect of this relic.</annotation>
+
+			<complex entity="potential" type="{trigger}">
+				<annotation>A block of Conditions that determines should the modifier apply. Vanilla relics always have 'always = yes'. It is unclear if relics have country_modifier.</annotation>
+			</complex>
+			<complex sequence="only" type="{modifier}" />
+		</complex>
+
+		<complex entity="ai_weight" type="{weight}">
+			<annotation>Determines how likely the AI will activate this relic</annotation>
+		</complex>
+	</reference>
+
+
+	<reference type="{archeology}">
+		<simple entity="desc" type="{localisation}" max="*">
+			<!-- triggered event desc
+				
+	desc = {
+		trigger = {
+			planet = { is_colony = yes }
+		}
+		text = city_of_bones_desc
+	}
+	desc = {
+		trigger = {
+			planet = { is_colony = no }
+		}
+		text = city_of_bones_desc_uncol
+	}
+			-->
+			<annotation>A localisation key (triggered event desc) that designates the description of this site (scope = site).</annotation>
+		</simple>
+		<simple entity="picture" type="{string}">
+			<annotation>A reference to a GFX instance (sprite key) that indicates the picture of this site.</annotation>
+		</simple>
+		<complex entity="potential" type="{trigger}">
+			<annotation>A Trigger block (conditions) that determines if a scope (fleet) is potential to excavate this archaeological site (from = site, this will add/remove this option without giving the player a reason).</annotation>
+		</complex>
+		<complex entity="allow" type="{trigger}">
+			<annotation>A Trigger block (conditions) that determines can a ship delve into this site (scope = fleet, from = site). All vanilla sites are only open to Science Ships with a Scientist (this will toggle enable/disabled mode on buttons etc).</annotation>
+		</complex>
+		<complex entity="visible" type="{trigger}">
+			<annotation>A Trigger block (conditions) that determines can an empire see this site (scope = country, from = site).</annotation>
+		</complex>
+
+		<simple entity="stages" type="{int}">
+			<annotation>An integer of max stages of this site. It must be exactly match the number of state blocks of this site.</annotation>
+		</simple>
+		<simple entity="max_instances" type="{int}">
+			<annotation>An integer of max stages instances of this type a galaxy can have, only checked when using 'create_archaeological_site = random'</annotation>
+		</simple>
+		<complex entity="weight" type="{weight}">
+			<annotation> A scriptable value used for random weight, only used when using 'create_archaeological_site = random'. Scriptable value type is defined either by an integer or 'mean time to happen'.</annotation>
+		</complex>
+
+		<complex entity="stage" max="*">
+			<annotation>Defines a stage of this site, order dependent</annotation>
+
+			<complex entity="difficulty" type="{range-int}">
+				<annotation> A 'min max interval type', interval is defined either by an integer or '{ min = [int] max=[int] }' where the later will randomize a value between min and max.</annotation>
+			</complex>
+			<simple entity="icon" type="{string}">
+				<annotation>A reference to a GFX instance (rune icon gfx type) that indicates the picture of this stage.</annotation>
+			</simple>
+			<simple entity="event" type="{event}">
+				<annotation>An 'fleet_event' id to trigger on the delver fleet when this stage is cleared. A fleet is a 'container' of ships and can consist of one or more ships</annotation>
+			</simple>
+		</complex>
+
+		<list entity="on_roll_failed" type="{effect}">
+			<annotation>An Effect block to be executed when a roll is failed (scope = fleet, from = site).</annotation>
+		</list>
+		<list entity="on_create" type="{effect}">
+			<annotation>An Effect block to be executed upon site creation (scope = site).</annotation>
+		</list>
+		<list entity="on_visible" type="{effect}">
+			<annotation>An Effect block to be executed upon site visible (scope = country, from = site).</annotation>
+		</list>
+	</reference>
+</references>

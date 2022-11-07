@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<references xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<reference type="{starbase-level}">
+		<simple entity="ship_size" type="{ship-size}" min="1">
+			<annotation>Determines a Ship Size this starbase level refer to. A Starbase will have a Ship part of this Ship Size at this level</annotation>
+		</simple>
+		<simple entity="next_level" type="{starbase-level}">
+			<annotation>Determines what's the next level for this level to be upgraded into</annotation>
+		</simple>
+
+		<simple entity="potential_home_base" type="{bool}" default="no">
+			<annotation>If yes, Starbases of this level can be set as a homebase of military fleets.</annotation>
+		</simple>
+		<simple entity="collects_trade" type="{bool}" default="yes">
+			<annotation>if no then starbase_trade_collection_range_add and starbase_trade_protection_range_add will have no effect on starbases of this level</annotation>
+		</simple>
+
+		<simple entity="show_in_outliner" type="{bool}" default="yes">
+			<annotation>Determines if Starbases of this level should be displayed in the outliner. If this Starbase has any shipyard capacity, it's grouped under "Shipyards", or it's grouped under "Starbases"</annotation>
+		</simple>
+		<simple entity="display_empire_shield" type="{bool}" default="no">
+			<annotation>By default, a system will display an "empire shield" in the galaxy view only if there is a colony in this system. If this field is set to yes, a system containing a Starbase of this level will display the "empire shield" even if there is no colonies in this system</annotation>
+		</simple>
+		<simple entity="display_map_icon" type="{bool}" default="yes">
+			<annotation>If yes, Starbases of this level will have an icon displayed on this system in the galaxy view. By clicking that icon in the galaxy view, the player can select this Starbase without looking into this system</annotation>
+		</simple>
+
+		<simple entity="level_weight" type="{int}" default="0">
+			<annotation>Determines the level of this Starbase. Used to calculate claim costs and Conditions to check the starbase level</annotation>
+		</simple>
+		<complex entity="ai_weight" type="{weight}" default="0">
+			<annotation>Determines how important the AI think this level of Starbases is. Vanilla entries always have AI weight equal to the level_weight</annotation>
+		</complex>
+	</reference>
+
+
+	<reference type="{starbase-module}">
+		<simple entity="icon" type="{string}">
+			<annotation>A reference to a GFX instance that indicates the icon of this module</annotation>
+		</simple>
+		<simple entity="custom_tooltip" type="{localisation}">
+			<annotation>A localisation key that appears as part of the effect description in the tooltip in addition to the generated tooltip of modifiers</annotation>
+		</simple>
+		<simple entity="section" type="{ship-design-section}" min="1">
+			<annotation>A reference to a ship section key. For as long as the starbase has this module, a ship section of this key is attached to the Ship part of the starbase, visible in the solar system view. The section might also have component slots and the Starbase will attempt to add weapons and utilities to fill the slots. Head to Ship Sections modding for details</annotation>
+		</simple>
+		<simple entity="equipped_component" type="{ship-design-component}">
+			<annotation>A reference to a component. If specified, this Starbase Module will add that component as a core component to the Ship part of this Starbase. Vanilla Starbase Buildings use this to implement aura equipping Starbase Buildings.</annotation>
+		</simple>
+		<simple entity="component_set" type="{ship-design-component-set}">
+			<annotation>A reference to a component set. If specified, all components added to the section are only drawn from this component set. If multiple components of same component type (weapon/utility) and same slot type (small/medium/...) present in the component set, only the first of them will be used. Vanilla unused.</annotation>
+		</simple>
+
+		<complex entity="potential" type="{trigger}">
+			<annotation>A block of Conditions that determines should this starbase module appear in the module construction menu. (Starbase scope)</annotation>
+		</complex>
+		<complex entity="possible" type="{trigger}">
+			<annotation>A block of Conditions that determines can this starbase module be built onto the starbase. (Starbase scope)</annotation>
+		</complex>
+
+		<simple entity="initial" type="{bool}" default="no">
+			<annotation>If yes, the very first Starbase present at the start of the game of each empire will have an instance of this module.</annotation>
+		</simple>
+		<simple entity="show_in_tech" type="{technology}" max="*">
+			<annotation>That technology will display "Unlock Starbase Module: XXX" in its description.</annotation>
+		</simple>
+		<complex entity="show_tech_unlock_if" type="{trigger}">
+			<annotation>A block of Conditions that determines should this starbase be displayed in the tech description of the "show_in_tech".</annotation>
+		</complex>
+
+		<simple entity="construction_days" type="{int}">
+			<annotation>Days until this starbase module is built</annotation>
+		</simple>
+		<complex entity="resources" type="{resources}">
+			<annotation>An Economy Unit that indicates the module build cost, upkeep and resource production</annotation>
+		</complex>
+
+		<complex entity="station_modifier" type="{modifier}">
+			<annotation>A block of Modifiers to be applied to the Ship part of this Starbase. Modifiers that affect hull, armor, shield, shipyard capacity, trade protection and trade protection range go here.</annotation>
+		</complex>
+		<complex entity="triggered_station_modifier" max="*">
+			<annotation>Similarly, except it has a condition</annotation>
+
+			<complex entity="potential" type="{trigger}">
+				<annotation>A block of Conditions that determines should this triggered modifier block apply</annotation>
+			</complex>
+		</complex>
+
+		<complex entity="country_modifier" type="{modifier}">
+			<annotation>A block of Modifiers to be applied to the owner of this Starbase. Modifiers that affect naval capacity and empire resource capacity go here</annotation>
+		</complex>
+		<complex entity="triggered_country_modifier" max="*">
+			<annotation>Similarly, except it has a condition</annotation>
+
+			<complex entity="potential" type="{trigger}">
+				<annotation>A block of Conditions that determines should this triggered modifier block apply</annotation>
+			</complex>
+		</complex>
+
+		<complex entity="ship_modifier" type="{modifier}">
+			<annotation>A block of Modifiers to be applied to Ships built from this Starbase. Modifiers that affect ship starting experience go here.</annotation>
+		</complex>
+		<complex entity="orbit_modifier" type="{modifier}">
+			<annotation>A block of Modifiers to be applied to Ships docking at this Starbase. Modifiers that affect docked ship upkeep go here.</annotation>
+		</complex>
+		<complex entity="system_modifier" type="{modifier}">
+			<annotation>A block of Modifiers to be applied to the Planets that's owned by the Starbase owner in the same solar system. Only Planets take the effect. If you want to affect Ships, use equipped_component to make this Starbase equip an aura and affect Ships.</annotation>
+		</complex>
+
+		<simple entity="ai_build_at_chokepoint" type="{bool}">
+			<annotation>If no, AI will avoid building this module at a chokepoint.</annotation>
+		</simple>
+		<simple entity="ai_build_outside_chokepoint" type="{bool}">
+			<annotation>If no, AI will avoid building this module outside a chokepoint.</annotation>
+		</simple>
+		<complex entity="ai_weight" type="{weight}">
+			<annotation>Determines how likely the AI will build this starbase module.</annotation>
+		</complex>
+	</reference>
+
+
+	<reference type="{starbase-building}">
+		<annotation>the same as above except section, надо намутить типа inherit или просто вставка через custom</annotation>
+	</reference>
+
+
+	<reference type="{starbase-type}">
+		<!-- 
+# Weights in the ai_design part are multiplied with the base weight of 00_starbase_buildings.txt and 00_starbase_modules.txt
+# Then, a random number between that value and and extra 50% of that it is ADDED to it
+# F.e. 100 base weight multiplies with 2.00 = 200. Then we take a random number between 0 and 100 (50% of 200) and ADD it to 200. 235 then, for example
+# This is done for ALL starbase modules and buildings in the list every time an evaluation is made
+# And the building or module with the highest value will be chosen to being built
+# The implication of that is that you can not balance the weights TOO FAR from each other - otherwise some modules will never be chosen, unless they are the only thing on the evaluation
+# Due to the progression of the game and the unlocking of tech, though, it is often the case that there will only be 1 item on the list at any given time anyway
+ -->
+		<complex entity="potential" type="{trigger}">
+			<annotation>A block of Conditions that determines can a Starbase be classified into this Type. (Starbase scope)</annotation>
+		</complex>
+
+		<complex entity="ai_design">
+			<annotation>An entry that guides the AI to design and build their Starbases.</annotation>
+
+			<complex entity="min">
+				<annotation>An entry that determines the minimal count of Starbases of this type the AI wants to have.</annotation>
+
+				<simple entity="base" type="{int}" />
+				<simple entity="factor" type="{int}" />
+			</complex>
+
+			<complex entity="ratio" type="{weight}">
+				<annotation>An entry that makes the AI wants a percent of Starbases to be of this type.</annotation>
+			</complex>
+
+			<complex entity="buildings">
+				<annotation>A list of entries that guides the AI to pick starbase buildings weighted by the factors provided here.</annotation>
+
+				<complex entity="{starbase-building}" max="*">
+					<simple entity="base" type="{float}" min="1" />
+				</complex>
+			</complex>
+			<complex entity="modules">
+				<annotation>A list of entries that guides the AI to pick starbase modules weighted by the factors provided here.</annotation>
+
+				<complex entity="{starbase-module}" max="*">
+					<simple entity="base" type="{float}" min="1" />
+				</complex>
+			</complex>
+		</complex>
+
+		<complex entity="weight_modifier" type="{weight}">
+			<annotation>If a Starbase has met the requirements of multiple Starbase Types, one with the highest weight wins.</annotation>
+		</complex>
+	</reference>
+</references>

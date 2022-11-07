@@ -1,0 +1,117 @@
+#  Comment
+#   with several spaces
+#    and several lines
+#   some spaces
+#  will be removed
+
+simpleTag1
+simpleTag2 simpleTag3
+simpleTag4
+
+# Complex value 1
+{ # Complex value 1 after
+	
+	# Simple value 0
+	0
+	
+	1 # Simple value 1 after
+	
+	# Simple value 2
+	2 # Simple value 2 after
+
+	3
+# Complex value 1 end
+} # Complex value 1 end after
+
+# Complex value 2
+{ # Complex value 2 after
+}
+
+{
+	x=3 y=3 z=3 w=3
+# Complex value 3 end
+} # Complex value 3 end after
+
+{ # Complex value 4 after
+	x=4 4 x=4 4
+}
+
+{
+	5
+	y = { 5 }
+	5
+	z = 5 { 5 5 5 }
+} # Complex value 5 end after
+
+
+# Simple expression 1
+@variable_1 = 1 # Simple expression 1 after
+
+# Simple expression 2
+@variable_2 # Simple expression 2 after
+# Simple expression 2 relation
+= # Simple expression 2 relation after
+# Simple expression 2 value
+2 # Simple expression 2 value after
+
+# Complex expression 1
+complex_1 = { } # Complex expression 1 after
+# Complex expression 2
+complex_2 # Complex expression 2 after
+# Complex expression 2 relation
+= # Complex expression 2 relation after
+# Complex expression 2 value
+{ # Complex expression 2 value after
+	x = 0 y = 0
+# Complex expression 2 value end
+} # Complex expression 2 value end after
+
+
+### Raw values test
+
+@variable_bool = yes
+@variable_int = -2
+@variable_float = -2.5
+@variable_string = "string"
+
+complex_raw_values =
+{
+	simpleTagInsideTheComplex
+	simpleTagInsideTheComplex2
+	simpleTagInsideTheComplex3
+	
+	boolean = no
+	
+	simpleTagInsideTheComplexAfterRelation
+	simpleTagInsideTheComplexAfterRelation2
+	simpleTagInsideTheComplexAfterRelation3
+	
+	boolean = @variable_bool
+	
+	int = 2
+	int = @variable_int
+	
+	float = 2.5
+	float = @variable_float
+	
+	string = string
+	string = "string with spaces"
+	string = @variable_string
+	
+	custom = hsv { 0.1 0.2 0.3 }
+	
+	empty = {}
+	list = { -1 2 -3 4 }
+	complex = { min = 0 max = 1 }
+}
+
+empty = {}
+
+simpleTagAfterRelation1
+simpleTagAfterRelation2 simpleTagAfterRelation3
+simpleTagAfterRelation4
+
+#TODO: reference test
+list = {  }
+
+#TODO: modificator generation

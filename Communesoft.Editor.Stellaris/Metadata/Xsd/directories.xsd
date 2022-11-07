@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema targetNamespace="https://github.com/dfan97/dirs" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:this="https://github.com/dfan97/dirs">
+	<simpleType name="path">
+		<annotation>
+			<documentation xml:lang="en">
+				Structure directory path for mapping metadata.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<!--<enumeration value="common/achievements" />-->
+			<enumeration value="common/agendas" />
+			<enumeration value="common/ai_budget" />
+			<enumeration value="common/ai_espionage" />
+			<enumeration value="common/ambient_objects" />
+			<enumeration value="common/anomalies" />
+			<enumeration value="common/archaeological_site_types" />
+			<enumeration value="common/armies" />
+			<enumeration value="common/artifact_actions" />
+			<enumeration value="common/ascension_perks" />
+			<enumeration value="common/asteroid_belts" />
+			<enumeration value="common/attitudes" />
+			<enumeration value="common/bombardment_stances" />
+			<enumeration value="common/buildings" />
+			<enumeration value="common/button_effects" />
+			<enumeration value="common/bypass" />
+			<enumeration value="common/casus_belli" />
+			<enumeration value="common/colony_automation" />
+			<enumeration value="common/colony_automation_exceptions" />
+			<enumeration value="common/colony_types" />
+			<enumeration value="common/colors" />
+			<enumeration value="common/component_sets" />
+			<enumeration value="common/component_slot_templates" />
+			<enumeration value="common/component_tags" />
+			<enumeration value="common/component_templates" />
+			<enumeration value="common/country_container" />
+			<enumeration value="common/country_customization" />
+			<enumeration value="common/country_types" />
+			<enumeration value="common/crisis_levels" />
+			<enumeration value="common/crisis_objectives" />
+			<enumeration value="common/decisions" />
+			<enumeration value="common/defines" />
+			<enumeration value="common/deposits" />
+			<enumeration value="common/deposit_categories" />
+			<enumeration value="common/diplomacy_economy" />
+			<enumeration value="common/diplomatic_actions" />
+			<enumeration value="common/diplo_phrases" />
+			<enumeration value="common/districts" />
+			<enumeration value="common/dynamic_text" />
+			<enumeration value="common/economic_categories" />
+			<enumeration value="common/economic_plans" />
+			<enumeration value="common/edicts" />
+			<enumeration value="common/espionage_assets" />
+			<enumeration value="common/espionage_operation_categories" />
+			<enumeration value="common/espionage_operation_types" />
+			<enumeration value="common/ethics" />
+			<enumeration value="common/event_chains" />
+			<enumeration value="common/fallen_empires" />
+			<enumeration value="common/federation_laws" />
+			<enumeration value="common/federation_law_categories" />
+			<enumeration value="common/federation_perks" />
+			<enumeration value="common/federation_types" />
+			<enumeration value="common/first_contact" />
+			<enumeration value="common/galactic_community_actions" />
+			<enumeration value="common/galactic_focuses" />
+			<enumeration value="common/game_rules" />
+			<enumeration value="common/global_ship_designs" />
+			<enumeration value="common/governments" />
+			<enumeration value="common/governments/authorities" />
+			<enumeration value="common/governments/civics" />
+			<enumeration value="common/graphical_culture" />
+			<enumeration value="common/greeting_overlay_sounds" />
+			<enumeration value="common/intel_categories" />
+			<enumeration value="common/intel_levels" />
+			<enumeration value="common/lawsuits" />
+			<enumeration value="common/leader_classes" />
+			<enumeration value="common/mandates" />
+			<enumeration value="common/map_modes" />
+			<enumeration value="common/megastructures" />
+			<enumeration value="common/menace_perks" />
+			<enumeration value="common/message_types" />
+			<enumeration value="common/name_lists" />
+			<enumeration value="common/notification_modifiers" />
+			<enumeration value="common/observation_station_missions" />
+			<enumeration value="common/on_actions" />
+			<enumeration value="common/opinion_modifiers" />
+			<enumeration value="common/personalities" />
+			<enumeration value="common/planet_classes" />
+			<enumeration value="common/planet_modifiers" />
+			<enumeration value="common/policies" />
+			<enumeration value="common/pop_categories" />
+			<enumeration value="common/pop_faction_types" />
+			<enumeration value="common/pop_jobs" />
+			<enumeration value="common/precursor_civilizations" />
+			<enumeration value="common/random_names" />
+			<enumeration value="common/relics" />
+			<enumeration value="common/resolutions" />
+			<enumeration value="common/resolution_categories" />
+			<enumeration value="common/resolution_groups" />
+			<enumeration value="common/scripted_effects" />
+			<enumeration value="common/scripted_loc" />
+			<enumeration value="common/scripted_triggers" />
+			<enumeration value="common/scripted_variables" />
+			<enumeration value="common/script_values" />
+			<enumeration value="common/section_templates" />
+			<enumeration value="common/sector_focuses" />
+			<enumeration value="common/sector_types" />
+			<enumeration value="common/ship_behaviors" />
+			<enumeration value="common/ship_sizes" />
+			<enumeration value="common/situations" />
+			<enumeration value="common/solar_system_initializers" />
+			<enumeration value="common/special_projects" />
+			<enumeration value="common/species_archetypes" />
+			<enumeration value="common/species_classes" />
+			<enumeration value="common/species_names" />
+			<enumeration value="common/species_rights" />
+			<enumeration value="common/starbase_buildings" />
+			<enumeration value="common/starbase_levels" />
+			<enumeration value="common/starbase_modules" />
+			<enumeration value="common/starbase_types" />
+			<enumeration value="common/start_screen_messages" />
+			<enumeration value="common/star_classes" />
+			<enumeration value="common/static_modifiers" />
+			<enumeration value="common/strategic_resources" />
+			<enumeration value="common/subjects" />
+			<enumeration value="common/system_tooltips" />
+			<enumeration value="common/system_types" />
+			<enumeration value="common/technology" />
+			<enumeration value="common/terraform" />
+			<enumeration value="common/trade_conversions" />
+			<enumeration value="common/traditions" />
+			<enumeration value="common/tradition_categories" />
+			<enumeration value="common/traits" />
+			<enumeration value="common/war_goals" />
+
+			<enumeration value="events" />
+
+			<enumeration value="gfx/advisorwindow">
+				<annotation>
+					<documentation xml:lang="en">
+						Sets up the 3D view for the advisor.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="gfx/lights">
+				<annotation>
+					<documentation xml:lang="en">
+						Contains the logic used for the light effects ingame.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="gfx/particles">
+				<annotation>
+					<documentation xml:lang="en">
+						Contains the logic and images used for particles.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="gfx/pingmap">
+				<annotation>
+					<documentation xml:lang="en">
+						Contains the logic used for pings.
+					</documentation>
+				</annotation>
+			</enumeration>
+
+			<enumeration value="gfx/portraits/asset_selectors">
+				<annotation>
+					<documentation xml:lang="en">
+						Contains the logic used for portrait images.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="gfx/portraits/portraits">
+				<annotation>
+					<documentation xml:lang="en">
+						Contains the logic used for portrait images.
+					</documentation>
+				</annotation>
+			</enumeration>
+
+			<enumeration value="gfx/projectiles">
+				<annotation>
+					<documentation xml:lang="en">
+						Contains the logic used for projectiles.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="gfx/shipview">
+				<annotation>
+					<documentation xml:lang="en">
+						Contains the logic used for ship view.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="gfx/worldgfx">
+				<annotation>
+					<documentation xml:lang="en">
+						Contains the logic and images used for world graphic effects.
+					</documentation>
+				</annotation>
+			</enumeration>
+
+			<enumeration value="interface" />
+
+			<enumeration value="localisation" />
+			<enumeration value="localisation/replace">
+				<annotation>
+					<documentation xml:lang="en">
+						Contains localisation keys for overwriting vanilla localisation keys.
+					</documentation>
+				</annotation>
+			</enumeration>
+
+			<enumeration value="map/galaxy" />
+			<enumeration value="map/setup_scenarios" />
+
+			<enumeration value="prescripted_countries" />
+		</restriction>
+	</simpleType>
+</schema>

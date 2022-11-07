@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="20.1">
+    <meta>
+        <filters directoryPatterns="" filePatterns="Metadata" positiveFilePatterns="" showHiddenFiles="false"/>
+        <options>
+            <serialized version="20.1" xml:space="preserve">
+                <serializableOrderedMap>
+                    <entry>
+                        <String>ant.file.patterns</String>
+                        <String>build.xml,integrator.xml</String>
+                    </entry>
+                    <entry>
+                        <String>enable.project.master.files.support</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>key.file.types.option.pane</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>key.outline.option.pane</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>outliner.preferred.attributes.list</String>
+                        <String-array>
+                            <String>name</String>
+                            <String>id</String>
+                            <String>type</String>
+                        </String-array>
+                    </entry>
+                </serializableOrderedMap>
+            </serialized>
+        </options>
+    </meta>
+    <projectTree name="Metadata">
+        <folder masterFiles="true" name="Master Files">
+            <file name="Xsd/common.xsd"/>
+        </folder>
+        <folder path="."/>
+    </projectTree>
+</project>

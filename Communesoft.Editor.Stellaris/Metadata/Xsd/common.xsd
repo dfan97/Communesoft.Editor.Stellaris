@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema targetNamespace="https://github.com/dfan97" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:this="https://github.com/dfan97" xmlns:custom="https://github.com/dfan97/custom" xmlns:types="https://github.com/dfan97/types" xmlns:dirs="https://github.com/dfan97/dirs">
+
+	<import namespace="https://github.com/dfan97/types" schemaLocation="types.xsd" />
+	<import namespace="https://github.com/dfan97/dirs" schemaLocation="directories.xsd" />
+	
+	<include schemaLocation="common-complex.xsd" />
+	<include schemaLocation="common-list.xsd" />
+	<include schemaLocation="common-ref.xsd" />
+	<include schemaLocation="common-simple.xsd" />
+
+	<simpleType name="stringNoWS">
+		<annotation>
+			<documentation xml:lang="en">
+				A whitespaceless string.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<pattern value="\S*" />
+		</restriction>
+	</simpleType>
+	<simpleType name="stringNotNull">
+		<annotation>
+			<documentation xml:lang="en">
+				Not empty string.
+			</documentation>
+		</annotation>
+		<restriction base="this:stringNoWS">
+			<minLength value="1" />
+		</restriction>
+	</simpleType>
+
+	<complexType name="annotatable" abstract="true">
+		<sequence>
+			<element name="annotation" minOccurs="0">
+				<simpleType>
+					<annotation>
+						<documentation xml:lang="en">
+							An annotation, displaying in interface.
+						</documentation>
+					</annotation>
+					<restriction base="string" />
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="appearance" abstract="true">
+		<complexContent>
+			<extension base="this:annotatable">
+				<attribute name="scope" default="all">
+					<annotation>
+						<documentation xml:lang="en">
+							Scope types, where the expression can appears.
+						</documentation>
+					</annotation>
+					<simpleType>
+						<restriction>
+							<simpleType>
+								<list itemType="types:scope.type" />
+							</simpleType>
+							<minLength value="1" />
+						</restriction>
+					</simpleType>
+				</attribute>
+				<attribute name="default" type="string">
+					<annotation>
+						<documentation xml:lang="en">
+							A default value for the expression.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="min" type="nonNegativeInteger">
+					<annotation>
+						<documentation xml:lang="en">
+							Minimum count of appearing.
+						</documentation>
+					</annotation>
+				</attribute>
+				<attribute name="max">
+					<annotation>
+						<documentation xml:lang="en">
+							Maximum count of appearing. '*' is unbounded count.
+						</documentation>
+					</annotation>
+					<simpleType>
+						<union memberTypes="positiveInteger">
+							<simpleType>
+								<restriction base="string">
+									<enumeration value="*">
+										<annotation>
+											<documentation xml:lang="en">
+												Unbounded count of appearing.
+											</documentation>
+										</annotation>
+									</enumeration>
+								</restriction>
+							</simpleType>
+						</union>
+					</simpleType>
+				</attribute>
+
+				<assert test="not(exists(@min) and exists(@max) and (number(@min) gt number(@max)))">
+					<annotation>
+						<documentation xml:lang="en">
+							Maximum less than minimum.
+						</documentation>
+					</annotation>
+				</assert>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<attributeGroup name="value.interval.attrs">
+		<attribute name="min-value" type="decimal">
+			<annotation>
+				<documentation xml:lang="en">
+					Minimum for numeric value.
+				</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="max-value" type="decimal">
+			<annotation>
+				<documentation xml:lang="en">
+					Maximum for numeric value.
+				</documentation>
+			</annotation>
+		</attribute>
+	</attributeGroup>
+
+
+	<complexType name="enum">
+		<complexContent>
+			<extension base="this:appearance">
+				<choice minOccurs="0">
+					<element name="extension" type="this:enum.values">
+						<annotation>
+							<documentation xml:lang="en">
+								Extends expression with new key values.
+							</documentation>
+						</annotation>
+					</element>
+					<element name="restriction" type="this:enum.values">
+						<annotation>
+							<documentation xml:lang="en">
+								Restricts expression with key values.
+							</documentation>
+						</annotation>
+					</element>
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="enum.values">
+		<annotation>
+			<documentation xml:lang="en">
+				Enumeration values.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="enum" type="this:enum.value" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+	<complexType name="enum.value">
+		<complexContent>
+			<extension base="this:annotatable">
+				<attribute name="value" type="this:stringNotNull" use="required">
+					<annotation>
+						<documentation xml:lang="en">
+							An enumeration value.
+						</documentation>
+					</annotation>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+
+
+
+	<complexType name="file">
+		<complexContent>
+			<extension base="this:annotatable">
+				<attribute name="path" type="dirs:path" use="required" />
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="file">
+		<annotation>
+			<documentation xml:lang="en">
+				Representing file structure.
+			</documentation>
+		</annotation>
+
+		<alternative test="exists(@type)">
+			<complexType>
+				<annotation>
+					<documentation xml:lang="en">
+						Shorthand for one-type file with type related or strictly named reference.
+					</documentation>
+				</annotation>
+
+				<complexContent>
+					<extension base="this:file">
+						<attribute name="type" type="types:common" use="required">
+							<annotation>
+								<documentation xml:lang="en">
+									Contained type.
+								</documentation>
+							</annotation>
+						</attribute>
+						<attribute name="entity" type="types:entity" default="{string}" />
+
+						<!--<assert test="not(exists(@min) and exists(@max) and (number(@min) gt number(@max)))">
+							<annotation>
+								<documentation xml:lang="en">
+									Maximum less than minimum.
+								</documentation>
+							</annotation>
+						</assert>-->
+					</extension>
+				</complexContent>
+			</complexType>
+		</alternative>
+
+		<alternative test="true()">
+			<complexType>
+				<annotation>
+					<documentation xml:lang="en">
+						Standard description form.
+					</documentation>
+				</annotation>
+
+				<complexContent>
+					<extension base="this:file">
+						<group ref="this:scope" />
+					</extension>
+				</complexContent>
+			</complexType>
+		</alternative>
+	</element>
+
+
+	<element name="files">
+		<annotation>
+			<documentation xml:lang="en">
+				Contains files structures.
+			</documentation>
+		</annotation>
+
+		<complexType>
+			<sequence>
+				<element ref="this:file" maxOccurs="unbounded" />
+			</sequence>
+		</complexType>
+		<unique name="UX_files_path">
+			<selector xpath="this:file" />
+			<field xpath="@path" />
+		</unique>
+	</element>
+</schema>

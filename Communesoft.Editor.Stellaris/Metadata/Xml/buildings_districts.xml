@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<references xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<reference type="{building}">
+		<simple entity="base_buildtime" type="{int}">
+			<annotation>Determines the number of days it takes to build this Building or District. If Building, this also determines the days it takes for a Building to upgrade into this</annotation>
+		</simple>
+		<simple entity="icon" type="{building}">
+			<annotation>Optional. The file name (without extension) of the icon to use from Stellaris/gfx/interface/icons/buildings. By default, the icon gfx/interface/icons/buildings/(key of building).dds will be used for buildings.</annotation>
+		</simple>
+		<simple entity="category" type="{category}">
+			<annotation>Determines the building category. It can be used to filter Buildings in the planet construction GUI. Only one of the following nine can fit here, sorted by their in-game order.
+				
+				pop_assembly, government, resource, manufacturing,
+				research, trade, amenity, unity, army</annotation>
+		</simple>
+		<simple entity="capital" type="{bool}" default="no">
+			<annotation>Whether this Building is considered a Capital Building. If yes, not even a Fortress with add_to_first_building_slot = yes can be added before this Building.</annotation>
+		</simple>
+		<simple entity="branch_office_building" type="{bool}" default="no">
+			<annotation>If yes, this Building is considered a Branch Office Building.</annotation>
+		</simple>
+
+		<simple entity="can_build" type="{bool}" default="yes">
+			<annotation>If no, this Building can't be built. Capital buildings and upgraded buildings have "no" for this property.</annotation>
+		</simple>
+		<simple entity="can_demolish" type="{bool}" default="yes">
+			<annotation>If no, this Building can't be demolished. Capital buildings have "no" for this property.</annotation>
+		</simple>
+		<simple entity="can_be_ruined" type="{bool}" default="yes">
+			<annotation>If no, this Building can't be ruined because of the planet having not enough building slots.</annotation>
+		</simple>
+		<simple entity="can_be_disabled" type="{bool}" default="yes">
+			<annotation>If no, this Building can't be manually turned off. Capital buildings have "no" for this property.</annotation>
+		</simple>
+
+		<simple entity="planetary_ftl_inhibitor" type="{bool}" default="no">
+			<annotation>If yes, this Building will become a planetary FTL inhibitor once relevant technology has been researched. Fortresses use this.</annotation>
+		</simple>
+		<simple entity="position_priority" type="{int}" default="200">
+			<annotation>Determines which building slot this Building will be placed in, with lower values closer to the front and Buildings with the same value placed in the order in which they were built.</annotation>
+		</simple>
+
+		<simple entity="base_cap_amount" type="{int}">
+			<annotation>The max number of Buildings of this type a planet can have.</annotation>
+		</simple>
+		<complex entity="empire_limit">
+			<annotation>The total number of Buildings of this type an empire can have.
+				Multiply by a factor of -1 to remove the limit</annotation>
+			<simple entity="base" type="{int}" />
+			<complex entity="modifier">
+				<choice>
+					<simple entity="add" type="{int}" />
+					<simple entity="factor" type="{int}" />
+				</choice>
+				<complex sequence="only" type="{trigger}" />
+			</complex>
+		</complex>
+		<simple entity="is_capped_by_modifier" type="{bool}" default="no">
+			<annotation>If yes, a modifier that increases the max number of this Building will be generated for use. In addition, if this property is yes while the base_cap_amount is unspecified, it will be considered 0.</annotation>
+		</simple>
+
+		<list entity="prerequisites" type="{technology}">
+			<annotation>A list of technology keys to determine the technology prerequisites to construct this Building or District.</annotation>
+		</list>
+		<complex entity="show_tech_unlock_if" type="{trigger}">
+			<annotation>A block of Conditions. If evaluated false, this building is hidden from the tooltips of the technologies listed above.</annotation>
+		</complex>
+		<list entity="upgrades" type="{building}">
+			<annotation>A list of Buildings that allow this to be upgraded into. Multiple allowed.</annotation>
+		</list>
+
+		<complex entity="potential" type="{trigger}">
+			<annotation>A block of Conditions to determine is this Building buildable on a planet. If evaluated false, it's hidden from the GUI.</annotation>
+		</complex>
+		<complex entity="allow" type="{trigger}">
+			<annotation>A block of Conditions to determine is this Building buildable on a planet. If evaluated false, it's visible from the GUI but is shown disabled. Can also be used in combination with hidden_trigger = { OR = { owner = { is_ai = no } [conditions] } } to set rules specifically for the AI to follow, so it's better at knowing when it should build this Building.</annotation>
+		</complex>
+
+		<complex entity="abort_trigger" type="{trigger}">
+			<annotation>A block of Conditions. If it returns true the Building will be removed the construction queue.</annotation>
+		</complex>
+		<complex entity="ruined_trigger" type="{trigger}">
+			<annotation>A block of Conditions. If it returns true the Building will be set to ruined.</annotation>
+		</complex>
+		<complex entity="destroy_trigger" type="{trigger}">
+			<annotation>A block of Conditions. If it returns true the Building will be removed from a planet, or be replaced by a Building in convert_to.</annotation>
+		</complex>
+		<list entity="convert_to" type="{building}">
+			<annotation>A list of Buildings that can replace this Building if it would have been removed by fulfilling the destroy_trigger.</annotation>
+		</list>
+
+		<complex entity="planet_modifier" type="{modifier}">
+			<annotation>A block of Modifiers to be applied on the Planet.</annotation>
+		</complex>
+		<complex entity="triggered_planet_modifier" max="*">
+			<annotation>Similar to the above, except it only applies if the potential property evaluates true. Multiple allowed. (Planet scope)</annotation>
+
+			<complex entity="potential" type="{trigger}" />
+			<complex sequence="allowed" entity="modifier" type="{modifier}" />
+		</complex>
+		<complex entity="country_modifier" type="{modifier}">
+			<annotation>A block of Modifiers to be applied to the Empire. Used by Resource Silos, Embassies, and Branch Office Buildings in vanilla.</annotation>
+		</complex>
+
+		<complex entity="resources" type="{resources}">
+			<annotation>An Economy Unit to determine the category, construction cost, resource upkeep, and production of this Building or District.</annotation>
+		</complex>
+
+		<complex entity="triggered_desc" max="*">
+			<annotation>This property adds additional tooltips for this Building or District. Vanilla use this to add brief job descriptions summarizing total output if all jobs are filled. Multiple allowed.
+				
+				trigger: (Optional, default true) A block of Conditions to determine if this text should be in the tooltip. (Planet scope)
+				text: A localisation key. Job descriptions are generally in the format "job_[job_key]_effect_desc", e.g. job_culture_worker_effect_desc.</annotation>
+
+			<complex entity="trigger" type="{trigger}" default="yes" />
+			<simple entity="text" type="{localisation}" />
+		</complex>
+
+		<list entity="on_queued" type="{effect}">
+			<annotation>A block of Effects to be executed when the Building or District is added to the construction queue. Does not apply if added to the construction queue as an upgrade. (Planet scope) </annotation>
+		</list>
+		<list entity="on_unqueued" type="{effect}">
+			<annotation>A block of Effects to be executed when the Building or District is removed from the construction queue. Does not apply if added to the construction queue as an upgrade. (Planet scope) </annotation>
+		</list>
+		<list entity="on_built" type="{effect}">
+			<annotation>A block of Effects to be executed when the Building or District is built. (Planet scope)</annotation>
+		</list>
+		<list entity="on_destroy" type="{effect}">
+			<annotation>A block of Effects to be executed when the Building or District is desroyed or demolished. (Planet scope) </annotation>
+		</list>
+
+		<complex entity="ai_weight" type="{weight}">
+			<annotation>Rules for how likely the AI is to construct this Building or District. Multiple modifiers allowed. Note: As of 2.6, these weights only come into play when the AI has no other economic plans. Only used by Branch Office Buildings in vanilla.</annotation>
+		</complex>
+		<complex entity="ai_resource_production" max="*">
+			<annotation>Determines what kind of resources the AI should view this Building or District being able to produce. Multiple allowed.</annotation>
+
+			<simple entity="{resource}" type="{int}" max="*" />
+			<complex entity="trigger" type="{trigger}" />
+		</complex>
+	</reference>
+
+
+	<reference type="{district}">
+		<simple entity="base_buildtime" type="{int}">
+			<annotation>Determines the number of days it takes to build this Building or District. If Building, this also determines the days it takes for a Building to upgrade into this</annotation>
+		</simple>
+		<simple entity="icon" type="{district}">
+			<annotation>Optional. The file name (without extension) of the icon to use from Stellaris/gfx/interface/icons/buildings. By default, the icon gfx/interface/icons/buildings/(key of building).dds will be used for buildings.</annotation>
+		</simple>
+		<simple entity="is_capped_by_modifier" type="{bool}" default="yes">
+			<annotation>If yes, a modifier that increases the max number of this District will be generated for use.</annotation>
+		</simple>
+		<simple entity="min_for_deposits_on_planet" type="{int}">
+			<annotation>Unclear. They seem likely to determine the minimum / maximum number of this District a planet should try to have upon galaxy generation before modifiers, but this is actually not respected. When used in vanilla, min is either 1 or 3 and max is always 15.</annotation>
+		</simple>
+		<simple entity="max_for_deposits_on_planet" type="{int}">
+			<annotation>Unclear. They seem likely to determine the minimum / maximum number of this District a planet should try to have upon galaxy generation before modifiers, but this is actually not respected. When used in vanilla, min is either 1 or 3 and max is always 15.</annotation>
+		</simple>
+		<list entity="prerequisites" type="{technology}">
+			<annotation>A list of technology keys to determine the technology prerequisites to construct this Building or District.</annotation>
+		</list>
+		<complex entity="potential" type="{trigger}">
+			<annotation>Similar to Buildings, except if this property is evaluated false, the District is not only hidden from the GUI, but will also be removed from the planet, or be replaced by a District in convert_to.
+				
+				Check the planet type here by uses_district_set rather than is_planet_class.</annotation>
+		</complex>
+		<complex entity="show_on_uncolonized" type="{trigger}">
+			<annotation>A block of Conditions to determine if this District is shown in the GUI while the planet has no owner. For example, a Auth hive mind.png Hive Mind will see Hive District on an uncolonized planet while a regular Empire will see City District. (Planet scope, use FROM as a potential owner)
+				
+				Check the planet type here by uses_district_set rather than is_planet_class.</annotation>
+		</complex>
+		<complex entity="allow" type="{trigger}">
+			<annotation>Similar to Buildings, except if this property is evaluated false, the District is not only prevented from building, but will be replaced by a District in convert_to.</annotation>
+		</complex>
+
+		<simple entity="conversion_ratio" type="{float}">
+			<annotation>If this District will be converted into another type of District, the number of new Districts it can convert into is multiplied by this. For example, if District A can be converted into District B at a conversion_radio = 0.5, once the potential of District A is evaluated false, a planet with 10 District A will lose all of them and gain 5 District B. The number is rounded down.</annotation>
+		</simple>
+		<list entity="convert_to" type="{district}">
+			<annotation>A list of Districts that can replace this District if it would have been removed by not meeting the potential and allow.</annotation>
+		</list>
+
+		<complex entity="planet_modifier" type="{modifier}">
+			<annotation>A block of Modifiers to be applied on the Planet.</annotation>
+		</complex>
+		<complex entity="triggered_planet_modifier" max="*">
+			<annotation>Similar to the above, except it only applies if the potential property evaluates true. Multiple allowed. (Planet scope)</annotation>
+
+			<complex entity="potential" type="{trigger}" />
+			<complex sequence="allowed" entity="modifier" type="{modifier}" />
+		</complex>
+
+		<complex entity="resources" type="{resources}">
+			<annotation>An Economy Unit to determine the category, construction cost, resource upkeep, and production of this Building or District.</annotation>
+		</complex>
+
+		<complex entity="triggered_desc" max="*">
+			<annotation>This property adds additional tooltips for this Building or District. Vanilla use this to add brief job descriptions summarizing total output if all jobs are filled. Multiple allowed.
+				
+				trigger: (Optional, default true) A block of Conditions to determine if this text should be in the tooltip. (Planet scope)
+				text: A localisation key. Job descriptions are generally in the format "job_[job_key]_effect_desc", e.g. job_culture_worker_effect_desc.</annotation>
+
+			<complex entity="trigger" type="{trigger}" default="yes" />
+			<simple entity="text" type="{localisation}" />
+		</complex>
+
+		<list entity="on_queued" type="{effect}">
+			<annotation>A block of Effects to be executed when the Building or District is added to the construction queue. Does not apply if added to the construction queue as an upgrade. (Planet scope) </annotation>
+		</list>
+		<list entity="on_unqueued" type="{effect}">
+			<annotation>A block of Effects to be executed when the Building or District is removed from the construction queue. Does not apply if added to the construction queue as an upgrade. (Planet scope) </annotation>
+		</list>
+		<list entity="on_built" type="{effect}">
+			<annotation>A block of Effects to be executed when the Building or District is built. (Planet scope)</annotation>
+		</list>
+		<list entity="on_destroy" type="{effect}">
+			<annotation>A block of Effects to be executed when the Building or District is desroyed or demolished. (Planet scope) </annotation>
+		</list>
+
+		<complex entity="ai_weight" type="{weight}">
+			<annotation>Rules for how likely the AI is to construct this Building or District. Multiple modifiers allowed. Note: As of 2.6, these weights only come into play when the AI has no other economic plans. Only used by Branch Office Buildings in vanilla. </annotation>
+		</complex>
+		<complex entity="ai_resource_production" max="*">
+			<annotation>Determines what kind of resources the AI should view this Building or District being able to produce. Multiple allowed.</annotation>
+
+			<simple entity="{resource}" type="{int}" max="*" />
+			<complex entity="trigger" type="{trigger}" />
+		</complex>
+	</reference>
+</references>

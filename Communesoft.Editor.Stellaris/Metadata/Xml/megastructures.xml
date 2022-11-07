@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<reference type="{megastructure}" xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<simple entity="portrait" type="{string}" />
+	<!--GFX entry-->
+	<simple entity="entity" type="{entity}" />
+	<simple entity="construction_entity" type="{entity}" />
+	<complex entity="entity_offset">
+		<simple entity="x" type="{int}" />
+		<simple entity="y" type="{int}" />
+	</complex>
+
+	<simple entity="construction_blocks_others" type="{bool}" default="yes" />
+	<simple entity="construction_blocked_by_others" type="{bool}" default="yes" />
+	<simple entity="build_outside_gravity_well" type="{bool}" />
+	<simple entity="place_entity_on_planet_plane" type="{bool}" />
+	<simple entity="show_galactic_map_icon" type="{bool}" default="yes" />
+
+	<simple entity="bypass_type" type="{bypass}" />
+	<simple entity="sensor_range" type="{int}" />
+	<simple entity="hyperlane_range" type="{int}" />
+
+	<simple entity="build_time" type="{int}" />
+	<complex entity="resources" type="{resources}" />
+
+	<simple entity="victory_score" type="{int}" />
+
+	<list entity="prerequisites" type="{technology}" />
+	<simple entity="show_prereqs" type="{bool}" />
+	<simple entity="prereq_name" type="{localisation}" />
+
+	<complex entity="potential" type="{trigger}" />
+	<complex entity="possible" type="{trigger}" />
+	<complex entity="placement_rules">
+		<complex entity="planet_possible" type="{trigger}" />
+	</complex>
+
+	<list entity="upgrade_from" type="{megastructure}" />
+	<simple entity="upgrade_desc" type="{string}" default="0">
+		<restriction>
+			<enum value="default" />
+			<enum value="hide">
+				<annotation>
+					Hide this stage from the upgrade list
+				</annotation>
+			</enum>
+		</restriction>
+	</simple>
+
+	<complex entity="country_modifier" type="{modifier}" />
+	<complex entity="station_modifier" type="{modifier}" />
+	<complex entity="ship_modifier" type="{modifier}" />
+
+	<complex entity="on_build_start" type="{effect}" />
+	<complex entity="on_build_cancel" type="{effect}" />
+	<complex entity="on_build_complete" type="{effect}" />
+	<complex entity="on_destroy" type="{effect}" />
+
+	<complex entity="ai_weight" type="{weight}" />
+</reference>

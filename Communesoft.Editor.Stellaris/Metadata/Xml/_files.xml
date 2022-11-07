@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<files xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<file path="common/agendas" type="{government-agenda}" />
+	<file path="common/ai_budget" type="{economic-budget}" />
+	<file path="common/ambient_objects" type="{ambient}" entity="ambient_object" />
+	<file path="common/anomalies" type="{anomaly}" />
+
+	<file path="common/archaeological_site_types" type="{archeology}" />
+	<file path="common/armies" type="{army}" />
+	<file path="common/artifact_actions" type="{relic-act}" />
+
+	<file path="common/ascension_perks" type="{ascension}" />
+	<file path="common/asteroid_belts" type="{asteroids}" />
+
+
+	<file path="common/bombardment_stances" type="{fleet-stance}" />
+	<file path="common/buildings" type="{building}" />
+	<file path="common/bypass" type="{bypass}" />
+
+
+	<file path="common/component_sets" type="{ship-design-component-set}" entity="component_set" />
+	<file path="common/component_slot_templates" type="{ship-design-component-slot}" />
+	<file path="common/component_tags" type="{ship-design-component-tag}" />
+	<file path="common/component_templates" type="{ship-design-component}" />
+
+
+	<file path="common/defines" type="{game-consts}" />
+	<file path="common/districts" type="{district}" />
+
+
+	<file path="common/economic_categories" type="{economic}" />
+	<file path="common/edicts" type="{edict}" />
+	<file path="common/ethics">
+		<complex entity="qwe" type="{fleet-order}">
+		</complex>
+		<complex entity="qwe2" type="{resolution-trigger}">
+		</complex>
+		<complex entity="ethic_categories">
+			<complex entity="{string}" type="{ethic-category}" min="1" />
+		</complex>
+		<complex entity="{string}" type="{ethic}" />
+	</file>
+
+
+	<file path="common/global_ship_designs" type="{ship-design}" entity="ship_design" />
+	<file path="common/governments" type="{government}" />
+	<file path="common/governments/authorities" type="{government-authority}" />
+	<file path="common/governments/civics" type="{government-civic}" />
+
+
+	<file path="common/leader_classes" type="{leader}" entity="{leader-category}" />
+
+
+	<file path="common/mandates" type="{government-mandate}" />
+	<file path="common/megastructures" type="{megastructure}" />
+
+
+	<file path="common/planet_classes">
+		<complex entity="{string}" type="{planet}" />
+		<complex entity="random_list" type="{planet-namelist}" />
+	</file>
+	<file path="common/policies" type="{policy}" />
+
+
+	<file path="common/relics" type="{relic}" />
+
+
+	<file path="common/section_templates" type="{ship-design-section}" entity="ship_section_template" />
+	<file path="common/ship_behaviors" type="{ship-behavior}" entity="ship_behavior" />
+	<file path="common/ship_sizes" type="{ship-size}" />
+	<file path="common/solar_system_initializers" type="{system}" />
+	<file path="common/species_archetypes" type="{species-archotype}" />
+	<file path="common/species_classes" type="{species-class}" />
+	<file path="common/species_names">
+		<complex entity="named_lists" type="{species-class-asclist}" />
+		<complex entity="{species-class}" type="{species-class-namelist}" />
+	</file>
+	<file path="common/species_rights" type="{species-rights}" />
+
+	<file path="common/star_classes">
+		<complex entity="{string}" type="{star}" />
+		<complex entity="random_list" type="{star-namelist}" />
+	</file>
+	<file path="common/starbase_buildings" type="{starbase-building}" />
+	<file path="common/starbase_levels" type="{starbase-level}" />
+	<file path="common/starbase_modules" type="{starbase-module}" />
+	<file path="common/starbase_types" type="{starbase-type}" />
+	<file path="common/strategic_resources" type="{resource}" />
+
+	<file path="common/system_types" type="{system-type}" />
+
+
+	<file path="common/terraform" type="{terraform}" entity="terraform_link" />
+
+	<file path="common/traditions" type="{tradition}" />
+	<file path="common/tradition_categories" type="{tradition-category}" />
+	<file path="common/trade_conversions" type="{economic-trade}" />
+	<file path="common/traits" type="{trait}" />
+
+
+	<file path="events">
+		<!--scope="all"-->
+		<simple entity="namespace" type="{string}" min="1" />
+		<complex entity="{string}" type="{event}" />
+	</file>
+</files>

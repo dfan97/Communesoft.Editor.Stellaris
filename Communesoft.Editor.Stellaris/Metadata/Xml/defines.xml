@@ -1,0 +1,1964 @@
+<?xml version="1.0" encoding="utf-8"?>
+<reference type="{game-consts}" xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<complex entity="NCamera">
+		<simple entity="FOV" type="{int}" />
+		<simple entity="SYSTEM_NEAR_PLANE_DISTANCE_BASE" type="{float}" />
+		<simple entity="SYSTEM_FAR_PLANE_DISTANCE_BASE" type="{float}" />
+
+		<list entity="ENTITY_SPRITE_DESIGN_ENTRY_CAM_DIR" type="{float}" />
+		<list entity="ENTITY_SPRITE_DESIGN_ENTRY_CAM_LOOK_AT" type="{float}" />
+		<simple entity="ENTITY_SPRITE_DESIGN_ENTRY_ZOOM_SCALE" type="{float}" />
+
+		<list entity="ENTITY_SPRITE_SHIP_SECTION_CAM_DIR" type="{float}" />
+		<list entity="ENTITY_SPRITE_SHIP_SECTION_CAM_LOOK_AT" type="{int}" />
+		<simple entity="ENTITY_SPRITE_SHIP_SECTION_ZOOM_SCALE" type="{float}" />
+
+		<list entity="ENTITY_SPRITE_SYSTEM_VIEW_CAM_DIR" type="{float}" />
+		<list entity="ENTITY_SPRITE_SYSTEM_VIEW_CAM_LOOK_AT" type="{int}" />
+		<simple entity="ENTITY_SPRITE_SYSTEM_VIEW_ZOOM_SCALE" type="{float}" />
+
+		<list entity="ENTITY_SPRITE_CUSTOMIZE_SPECIES_VIEW_CAM_DIR" type="{float}" />
+		<list entity="ENTITY_SPRITE_CUSTOMIZE_SPECIES_VIEW_CAM_LOOK_AT" type="{int}" />
+		<simple entity="ENTITY_SPRITE_CUSTOMIZE_SPECIES_VIEW_ZOOM_SCALE" type="{float}" />
+
+		<list entity="ENTITY_SPRITE_CUSTOMIZE_RINGWORLD_CAM_DIR" type="{float}" />
+		<list entity="ENTITY_SPRITE_CUSTOMIZE_RINGWORLD_CAM_LOOK_AT" type="{int}" />
+		<simple entity="ENTITY_SPRITE_CUSTOMIZE_RINGWORLD_ZOOM_SCALE" type="{float}" />
+
+		<list entity="ENTITY_SPRITE_FRONTEND_BG_CAM_DIR" type="{float}" />
+		<list entity="ENTITY_SPRITE_FRONTEND_BG_CAM_LOOK_AT" type="{float}" />
+		<simple entity="ENTITY_SPRITE_FRONTEND_BG_ZOOM_SCALE" type="{float}" />
+
+		<simple entity="GALAXY_SHOW_FLEETS_ZOOM" type="{int}" />
+		<simple entity="GALAXY_SHOW_STARNAME_ZOOM" type="{int}" />
+
+		<simple entity="SHOW_FLEETS_ZOOM" type="{int}" />
+		<simple entity="HIDE_ORBITS_ZOOM" type="{int}" />
+
+		<list entity="ZOOM_STEPS_GALAXY" type="{int}" />
+
+		<list entity="ZOOM_STEPS_SYSTEM_PERCENTAGES" type="{float}" />
+		<list entity="ZOOM_STEPS_SHOW_FLEET_HEALTH_BARS" type="{int}" />
+
+		<simple entity="LEAVE_SYSTEM_ZOOM_STEP" type="{int}" />
+		<simple entity="ENTER_SYSTEM_ZOOM_STEP" type="{int}" />
+
+		<simple entity="SYSTEM_SPACE_SCALE_MULT" type="{float}" />
+		<simple entity="GALAXY_SPACE_SCALE_MULT" type="{float}" />
+
+		<simple entity="SYSTEM_HOVER_RANGE" type="{float}" />
+
+		<simple entity="BORDER_NAMES_FADEOUT_ZOOM" type="{int}" />
+		<simple entity="BORDER_NAMES_FADEOUT_SPEED" type="{float}" />
+		<simple entity="BORDER_FLAG_FADEOUT_ZOOM" type="{int}" />
+		<simple entity="BORDER_FLAG_FADEOUT_SPEED" type="{float}" />
+		<simple entity="NEBULA_NAMES_FADEOUT_ZOOM" type="{int}" />
+		<simple entity="NEBULA_NAMES_FADEOUT_SPEED" type="{float}" />
+
+		<simple entity="EDGE_SCROLLING_PIXELS" type="{int}" />
+		<simple entity="SCROLL_SPEED" type="{float}" />
+		<simple entity="SYSTEM_CAMERA_RESTRICT_EXTRA_SPACE" type="{float}" />
+
+		<simple entity="SYSTEM_MIN_PITCH" type="{float}" />
+		<simple entity="SYSTEM_MAX_PITCH" type="{float}" />
+		<simple entity="GALAXY_MIN_PITCH" type="{float}" />
+		<simple entity="GALAXY_MAX_PITCH" type="{float}" />
+		<simple entity="FOCUSED_MIN_PITCH" type="{float}" />
+		<simple entity="FOCUSED_MAX_PITCH" type="{float}" />
+		<simple entity="FOCUSED_MIN_ZOOM_BASE" type="{float}" />
+		<simple entity="FOCUSED_MIN_ZOOM_MULT" type="{float}" />
+		<simple entity="FOCUSED_PLANET_MIN_ZOOM_MULT" type="{float}" />
+		<simple entity="FOCUSED_ZOOM_RATE" type="{float}" />
+		<simple entity="FOCUS_START_ZOOM_STEP" type="{int}" />
+
+		<simple entity="ROTATION_RADIANS_PER_MOUSE_UNIT" type="{float}" />
+		<simple entity="MOUSE_MOVEMENT_TO_START_ROTATION_SQ" type="{int}" />
+
+		<simple entity="SYSTEM_SLIDE_RADIUS_FACTOR" type="{float}" />
+		<simple entity="SYSTEM_SLIDE_SPEED" type="{float}" />
+	</complex>
+	<complex entity="NGraphics">
+		<simple entity="CAMERA_DISTANCE_TO_ZOOM" type="{float}" />
+
+		<simple entity="DEAD_SHIP_DRAG" type="{float}" />
+
+		<list entity="ORBIT_HSV" type="{float}" />
+		<list entity="SYSTEM_INNER_BORDER_HSV" type="{float}" />
+		<list entity="SYSTEM_OUTER_BORDER_HSV" type="{float}" />
+
+		<list entity="SYSTEM_LINE_ALPHA_FADE_STEP" type="{int}" />
+		<list entity="SYSTEM_LINE_ALPHA_FADE_VALUE" type="{float}" />
+
+		<simple entity="DEFAULT_PLANET_PLANE" type="{float}" />
+		<simple entity="PLANET_TO_MEGASTRUCTURE_SCALE" type="{float}" />
+		<simple entity="MOON_SCALE" type="{float}" />
+		<list entity="PLANET_SCALE_SYSTEM" type="{float}" />
+
+		<simple entity="PLANET_DESTRUCTION_HIT_ENTITY_SCALE" type="{float}" />
+
+		<list entity="RELATION_COLOR_PLAYER_HSV" type="{float}" />
+		<list entity="RELATION_COLOR_ALLIED_HSV" type="{float}" />
+		<list entity="RELATION_COLOR_NEUTRAL_HSV" type="{float}" />
+		<list entity="RELATION_COLOR_HOSTILE_HSV" type="{float}" />
+		<list entity="RELATION_COLOR_SELECTED_RGB" type="{float}" />
+
+		<simple entity="ASTEROID_PLANE" type="{float}" />
+		<simple entity="ASTEROID_POSITION_OFFSET" type="{float}" />
+		<simple entity="ASTEROID_HEIGHT_OFFSET" type="{float}" />
+		<simple entity="ASTEROID_DIST_POW" type="{int}" />
+		<simple entity="ASTEROID_AMOUNT_RADIUS_SCALER" type="{float}" />
+		<simple entity="ASTEROID_MAX_SCALE" type="{float}" />
+		<simple entity="ASTEROID_ROTATION_SPEED" type="{float}" />
+
+		<simple entity="GALAXY_STAR_ICON_SCALE" type="{float}" />
+		<simple entity="GALAXY_STAR_ICON_MAX_SCALE" type="{float}" />
+		<simple entity="GALAXY_DUST_SIZE" type="{float}" />
+		<simple entity="GALAXY_DUST_SIZE_EXTRA" type="{float}" />
+		<simple entity="GALAXY_DUST_ROTATION_SPEED" type="{float}" />
+		<simple entity="GALAXY_NEBULA_DUST_SIZE" type="{float}" />
+		<simple entity="GALAXY_NEBULA_DUST_SIZE_EXTRA" type="{float}" />
+		<simple entity="GALAXY_NEBULA_DUST_ROTATION_SPEED" type="{float}" />
+
+		<simple entity="ARCHAEOLOGICAL_SITE_MAP_ICON_OFFSET" type="{float}" />
+
+		<simple entity="PLANET_TILT_FROM_SUN" type="{float}" />
+		<simple entity="PLANET_RING_TILT_FROM_SUN" type="{float}" />
+		<simple entity="PLANET_MAP_ICON_OFFSET" type="{float}" />
+		<simple entity="PLANET_DISSOLVE_ANIMATION_TIME_SCALE" type="{float}" />
+
+		<simple entity="MEGASTRUCTURE_MAP_ICON_OFFSET" type="{float}" />
+
+		<simple entity="TRAILS_ALPHA_FADE" type="{float}" />
+		<simple entity="TRAILS_MISSILE_ALPHA_FADE" type="{int}" />
+		<simple entity="TRAILS_BASE_WIDTH" type="{float}" />
+		<simple entity="TRAILS_MISSILE_BASE_WIDTH" type="{float}" />
+		<simple entity="TRAILS_LOCATOR_NAME" type="{string}" />
+		<simple entity="STRIKE_CRAFT_TRAIL_FADE_RATE" type="{float}" />
+		<simple entity="STRIKE_CRAFT_HEIGHT_OFFSET" type="{float}" />
+		<simple entity="STRIKE_CRAFT_HEIGHT_RANDOM" type="{float}" />
+
+		<simple entity="BORDER_TEXTURE_SIZE" type="{int}" />
+		<simple entity="BORDER_MIN_SIZE_FOR_SYMBOL" type="{int}" />
+
+		<simple entity="BORDER_SYSTEM_RADIUS" type="{float}" />
+		<simple entity="BORDER_HYPERLANE_THICKNESS" type="{float}" />
+		<simple entity="BORDER_INFLUENCE_MAX_DISTANCE_FACTOR" type="{float}" />
+
+		<simple entity="BORDER_OWNERLESS_SYSTEM_RADIUS" type="{float}" />
+		<simple entity="BORDER_OWNERLESS_HYPERLANE_THICKNESS" type="{float}" />
+		<simple entity="BORDER_OWNERLESS_INFLUENCE_MAX_DISTANCE_FACTOR" type="{float}" />
+
+		<simple entity="BORDER_VISIBILITY_THRESHOLD" type="{float}" />
+
+		<simple entity="STAR_PIN_CIRCLE_RADIUS" type="{float}" />
+		<simple entity="STAR_PIN_CIRCLE_NUM_POINTS" type="{int}" />
+		<simple entity="STAR_PIN_ENABLE_NEUTRAL" type="{bool}" />
+		<list entity="STAR_PIN_NEUTRAL_COLOR" type="{float}" />
+
+		<simple entity="BORDER_FLAG_SCALE" type="{float}" />
+		<simple entity="MAPNAME_BORDER_SCALE" type="{float}" />
+		<simple entity="MAPNAME_BORDER_MIN_SIZE" type="{int}" />
+		<simple entity="MAPNAME_BORDER_OFFSET_MUL" type="{float}" />
+		<simple entity="MAPNAME_BORDER_OFFSET_ADD" type="{float}" />
+		<simple entity="MAPNAME_NEBULA_SCALE" type="{float}" />
+		<simple entity="MAPNAME_SECTOR_SCALE" type="{int}" />
+
+		<simple entity="NULL_ENTITY" type="{string}" />
+		<simple entity="NULL_INSTANT_PROJECTILE" type="{string}" />
+		<simple entity="NULL_MISSILE_PROJECTILE" type="{string}" />
+
+		<simple entity="SCIENCE_SHIP_SURVEY_ENTITY" type="{string}" />
+		<simple entity="SCIENCE_SHIP_SURVEY_ENTITY_LOCATOR" type="{string}" />
+		<simple entity="SCIENCE_SHIP_SURVEY_ENTITY_MAX_SCALE_FACTOR" type="{float}" />
+
+		<simple entity="CONSTRUCTION_SHIP_TERRAFORMING_BEAM_ENTITY" type="{string}" />
+		<simple entity="CONSTRUCTION_SHIP_TERRAFORMING_PLANET_ENTITY" type="{string}" />
+		<simple entity="CONSTRUCTION_SHIP_TERRAFORMING_BEAM_ENTITY_SCALE_XY" type="{float}" />
+		<simple entity="CONSTRUCTION_SHIP_TERRAFORMING_BEAM_ENTITY_SCALE_Z" type="{float}" />
+		<simple entity="CONSTRUCTION_SHIP_TERRAFORMING_PLANET_ENTITY_SCALE_R" type="{float}" />
+
+		<simple entity="NAVIGATION_ARROW_ENTITY" type="{string}" />
+		<simple entity="NAVIGATION_ARROW_OFFSET" type="{float}" />
+		<simple entity="NAVIGATION_ARROW_FONT" type="{string}" />
+		<list entity="NAVIGATION_ARROW_FONT_SPECIAL" type="{string}" />
+		<simple entity="NAVIGATION_ARROW_TEXT_OFFSET" type="{float}" />
+		<simple entity="NAVIGATION_ARROW_TEXT_SCALE" type="{float}" />
+		<simple entity="NAVIGATION_ARROW_FONT_SIZE" type="{int}" />
+		<simple entity="NAVIGATION_ARROW_TEXT_KERNING" type="{int}" />
+
+		<simple entity="SHIP_TURRET_PROJECTILE_SPAWN_LOCATOR" type="{string}" />
+		<simple entity="STRIKE_CRAFT_PROJECTILE_SPAWN_LOCATOR" type="{string}" />
+		<simple entity="SHIP_TARGET_LOCATOR" type="{string}" />
+
+		<simple entity="MISSILE_HEIGHT_OFFSET" type="{float}" />
+
+		<simple entity="MISSILE_RANDOM_OFFSET_MIN_RADIUS" type="{float}" />
+		<simple entity="MISSILE_RANDOM_OFFSET_MAX_RADIUS" type="{float}" />
+
+		<simple entity="BALLISTIC_PROJECTILE_MISSED_LIFETIME" type="{float}" />
+		<simple entity="PROJECTILE_ENTITY_STOP_STATE" type="{string}" />
+
+		<simple entity="SHIELD_EFFECT_TIME_SCALE" type="{float}" />
+		<simple entity="SHIELD_EFFECT_LOOP_INTERVAL" type="{float}" />
+		<list entity="SHIELD_DISTANCE_FROM_SHIP" type="{float}" />
+		<list entity="SHIELD_DISTANCE_FROM_SHIP_MULT" type="{float}" />
+
+		<list entity="SHIELD_EFFECT_ENTITIES" type="{string}" />
+		<list entity="SHIELD_EFFECT_LOOPING_ENTITIES" type="{string}" />
+
+		<simple entity="MISSED_BEAM_LENGTH" type="{float}" />
+
+		<simple entity="SHIP_DAMAGE_TEXTURE" type="{path}" />
+		<simple entity="SHIP_DISSOLVE_NOISE_TEXTURE" type="{path}" />
+		<simple entity="SHIP_RANDOM_HEIGHT_OFFSET" type="{float}" />
+		<simple entity="SHIP_MOVEMENT_LENGTH_CONSIDERED_ZERO" type="{float}" />
+
+		<simple entity="RANDOM_HEIGHT_MIN" type="{float}" />
+		<simple entity="RANDOM_HEIGHT_MAX" type="{float}" />
+
+		<simple entity="MOVE_ARROW_SYSTEM_CONTROL_POINT_SPACING" type="{float}" />
+		<simple entity="MOVE_ARROW_GALAXY_CONTROL_POINT_SPACING" type="{float}" />
+		<simple entity="MOVE_ARROW_SYSTEM_TARGET_ENTITY" type="{string}" />
+		<simple entity="MOVE_ARROW_GALAXY_TARGET_ENTITY" type="{string}" />
+		<simple entity="ATTACK_ARROW_SYSTEM_TARGET_ENTITY" type="{string}" />
+		<simple entity="ATTACK_ARROW_GALAXY_TARGET_ENTITY" type="{string}" />
+		<simple entity="TASK_ARROW_SYSTEM_TARGET_ENTITY" type="{string}" />
+		<simple entity="TASK_ARROW_GALAXY_TARGET_ENTITY" type="{string}" />
+		<simple entity="BYPASS_ARROW_GALAXY_TARGET_ENTITY" type="{string}" />
+
+		<list entity="GUI_PLANET_RING_DIR" type="{float}" />
+		<simple entity="TI_TEXTURE_GROW_AMOUNT" type="{int}" />
+
+		<list entity="FLEET_EFFECT_ENTITIES" type="{string}" />
+		<list entity="FLEET_EFFECT_ENTITIES_BILLBOARD" type="{int}" />
+		<list entity="FLEET_EFFECT_ENTITIES_SCALE" type="{int}" />
+
+		<simple entity="FTL_WINDUP_ENTITY_HYPERLANE" type="{string}" />
+		<simple entity="FTL_WINDUP_ENTITY_JUMP" type="{string}" />
+
+		<list entity="ALIENFX_DEFAULT_COLOR" type="{float}" />
+
+		<simple entity="MAX_GFX_PROJECTILES" type="{int}" />
+		<simple entity="MAX_GFX_PRIO_PROJECTILES" type="{int}" />
+		<simple entity="MAX_GFX_MISSILES" type="{int}" />
+		<simple entity="MUZZLE_FLASH_LIMIT" type="{int}" />
+		<simple entity="MUZZLE_FLASH_DURATION" type="{float}" />
+
+		<list entity="MAP_MODE_NEUTRAL_COLOR" type="{float}" />
+		<list entity="COUNTRY_BORDER_COLOR_RANDOM_SATURATION_OFFSETS" type="{float}" />
+		<list entity="COUNTRY_BORDER_COLOR_RANDOM_VALUE_OFFSETS" type="{float}" />
+
+		<list entity="CONSTRUCTION_COLOR_VALID" type="{float}" />
+		<list entity="CONSTRUCTION_COLOR_INVALID" type="{float}" />
+		<list entity="CONSTRUCTION_COLOR_IN_PROGRESS" type="{float}" />
+
+		<simple entity="CONSTRUCTION_PROGRESS_BLEND_SPEED" type="{float}" />
+		<simple entity="CONSTRUCTION_MEGASTRUCTURE_PROGRESS_BLEND_SPEED" type="{float}" />
+
+		<simple entity="HIDE_HYPERLANES_OUTSIDE_TERRA_INCOGNITA" type="{bool}" />
+		<list entity="HYPERLANE_DEFAULT_COLOR" type="{float}" />
+		<list entity="HYPERLANE_NO_ACCESS_COLOR" type="{float}" />
+		<simple entity="MODIFIER_TEXT_ICON_SCALE" type="{float}" />
+
+		<simple entity="CELESTIAL_WARNING_COORDINATE_VALUE" type="{int}" />
+
+		<simple entity="GDF_SHIP_GRAPHICAL_CULTURE" type="{string}" />
+
+		<simple entity="FEDERATION_UNKOWN_FEDERATION_ICON" type="{string}" />
+	</complex>
+	<complex entity="NInterface">
+		<simple entity="PLANET_SKY_DEFAULT" type="{string}" />
+		<simple entity="PLANET_SKY_MOON" type="{string}" />
+		<simple entity="PLANET_SKY_MOON_RINGS" type="{string}" />
+
+		<simple entity="MAX_WARGOAL_ITEMS" type="{int}" />
+		<simple entity="FLEET_SIZE" type="{int}" />
+
+		<simple entity="TOOLTIP_TIME" type="{float}" />
+		<simple entity="TOOLTIP_DELAYED_TIME" type="{float}" />
+		<list entity="TOOLTIP_POSITION_OFFSET" type="{int}" />
+		<list entity="TOOLTIP_POSITION_OFFSET_STAR" type="{float}" />
+
+		<simple entity="PERSISTENT_CHAT_LINE_HEIGHT" type="{int}" />
+
+		<simple entity="NOTIFICATION_MESSAGE_XPOS" type="{int}" />
+		<simple entity="NOTIFICATION_MESSAGE_YPOS" type="{int}" />
+		<simple entity="NOTIFICATION_MESSAGE_CLOSE_WARNING_PERC" type="{float}" />
+		<simple entity="NOTIFICATION_MESSAGE_SPACING" type="{int}" />
+		<simple entity="NOTIFICATION_MESSAGE_MARGIN_RIGHT" type="{int}" />
+		<simple entity="NOTIFICATION_MESSAGE_SPEED" type="{float}" />
+		<simple entity="NOTIFICATION_MESSAGE_DURATION_STANDARD" type="{int}" />
+
+		<simple entity="ARCH_VIEW_DEFAULT_MAX_CHAPTERS" type="{int}" />
+		<simple entity="ARCH_VIEW_TEXTBOX_SMALL" type="{int}" />
+		<simple entity="ARCH_VIEW_TEXTBOX_LARGE" type="{int}" />
+
+		<simple entity="DEFAULT_CITY_POP_LEVEL" type="{int}" />
+		<list entity="POPS_TO_SHOW_CITY_LEVEL" type="{int}" />
+
+		<simple entity="TRADE_VIEW_DEFAULT_CREDIT_CHANGE" type="{int}" />
+		<simple entity="TRADE_VIEW_SMALL_CREDIT_CHANGE" type="{int}" />
+		<simple entity="TRADE_VIEW_LARGE_CREDIT_CHANGE" type="{int}" />
+		<simple entity="TRADE_VIEW_MASSIVE_CREDIT_CHANGE" type="{int}" />
+		<simple entity="TRADE_VIEW_WIDE_MODE_THRESHHOLD" type="{int}" />
+		<simple entity="SHIP_NAME_CAP_LENGTH" type="{int}" />
+		<simple entity="SHIP_NAME_SIZE_MAX" type="{int}" />
+		<simple entity="SPECIES_NAME_SIZE_MAX" type="{int}" />
+
+		<simple entity="MUSIC_SILENCE_CHANCE" type="{int}" />
+		<simple entity="MUSIC_SILENCE_TIME_FIXED" type="{int}" />
+		<simple entity="MUSIC_SILENCE_TIME_RANDOM" type="{int}" />
+
+		<simple entity="ADVISOR_DEFAULT_SHOW_SOUND" type="{string}" />
+		<simple entity="ADVISOR_DEFAULT_CLICK_SOUND" type="{string}" />
+		<simple entity="ADVISOR_ANNOYED_COUNT" type="{int}" />
+		<list entity="ADVISOR_ANNOYED_SOUNDS" type="{string}" />
+		<simple entity="ADVISOR_SOUND_MIN_WAIT" type="{float}" />
+		<simple entity="ADVISOR_SOUND_BLOCKED_DEFAULT" type="{float}" />
+		<simple entity="ADVISOR_SOUND_BLOCKED_SHIP_LOST" type="{float}" />
+		<simple entity="ADVISOR_SOUND_BLOCKED_FLEET_ENGAGED" type="{float}" />
+
+		<simple entity="POP_FACTION_HEADER_SPRITE_TYPE_DEFAULT" type="{string}" />
+
+		<simple entity="OUTLINER_PING_TIME" type="{float}" />
+
+		<simple entity="FRONTEND_ANIMATED_BG_ENTITY" type="{string}" />
+		<simple entity="FRONTEND_ANIMATED_BG_ASPECT_RATIO" type="{float}" />
+
+		<simple entity="MAX_NUM_SAVE_GAMES" type="{int}" />
+
+		<simple entity="DAYS_PENDING_ARCHAEOLOGY_NOTIFICATIONS" type="{int}" />
+		<simple entity="ARCHAEOLOGICAL_SITE_IN_PROGRESS_SPRITE" type="{string}" />
+
+		<simple entity="SITUATION_LOG_ARCHAEOLOGY_PICTURE_SPRITE" type="{string}" />
+		<simple entity="SITUATION_LOG_ARCHAEOLOGY_ICON_FILENAME" type="{path}" />
+		<simple entity="SITUATION_LOG_FIRST_CONTACT_ICON_FILENAME" type="{path}" />
+		<simple entity="SITUATION_LOG_DEBRIS_PICTURE_SPRITE" type="{string}" />
+		<simple entity="SITUATION_LOG_DEBRIS_ICON_FILENAME" type="{path}" />
+		<simple entity="SITUATION_LOG_MODIFICATION_PICTURE_SPRITE" type="{string}" />
+		<simple entity="SITUATION_LOG_MODIFICATION_ICON_FILENAME" type="{path}" />
+
+		<simple entity="SITUATION_LOG_ESPIONAGE_PICTURE_SPRITE" type="{string}" />
+		<simple entity="ESPIONAGE_OPERATION_VIEW_TEXTBOX_SMALL" type="{int}" />
+		<simple entity="ESPIONAGE_OPERATION_VIEW_TEXTBOX_LARGE" type="{int}" />
+		<simple entity="ESPIONAGE_OPERATION_VIEW_DEFAULT_MAX_CHAPTERS" type="{int}" />
+
+		<simple entity="FIRST_CONTACT_RELATION_ICON_UNKNOWN" type="{string}" />
+		<simple entity="FIRST_CONTACT_RELATION_ICON_ISOLATIONIST" type="{string}" />
+		<simple entity="FIRST_CONTACT_RELATION_ICON_FRIENDLY" type="{string}" />
+		<simple entity="FIRST_CONTACT_RELATION_ICON_HOSTILE" type="{string}" />
+
+		<simple entity="ARCHAEOLOGY_DIFFICULTY_SPRITE_NAME_ROOT" type="{string}" />
+		<simple entity="FIRSTCONTACT_DIFFICULTY_SPRITE_NAME_ROOT" type="{string}" />
+		<simple entity="ESPIONAGE_DIFFICULTY_SPRITE_NAME_ROOT" type="{string}" />
+
+		<simple entity="MAP_ICON_ITEM_MINIMUM_WIDTH" type="{int}" />
+
+		<simple entity="GUI_BASELINE_WIDTH" type="{int}" />
+		<simple entity="GUI_BASELINE_HEIGHT" type="{int}" />
+		<simple entity="GUI_EXTRA_HEIGHT_MAX" type="{int}" />
+		<simple entity="MIN_GUI_SCALE" type="{float}" />
+
+		<list entity="TOPBAR_BUTTONS_SHORTCUTS" type="{string}" />
+		<list entity="TOPBAR_BUTTONS_PRIORITY" type="{string}" />
+
+		<simple entity="ALWAYS_SHOW_NAVBAR" type="{bool}" />
+		<simple entity="NAVBAR_CLOSE_DELAY" type="{float}" />
+
+		<simple entity="NUM_INDENTATION_SPACES" type="{int}" />
+
+		<simple entity="OUTLINER_PLANET_CONSTRUCTION_MAX_ENTRIES" type="{int}" />
+		<simple entity="OUTLINER_STARBASE_SHIPYARD_CONSTRUCTION_MAX_ENTRIES" type="{int}" />
+
+		<simple entity="OUTLINER_SHIPYARD_CONSTRUCTION_MAX_ENTRIES" type="{int}" />
+		<simple entity="OUTLINER_UPDATE_EVERY_N_FRAMES" type="{int}" />
+		<simple entity="SOCIALVIEW_CONTEXT_MENU_MARGIN" type="{int}" />
+		<simple entity="SOCIALVIEW_CONTEXT_MENU_BUTTON_OFFSET" type="{int}" />
+		<simple entity="WAROVERVIEW_BATTLE_RESULT_BASE_EXHAUSTION" type="{float}" />
+
+		<simple entity="PERSISTENT_CHAT_LINES_DURATION" type="{int}" />
+		<simple entity="PERSISTENT_CHAT_LINES_FADE" type="{int}" />
+		<simple entity="PERSISTENT_CHAT_NUM_LINES" type="{int}" />
+
+		<simple entity="POP_ENTRY_GROUPING_THRESHOLD" type="{int}" />
+		<simple entity="EXPANSION_VIEW_NUM_DISTRICTS" type="{int}" />
+		<simple entity="DEFICIT_MONTH_LEFT_ALERT" type="{int}" />
+
+		<simple entity="NUM_DISTRICT_BOXES_TO_SHOW" type="{int}" />
+		<simple entity="NUM_RARE_DEPOSITS_TO_SHOW" type="{int}" />
+		<simple entity="NUM_DEVASTATION_SEGMENTS" type="{int}" />
+
+		<simple entity="AUTOMATION_RESOURCE_ALERT_MIN_POOL" type="{int}" />
+		<simple entity="AUTOMATION_RESOURCE_ALERT_MIN_MONTHLY" type="{int}" />
+
+		<simple entity="DIPLO_SCREEN_TEXT_HIDE_COOLDOWN" type="{float}" />
+
+		<simple entity="DIPLO_SCREEN_BG_NEUTRAL" type="{string}" />
+		<simple entity="DIPLO_SCREEN_BG_AGGRESSIVE" type="{string}" />
+		<simple entity="DIPLO_SCREEN_BG_POSITIVE" type="{string}" />
+		<simple entity="DIPLO_SCREEN_BG_NEGATIVE" type="{string}" />
+
+		<simple entity="CITY_SELECTION_DEFAULT_PLANET_CLASS" type="{string}" />
+
+		<simple entity="GC_SENATE_BG_EMPTY" type="{string}" />
+		<simple entity="GC_SENATE_BG_0" type="{string}" />
+		<simple entity="GC_SENATE_BG_25" type="{string}" />
+		<simple entity="GC_SENATE_BG_50" type="{string}" />
+		<simple entity="GC_SENATE_BG_75" type="{string}" />
+		<simple entity="GC_SENATE_BG_100" type="{string}" />
+
+		<simple entity="IMPERIUM_SENATE_BG_EMPTY" type="{string}" />
+		<simple entity="IMPERIUM_SENATE_BG_0" type="{string}" />
+		<simple entity="IMPERIUM_SENATE_BG_25" type="{string}" />
+		<simple entity="IMPERIUM_SENATE_BG_50" type="{string}" />
+		<simple entity="IMPERIUM_SENATE_BG_75" type="{string}" />
+		<simple entity="IMPERIUM_SENATE_BG_100" type="{string}" />
+
+		<simple entity="GC_SENATE_BG_0_MAX" type="{int}" />
+		<simple entity="GC_SENATE_BG_25_MAX" type="{int}" />
+		<simple entity="GC_SENATE_BG_50_MAX" type="{int}" />
+		<simple entity="GC_SENATE_BG_75_MAX" type="{int}" />
+
+		<simple entity="DAYS_PENDING_FIRST_CONTACT_NOTIFICATIONS" type="{int}" />
+
+		<simple entity="DAYS_LEFT_TO_SHOW_NUMBER" type="{int}" />
+		<simple entity="DAYS_LEFT_TO_COLORIZE_NUMBER" type="{int}" />
+
+		<simple entity="OPINION_PROGRESS_SPRITE_EXCELLENT" type="{string}" />
+		<simple entity="OPINION_PROGRESS_SPRITE_GOOD" type="{string}" />
+		<simple entity="OPINION_PROGRESS_SPRITE_NEUTRAL" type="{string}" />
+		<simple entity="OPINION_PROGRESS_SPRITE_POOR" type="{string}" />
+		<simple entity="OPINION_PROGRESS_SPRITE_TERRIBLE" type="{string}" />
+
+		<simple entity="COLONY_TYPE_DEFAULT_SPRITE" type="{string}" />
+
+		<simple entity="SELF_INTEL_ICON_FRAME" type="{int}" />
+
+		<simple entity="MEGASTRUCTURE_DEFAULT_PORTRAIT" type="{string}" />
+	</complex>
+	<complex entity="NGameplay">
+		<simple entity="NUM_COMMANDS_PER_TURN" type="{int}" />
+
+		<simple entity="GUARANTEED_COLONIES_DEFAULT" type="{int}" />
+		<simple entity="GUARANTEED_COLONIES_MIN" type="{int}" />
+		<simple entity="GUARANTEED_COLONIES_MAX" type="{int}" />
+
+		<simple entity="MID_GAME_START_DEFAULT" type="{int}" />
+		<simple entity="MID_GAME_START_MAX" type="{int}" />
+		<simple entity="MID_GAME_START_MIN" type="{int}" />
+		<simple entity="END_GAME_START_DEFAULT" type="{int}" />
+		<simple entity="END_GAME_START_MAX" type="{int}" />
+		<simple entity="END_GAME_START_MIN" type="{int}" />
+		<simple entity="START_YEAR_SLIDER_INTERVAL" type="{int}" />
+		<simple entity="VICTORY_YEAR_DEFAULT" type="{int}" />
+		<simple entity="VICTORY_YEAR_MAX" type="{int}" />
+		<simple entity="VICTORY_YEAR_MIN" type="{int}" />
+		<simple entity="VICTORY_YEAR_SLIDER_INTERVAL" type="{int}" />
+
+		<simple entity="SCORE_NO_ECONOMY" type="{int}" />
+		<simple entity="SCORE_ECONOMIC_POWER" type="{int}" />
+		<simple entity="SCORE_TECH_POWER" type="{float}" />
+		<simple entity="SCORE_MILITARY_POWER" type="{float}" />
+		<simple entity="SCORE_POPS" type="{int}" />
+		<simple entity="SCORE_PLANETS" type="{int}" />
+		<simple entity="SCORE_SYSTEMS" type="{int}" />
+		<simple entity="SCORE_SUBJECTS" type="{float}" />
+		<simple entity="SCORE_FEDERATION_MEMBERS" type="{float}" />
+		<simple entity="SCORE_CRISIS_KILLS" type="{int}" />
+
+		<simple entity="TECH_COST_DEFAULT" type="{float}" />
+		<simple entity="TECH_COST_MIN" type="{float}" />
+		<simple entity="TECH_COST_MAX" type="{float}" />
+		<simple entity="TECH_COST_SLIDER_INTERVAL" type="{float}" />
+
+		<simple entity="LOGISTIC_CEILING_DEFAULT" type="{float}" />
+		<simple entity="LOGISTIC_CEILING_MIN" type="{float}" />
+		<simple entity="LOGISTIC_CEILING_MAX" type="{float}" />
+		<simple entity="LOGISTIC_CEILING_SLIDER_INTERVAL" type="{float}" />
+
+		<simple entity="GROWTH_SCALE_DEFAULT" type="{float}" />
+		<simple entity="GROWTH_SCALE_MIN" type="{float}" />
+		<simple entity="GROWTH_SCALE_MAX" type="{float}" />
+		<simple entity="GROWTH_SCALE_SLIDER_INTERVAL" type="{float}" />
+
+		<simple entity="SHIPYARD_REINFORCE_DISTANCE_MULT" type="{int}" />
+		<simple entity="SHIPYARD_REINFORCE_MAX_JUMPS" type="{int}" />
+
+		<simple entity="REINFORCE_MIA_TIME_MULT" type="{float}" />
+		<simple entity="REINFORCE_ACCEPTABLE_EVASIVE_PATH_MULT" type="{float}" />
+		<simple entity="REINFORCE_ACCEPTABLE_EVASIVE_PATH_OVERRIDE_LOWER_THRESHOLD" type="{int}" />
+
+		<simple entity="LIMITED_EXPLORATION" type="{int}" />
+
+		<simple entity="RANDOM_START_DISTANCE" type="{int}" />
+
+		<simple entity="SHROUD_FLAG" type="{string}" />
+		<simple entity="GUARDIANS_OF_THE_GALAXY_FLAG" type="{string}" />
+		<simple entity="UNRESTRICTED_WARS_POLICY_FLAG" type="{string}" />
+		<simple entity="GALACTIC_MARKET_FOUNDED_FLAG" type="{string}" />
+
+		<simple entity="DECADENCE_START" type="{int}" />
+		<simple entity="DECADENCE_CHANCE" type="{float}" />
+		<simple entity="DECADENCE_INCREASE" type="{int}" />
+		<simple entity="DECADENCE_MAX" type="{int}" />
+
+		<simple entity="FTL_MAGNET_DISTANCE" type="{int}" />
+
+		<simple entity="NUM_DISTRICTS_BASE" type="{int}" />
+		<simple entity="NUM_DISTRICTS_FROM_PLANET_SIZE" type="{int}" />
+		<simple entity="BASE_AMENITIES_USAGE" type="{int}" />
+
+		<simple entity="MAX_PLANET_POPS" type="{int}" />
+
+		<simple entity="BASE_PLANET_BUILDING_SLOTS" type="{int}" />
+		<simple entity="MAX_PLANET_BUILDING_SLOTS" type="{int}" />
+
+		<simple entity="BASE_PLANET_BRANCH_OFFICE_BUILDING_SLOTS" type="{int}" />
+		<simple entity="MAX_PLANET_BRANCH_OFFICE_BUILDING_SLOTS" type="{int}" />
+
+		<simple entity="BRANCH_OFFICE_INCOME_SCALE" type="{float}" />
+		<simple entity="BRANCH_OFFICE_COST_INCREASE_MIN_RANGE" type="{int}" />
+		<simple entity="BRANCH_OFFICE_COST_INCREASE_SCALE" type="{float}" />
+
+		<simple entity="REPAIR_BUILDING_COST" type="{float}" />
+		<simple entity="REPAIR_BUILDING_TIME" type="{float}" />
+
+		<simple entity="MIN_PLANET_STABILITY" type="{int}" />
+		<simple entity="LOW_PLANET_STABILITY" type="{int}" />
+		<simple entity="BASE_PLANET_STABILITY" type="{int}" />
+		<simple entity="MAX_PLANET_STABILITY" type="{int}" />
+		<simple entity="LOW_HAPPINESS_STABILITY_EFFECT" type="{int}" />
+		<simple entity="HIGH_HAPPINESS_STABILITY_EFFECT" type="{int}" />
+
+		<simple entity="POP_CRIME" type="{int}" />
+		<simple entity="MIN_PLANET_CRIME" type="{int}" />
+		<simple entity="HIGH_PLANET_CRIME" type="{int}" />
+		<simple entity="MAX_PLANET_CRIME" type="{int}" />
+		<simple entity="CRIMINAL_SYNDICATE_HIGH_CRIME_MULT" type="{float}" />
+		<simple entity="CRIMINAL_SYNDICATE_LOW_CRIME_MULT" type="{float}" />
+
+		<simple entity="MIN_PLANET_AMENITIES" type="{float}" />
+		<simple entity="MAX_PLANET_AMENITIES" type="{float}" />
+
+		<simple entity="MIN_PLANET_RELATIVE_HOUSING" type="{float}" />
+		<simple entity="MAX_PLANET_RELATIVE_HOUSING" type="{float}" />
+
+		<simple entity="MIN_BLOCKED_DEPOSITS" type="{int}" />
+		<simple entity="MIN_UNBLOCKED_DEPOSITS" type="{int}" />
+		<simple entity="DEPOSIT_USED_CATEGORY_WEIGHT" type="{float}" />
+
+		<simple entity="COLONY_DEPOSITS_USE_NULL" type="{bool}" />
+		<simple entity="COLONY_DEPOSITS_FIXED_BASE" type="{int}" />
+		<simple entity="COLONY_DEPOSITS_RANDOM_BASE" type="{int}" />
+		<simple entity="COLONY_DEPOSITS_FIXED_FROM_SIZE" type="{float}" />
+		<simple entity="COLONY_DEPOSITS_RANDOM_FROM_SIZE" type="{float}" />
+
+		<simple entity="NON_COLONY_DEPOSITS_USE_NULL" type="{bool}" />
+		<simple entity="NON_COLONY_DEPOSITS_FIXED_BASE" type="{int}" />
+		<simple entity="NON_COLONY_DEPOSITS_RANDOM_BASE" type="{int}" />
+		<simple entity="NON_COLONY_DEPOSITS_FIXED_FROM_SIZE" type="{int}" />
+		<simple entity="NON_COLONY_DEPOSITS_RANDOM_FROM_SIZE" type="{int}" />
+
+		<simple entity="QUICK_CLEAR_BLOCKER_GENERAL_MODIFIER_WEIGHT" type="{int}" />
+		<simple entity="QUICK_CLEAR_BLOCKER_SPECIFIC_MODIFIER_WEIGHT" type="{int}" />
+
+		<simple entity="ALLOW_EMPIRE_DESIGN_CHEATS" type="{bool}" />
+
+		<simple entity="SCALED_DIFFICULTY_MAX_GALAXY_SIZE" type="{int}" />
+		<simple entity="SCALED_DIFFICULTY_GALAXY_SIZE_MULT" type="{float}" />
+		<simple entity="SCALED_DIFFICULTY_HABITABLE_PLANETS_MULT" type="{float}" />
+
+		<simple entity="FALLEN_EMPIRE_REPEATABLE_TECHS" type="{int}" />
+
+		<simple entity="RELATIVE_POWER_SUPERIOR" type="{float}" />
+		<simple entity="RELATIVE_POWER_OVERWHELMING" type="{float}" />
+
+		<simple entity="ECON_POWER_COST_DIV" type="{int}" />
+		<simple entity="TECH_POWER_COST_DIV" type="{int}" />
+		<simple entity="TECH_BASE_POWER" type="{int}" />
+		<simple entity="TECH_REPEATABLE_POWER_MULT" type="{float}" />
+		<simple entity="RELATIVE_POWER_FLEET_MULT" type="{float}" />
+		<simple entity="RELATIVE_POWER_ECONOMY_MULT" type="{float}" />
+		<simple entity="RELATIVE_POWER_TECH_MULT" type="{float}" />
+
+		<simple entity="MIN_HABITABILITY" type="{float}" />
+
+		<simple entity="ABANDONED_EMPIRE_FLAG" type="{path}" />
+		<simple entity="PRE_COMMUNICATIONS_EMPIRE_FLAG" type="{path}" />
+		<simple entity="FLEET_MIN_TI_CLEAR_RADIUS" type="{int}" />
+		<simple entity="TI_TEXTURE_SIZE" type="{int}" />
+		<simple entity="TI_CORE_SCALE" type="{float}" />
+		<simple entity="START_YEAR" type="{int}" />
+		<simple entity="SYSTEM_INNER_RADIUS_OFFSET" type="{int}" />
+		<simple entity="SYSTEM_MIN_INNER_RADIUS" type="{int}" />
+		<simple entity="SYSTEM_OUTER_RADIUS_OFFSET" type="{int}" />
+		<simple entity="SYSTEM_BOTTLENECK_RADIUS" type="{int}" />
+
+		<simple entity="SHIP_DESIGN_SAME_NAME_FACTOR" type="{int}" />
+
+		<simple entity="GALACTIC_DEFENSE_FORCE_NAMELIST" type="{string}" />
+		<simple entity="IMPERIAL_ARMADA_NAMELIST" type="{string}" />
+
+		<simple entity="JUMP_DRIVE_COOLDOWN" type="{int}" />
+
+		<simple entity="RELEVANT_DISTANCE" type="{int}" />
+
+		<simple entity="CONSTRUCTION_SHIP_WORK_SPEED_MULT" type="{int}" />
+		<simple entity="CONSTRUCTION_SHIP_STATION_OFFSET" type="{int}" />
+		<simple entity="SCIENCE_SHIP_SPECIAL_PROJECT_OFFSET" type="{int}" />
+		<simple entity="SCIENCE_SHIP_SURVEY_SPEED_MULT" type="{float}" />
+		<list entity="SCIENCE_SHIP_ANOMALY_RESEARCH_DAYS" type="{int}" />
+
+		<simple entity="HYPERLANE_GEN_REMOVE_PERC" type="{float}" />
+		<simple entity="HYPERLANE_GEN_REMOVED_MAX_DIST" type="{int}" />
+		<simple entity="HYPERLANE_GEN_REMOVE_TOO_MANY_EDGES" type="{int}" />
+
+		<simple entity="GALAXY_GENERATION_RELAX_ITERATIONS" type="{int}" />
+		<simple entity="GALAXY_GENERATION_CENTER_DUMMY_POINTS" type="{int}" />
+
+		<simple entity="PLANET_ORBIT_DISTANCE_MIN_SIZE" type="{int}" />
+		<simple entity="PLANET_ORBIT_DISTANCE_SIZE_SCALE" type="{float}" />
+		<simple entity="PLANET_SHIP_ORBIT_DISTANCE" type="{float}" />
+		<simple entity="PLANET_STATION_ORBIT_DISTANCE" type="{float}" />
+		<simple entity="STARBASE_ORBIT_DISTANCE" type="{float}" />
+		<list entity="PLANET_DESTROYER_OFFENSIVE_SHIP_OFFSET" type="{float}" />
+		<simple entity="PLANET_ORBIT_STACK_SIZE" type="{int}" />
+		<simple entity="PLANET_ORBIT_STACK_DISTANCE" type="{float}" />
+
+		<simple entity="BASE_SURVEY_TIME" type="{float}" />
+
+		<simple entity="LEADER_POOL_SIZE" type="{int}" />
+		<simple entity="LEADER_POOL_LEAD_TIME" type="{int}" />
+		<simple entity="LEADER_BASE_SKILL_CAP" type="{int}" />
+		<simple entity="LEADER_MAX_SKILL_CAP" type="{int}" />
+		<simple entity="LEADER_SKILL_MIN" type="{int}" />
+		<simple entity="LEADER_AGE_HEIR_MIN" type="{int}" />
+		<simple entity="LEADER_AGE_HEIR_MAX" type="{int}" />
+		<simple entity="LEADER_AGE_MIN" type="{int}" />
+		<simple entity="LEADER_AGE_MAX" type="{int}" />
+		<simple entity="LEADER_SKILL_LEVEL_START" type="{int}" />
+		<simple entity="LEADER_EXPERIENCE_REQUIREMENT_BASE_VALUE" type="{int}" />
+		<simple entity="LEADER_EXPERIENCE_REQUIREMENT_SCALE_VALUE" type="{int}" />
+
+		<simple entity="LEADER_RULER_MONARCH_EXPERIENCE" type="{float}" />
+		<simple entity="LEADER_RULER_HEIR_EXPERIENCE" type="{float}" />
+
+		<simple entity="LEADER_ADMIRAL_FLEET_COMBAT_BASE_EXPERIENCE" type="{int}" />
+		<simple entity="LEADER_ADMIRAL_FLEET_COMBAT_EXPERIENCE_SCALE" type="{float}" />
+		<simple entity="LEADER_ADMIRAL_FLEET_COMBAT_SHIPS_KILLED_CONVERSION" type="{float}" />
+		<simple entity="LEADER_ADMIRAL_FLEET_COMBAT_SHIPS_DISENGAGED_CONVERSION" type="{float}" />
+		<simple entity="LEADER_ADMIRAL_FLEET_PIRACY_SUPPRESSION_DAILY" type="{float}" />
+
+		<simple entity="LEADER_GENERAL_GROUND_COMBAT_BASE_EXPERIENCE" type="{int}" />
+		<simple entity="LEADER_GENERAL_GROUND_COMBAT_EXPERIENCE_SCALE" type="{float}" />
+		<simple entity="LEADER_GENERAL_GROUND_COMBAT_ARMIES_KILLED_CONVERSION" type="{float}" />
+
+		<simple entity="LEADER_SCIENTIST_LEADING_RESEARCH_FIELD_EXPERIENCE" type="{float}" />
+		<simple entity="LEADER_SCIENTIST_SURVEY_EXPERIENCE" type="{int}" />
+		<simple entity="LEADER_SCIENTIST_SUCCESSFUL_ANOMALY_RESEARCH_EXPERIENCE" type="{int}" />
+		<simple entity="LEADER_SCIENTIST_COMPLETED_SPECIAL_PROJECT_EXPERIENCE" type="{int}" />
+		<simple entity="LEADER_SCIENTIST_COMPLETED_ARCHAEOLOGICAL_SITE_STAGE_EXPERIENCE" type="{int}" />
+		<simple entity="LEADER_SCIENTIST_ASSIST_RESEARCH" type="{float}" />
+		<simple entity="LEADER_SCIENTIST_ASSIST_RESEARCH_MULT" type="{float}" />
+
+		<simple entity="LEADER_GOVERNOR_MONTHLY_EXPERIENCE" type="{int}" />
+
+		<simple entity="LEADER_AGE_DEATH_CHANCE_AGE" type="{int}" />
+		<simple entity="LEADER_AGE_DEATH_CHANCE_INC" type="{float}" />
+		<simple entity="LEADER_AGE_HIGH_DEATH_CHANCE_AGE" type="{int}" />
+		<simple entity="LEADER_AGE_HIGH_DEATH_CHANCE_INC" type="{float}" />
+
+		<simple entity="HABITABILITY_IDEAL_PLANET" type="{float}" />
+		<simple entity="HABITABILITY_WRONG_PLANET" type="{float}" />
+		<simple entity="HABITABILITY_OPPOSITE_PLANET" type="{float}" />
+		<simple entity="HABITABILITY_AUTO_MIGRATION" type="{float}" />
+
+		<simple entity="WAR_EXHAUSTION_NAVAL_CAP_ADD" type="{int}" />
+		<simple entity="WAR_EXHAUSTION_SHIP_KILLED_MULT" type="{float}" />
+		<simple entity="WAR_EXHAUSTION_ARMY_KILLED_MULT" type="{float}" />
+		<simple entity="WAR_EXHAUSTION_PLANET_DESTRUCTION_MULT" type="{float}" />
+		<simple entity="WAR_EXHAUSTION_PASSIVE_GAIN_YEARLY" type="{float}" />
+		<simple entity="WAR_EXHAUSTION_PASSIVE_WAR_SIZE_DIV" type="{float}" />
+		<simple entity="WAR_EXHAUSTION_PASSIVE_GAIN_CUTOFF" type="{float}" />
+		<simple entity="WAR_EXHAUSTION_FROM_UNITS_CUTOFF" type="{float}" />
+		<simple entity="WAR_EXHAUSTION_HIGH_THRESHOLD" type="{float}" />
+
+		<simple entity="ENFORCE_STATUS_QUO_ENABLED" type="{bool}" />
+		<simple entity="ENFORCE_STATUS_QUO_MONTHS" type="{int}" />
+
+		<simple entity="PLANET_HEALTH_MAX" type="{int}" />
+		<simple entity="PLANET_HEALTH_REGEN" type="{float}" />
+		<simple entity="PLANET_HEALTH_REGEN_DELAY" type="{int}" />
+
+		<simple entity="PLANET_HEALTH_PROTECT_POPS" type="{float}" />
+		<simple entity="PLANET_HEALTH_PROTECT_ARMIES" type="{float}" />
+		<simple entity="PLANET_HEALTH_INHIBIT_FTL" type="{float}" />
+		<simple entity="PLANET_HEALTH_INCREASE_ARMY_DAMAGE" type="{float}" />
+		<simple entity="PLANET_HEALTH_ARMY_PROTECTED_DAMAGE_MULT" type="{float}" />
+		<simple entity="PLANET_HEALTH_ARMY_INCREASED_DAMAGE_MULT" type="{float}" />
+
+		<simple entity="ELECTION_COST" type="{int}" />
+		<simple entity="DEMOCRATIC_ELECTION_COST" type="{int}" />
+		<simple entity="NEXT_ELECTION_MESSAGE_DAYS" type="{int}" />
+		<simple entity="NEW_RULER_MESSAGE_DAYS" type="{int}" />
+
+		<simple entity="ETHOS_MAX_POINTS" type="{int}" />
+
+		<simple entity="GOVERNMENT_CIVIC_POINTS_BASE" type="{int}" />
+
+		<simple entity="POP_ETHOS_LOWER_ETHIC_THRESHOLD" type="{float}" />
+		<simple entity="POP_ETHOS_UPPER_ETHIC_THRESHOLD" type="{float}" />
+		<simple entity="POP_MIN_ETHIC_RELATIVE_ATTRACTION" type="{float}" />
+		<simple entity="POP_ETHOS_DIVERGENCE_INTERVAL" type="{int}" />
+		<simple entity="POP_ETHOS_DIVERGENCE_RATE_MULT" type="{float}" />
+		<simple entity="POP_CHANGE_FACTION_CHANCE" type="{float}" />
+		<simple entity="POP_CURRENT_FACTION_WEIGHT" type="{float}" />
+		<simple entity="POP_FACTION_APPROVAL_VERY_LOW" type="{float}" />
+		<simple entity="POP_FACTION_APPROVAL_LOW" type="{float}" />
+		<simple entity="POP_FACTION_APPROVAL_BASE" type="{float}" />
+		<simple entity="POP_FACTION_APPROVAL_HIGH" type="{float}" />
+		<simple entity="POP_FACTION_APPROVAL_VERY_HIGH" type="{float}" />
+		<simple entity="POP_FACTION_MIN_POTENTIAL_MEMBERS" type="{int}" />
+		<simple entity="POP_FACTION_CREATION_COOLDOWN" type="{int}" />
+
+		<simple entity="POLICY_YEARS" type="{int}" />
+		<simple entity="SPECIES_POLICY_YEARS" type="{int}" />
+
+		<simple entity="FEDERATION_LEADER_POWER_THRESHOLD" type="{float}" />
+		<simple entity="FEDERATION_MIN_MEMBERS_TO_KICK" type="{int}" />
+
+		<simple entity="DEBRIS_BASE_COST" type="{int}" />
+		<simple entity="DEBRIS_ANALYZED_AREA_POINTS" type="{int}" />
+		<simple entity="DEBRIS_ANALYZED_TECH_PROGRESS" type="{float}" />
+		<simple entity="DEBRIS_DAYS" type="{int}" />
+		<simple entity="DEBRIS_RESEARCH_TIME" type="{int}" />
+
+		<simple entity="SPECIAL_PROJECT_BASE_PROGRESS" type="{int}" />
+
+		<simple entity="SCIENCE_SHIP_SPECIAL_PROJECT_DIST" type="{float}" />
+
+		<simple entity="PLANET_SENSOR_RANGE" type="{int}" />
+		<simple entity="PLANET_HYPERLANE_RANGE" type="{int}" />
+		<simple entity="EVENT_AUTOSELECT_MONTHS" type="{int}" />
+
+		<simple entity="TRUCE_YEARS" type="{int}" />
+
+		<simple entity="INSULT_COOLDOWN_DAYS" type="{int}" />
+		<simple entity="AUTO_DECLINE_DIPLOMACY_DAYS" type="{int}" />
+
+		<simple entity="FEDERATION_PERK_EXPERATION_MONTHS" type="{int}" />
+		<simple entity="FEDERATION_BASE_ETHICS" type="{int}" />
+		<simple entity="FEDERATION_ENVOY_BASE_EFFECT" type="{float}" />
+		<simple entity="FEDERATION_MEMBERS_PENALTY" type="{float}" />
+		<simple entity="FEDERATION_NO_MEMBERS_PENALTY" type="{float}" />
+		<simple entity="FEDERATION_ETHICS_PENALTY" type="{float}" />
+		<simple entity="FEDERATION_OPPOSING_ETHICS_PENALTY" type="{float}" />
+		<simple entity="FEDERATION_BASE_COHESION" type="{float}" />
+		<simple entity="FEDERATION_COHESION_RANGE" type="{int}" />
+		<simple entity="FEDERATION_COHESION_TO_XP" type="{float}" />
+		<simple entity="FEDERATION_MAX_FLEET_SIZE" type="{int}" />
+		<simple entity="FEDERATION_JOIN_COHESION_PENALTY" type="{int}" />
+		<simple entity="FEDERATION_LEAVE_COHESION_PENALTY" type="{int}" />
+		<simple entity="FEDERATION_SWITCH_COHESION_PENALTY" type="{int}" />
+
+		<simple entity="ENVOY_IMPROVE_RELATION_BASE" type="{float}" />
+		<simple entity="ENVOY_IMPROVE_RELATION_MAX" type="{float}" />
+		<simple entity="ENVOY_HARM_RELATION_BASE" type="{float}" />
+		<simple entity="ENVOY_HARM_RELATION_MIN" type="{float}" />
+		<simple entity="ENVOY_RELATION_EFFECT_DECAY" type="{float}" />
+
+		<simple entity="EMBASSY_IMPROVE_RELATION_MULTIPLIER" type="{int}" />
+
+		<simple entity="MIN_RIVAL_YEARS" type="{int}" />
+
+		<simple entity="MAX_FRICTION" type="{int}" />
+		<simple entity="FRICTION_FROM_BORDERING_SYSTEM" type="{int}" />
+
+		<simple entity="CUSTOM_EMPIRE_SPAWN_CHANCE" type="{int}" />
+		<simple entity="FALLEN_CUSTOM_EMPIRE_SPAWN_CHANCE" type="{int}" />
+		<simple entity="FALLEN_EMPIRE_OUTER_BOUNDARY" type="{int}" />
+		<simple entity="FALLEN_EMPIRE_INNER_BOUNDARY" type="{int}" />
+
+		<simple entity="ADVANCED_EMPIRE_EXTRA_WARSHIPS_MIN" type="{int}" />
+		<simple entity="ADVANCED_EMPIRE_EXTRA_WARSHIPS_MAX" type="{int}" />
+		<simple entity="ADVANCED_EMPIRE_MIN_EXTRA_SYSTEMS" type="{int}" />
+		<simple entity="ADVANCED_EMPIRE_MAX_EXTRA_SYSTEMS" type="{int}" />
+		<simple entity="ADVANCED_EMPIRE_COLONY_CHANCE" type="{int}" />
+		<simple entity="ADVANCED_EMPIRE_ALWAYS_COLONIZE_HABITABILITY" type="{float}" />
+
+		<simple entity="MATURE_GALAXY_YEARS" type="{int}" />
+		<simple entity="MATURE_GALAXY_COLONY_DISTANCE_FIXED" type="{int}" />
+		<simple entity="MATURE_GALAXY_COLONY_DISTANCE_RANDOM" type="{int}" />
+		<simple entity="MATURE_GALAXY_COLONY_DISTANCE_SURVEYED" type="{int}" />
+		<simple entity="MATURE_GALAXY_TECH_TIER" type="{int}" />
+		<simple entity="MATURE_GALAXY_NAVY_SIZE" type="{float}" />
+		<simple entity="MATURE_GALAXY_EXTRA_MINERALS" type="{int}" />
+		<simple entity="MATURE_GALAXY_EXTRA_ENERGY" type="{int}" />
+		<simple entity="MATURE_GALAXY_EXTRA_INFLUENCE" type="{int}" />
+		<simple entity="MATURE_GALAXY_EXTRA_UNITY" type="{int}" />
+		<simple entity="MATURE_GALAXY_MAX_NUM_STARBASES" type="{int}" />
+		<simple entity="MATURE_GALAXY_STARBASE_LEVEL" type="{string}" />
+		<simple entity="MATURE_GALAXY_NUM_ARMIES" type="{int}" />
+		<simple entity="MATURE_GALAXY_CAPITAL" type="{string}" />
+		<simple entity="MATURE_GALAXY_COLONY_CAPITAL" type="{string}" />
+		<simple entity="MATURE_GALAXY_COLONY_POWER_PLANT" type="{string}" />
+		<simple entity="MATURE_GALAXY_COLONY_FARM" type="{string}" />
+		<simple entity="MATURE_GALAXY_COLONY_MINE" type="{string}" />
+		<simple entity="MATURE_GALAXY_COLONY_LAB" type="{string}" />
+		<simple entity="MATURE_GALAXY_ARMY" type="{string}" />
+		<simple entity="MATURE_GALAXY_HOME_POPS" type="{int}" />
+		<simple entity="MATURE_GALAXY_HOME_BUILDINGS" type="{int}" />
+
+		<simple entity="ADVANCED_GALAXY_YEARS" type="{int}" />
+		<simple entity="ADVANCED_GALAXY_COLONY_DISTANCE_FIXED" type="{int}" />
+		<simple entity="ADVANCED_GALAXY_COLONY_DISTANCE_RANDOM" type="{int}" />
+		<simple entity="ADVANCED_GALAXY_COLONY_DISTANCE_SURVEYED" type="{int}" />
+		<simple entity="ADVANCED_GALAXY_TECH_TIER" type="{int}" />
+		<simple entity="ADVANCED_GALAXY_NAVY_SIZE" type="{float}" />
+		<simple entity="ADVANCED_GALAXY_EXTRA_MINERALS" type="{int}" />
+		<simple entity="ADVANCED_GALAXY_EXTRA_ENERGY" type="{int}" />
+		<simple entity="ADVANCED_GALAXY_EXTRA_INFLUENCE" type="{int}" />
+		<simple entity="ADVANCED_GALAXY_EXTRA_UNITY" type="{int}" />
+		<simple entity="ADVANCED_GALAXY_MAX_NUM_STARBASES" type="{int}" />
+		<simple entity="ADVANCED_GALAXY_STARBASE_LEVEL" type="{string}" />
+		<simple entity="ADVANCED_GALAXY_NUM_ARMIES" type="{int}" />
+		<simple entity="ADVANCED_GALAXY_CAPITAL" type="{string}" />
+		<simple entity="ADVANCED_GALAXY_COLONY_CAPITAL" type="{string}" />
+		<simple entity="ADVANCED_GALAXY_COLONY_POWER_PLANT" type="{string}" />
+		<simple entity="ADVANCED_GALAXY_COLONY_FARM" type="{string}" />
+		<simple entity="ADVANCED_GALAXY_COLONY_MINE" type="{string}" />
+		<simple entity="ADVANCED_GALAXY_COLONY_LAB" type="{string}" />
+		<simple entity="ADVANCED_GALAXY_ARMY" type="{string}" />
+		<simple entity="ADVANCED_GALAXY_HOME_POPS" type="{int}" />
+		<simple entity="ADVANCED_GALAXY_HOME_BUILDINGS" type="{int}" />
+
+		<simple entity="ORBITAL_BOMBARDMENT_DAMAGE_MAX_SCALE" type="{int}" />
+		<simple entity="ORBITAL_BOMBARDMENT_COLONY_DMG_SCALE" type="{float}" />
+		<simple entity="ORBITAL_BOMBARDMENT_PLANET_DMG_SCALE" type="{float}" />
+		<simple entity="ORBITAL_BOMBARDMENT_ARMY_DMG_SCALE" type="{float}" />
+		<simple entity="ORBITAL_BOMBARDMENT_ASSAULT_ARMY_DAMAGE_MULT" type="{float}" />
+		<simple entity="ORBITAL_BOMBARDMENT_KILL_POP_CHANCE" type="{float}" />
+		<simple entity="ORBITAL_BOMBARDMENT_KILL_POP_COOLDOWN" type="{int}" />
+
+		<simple entity="COLLATERAL_DAMAGE_CHANCE" type="{float}" />
+		<simple entity="COLLATERAL_DAMAGE_BASE_SCALE" type="{float}" />
+		<simple entity="COLLATERAL_DAMAGE_DEFENDER_MULT" type="{float}" />
+		<simple entity="COLLATERAL_DAMAGE_MAX_PER_DAY" type="{float}" />
+		<simple entity="COLLATERAL_DAMAGE_KILL_POP_CHANCE" type="{float}" />
+
+		<simple entity="STATION_SELF_REPAIR_TIMER_DAYS" type="{int}" />
+
+		<simple entity="STARBASE_SELF_REPAIR_TIMER_DAYS" type="{int}" />
+		<simple entity="STARBASE_DISABLED_HEALTH_PERCENTAGE" type="{int}" />
+		<simple entity="STARBASE_ENABLED_HEALTH_PERCENTAGE" type="{float}" />
+		<simple entity="STARBASE_AUTO_CONTROL_DISTANCE" type="{int}" />
+
+		<simple entity="INFLUENCE_ADD_UPLIFTED_SPECIES" type="{int}" />
+
+		<simple entity="PLANET_COMBAT_WIDTH_BASE" type="{int}" />
+		<simple entity="PLANET_COMBAT_WIDTH_FROM_SIZE" type="{float}" />
+
+		<simple entity="GENERAL_DEATH_CHANCE" type="{float}" />
+
+		<simple entity="ANOMALY_SPAWN_CHANCE" type="{float}" />
+		<simple entity="ANOMALY_SPAWN_CHANCE_INCREMENT" type="{float}" />
+
+		<simple entity="GOVERNMENT_COOLDOWN_YEARS" type="{int}" />
+		<simple entity="GOVERNMENT_CHANGE_EMPIRE_SIZE_MULT" type="{float}" />
+
+		<simple entity="EMPIRE_SIZE_BASE" type="{int}" />
+		<simple entity="EMPIRE_SIZE_FROM_DISTRICTS" type="{float}" />
+		<simple entity="EMPIRE_SIZE_FROM_SYSTEMS" type="{int}" />
+		<simple entity="EMPIRE_SIZE_FROM_COLONIES" type="{int}" />
+		<simple entity="EMPIRE_SIZE_FROM_BRANCH_OFFICES" type="{int}" />
+		<simple entity="EMPIRE_SIZE_FROM_POPS" type="{int}" />
+
+		<simple entity="DIPLOMACY_WEIGHT_BASE" type="{float}" />
+		<simple entity="DIPLOMACY_WEIGHT_STANCE_FACTOR" type="{int}" />
+		<simple entity="DIPLOMACY_WEIGHT_SPRAWL_FACTOR" type="{int}" />
+		<simple entity="DIPLOMACY_WEIGHT_NAVAL_FACTOR" type="{float}" />
+		<simple entity="DIPLOMACY_WEIGHT_GESTALT_WEIGHT" type="{float}" />
+		<simple entity="DIPLOMACY_WEIGHT_POP_BASE" type="{float}" />
+		<simple entity="DIPLOMACY_WEIGHT_POP_HAPPINESS" type="{float}" />
+		<simple entity="DIPLOMACY_WEIGHT_ECONOMY_FACTOR" type="{float}" />
+		<simple entity="DIPLOMACY_WEIGHT_TECHNOLOGY_FACTOR" type="{float}" />
+
+		<simple entity="EMPIRE_SIZE_TECH_COST_PENALTY" type="{float}" />
+		<simple entity="EMPIRE_SIZE_TRADITION_COST_PENALTY" type="{float}" />
+
+		<simple entity="NUM_TECH_ALTERNATIVES" type="{int}" />
+		<simple entity="TECH_WEIGHT_BASE" type="{int}" />
+		<simple entity="TECH_WEIGHT_POTENTIAL_ADD" type="{int}" />
+		<simple entity="TECH_RESEARCH_NO_LEADER_PENALTY" type="{float}" />
+		<simple entity="TECH_COST_MULT_FALLEN_EMPIRE" type="{int}" />
+		<simple entity="TECH_WEIGHT_PREVIOUS_OPTION" type="{float}" />
+
+		<simple entity="TRADITION_COST_TRADITION" type="{int}" />
+		<simple entity="TRADITION_COST_TRADITION_EXP" type="{float}" />
+		<simple entity="TRADITION_COST_MULT_TRADITION_GROUP" type="{float}" />
+
+		<simple entity="KEYBOARD_DOUBLE_CLICK_TIME" type="{float}" />
+
+		<simple entity="MIN_TRADE_DEAL_LENGTH_YEARS" type="{int}" />
+		<simple entity="MAX_TRADE_DEAL_LENGTH_YEARS" type="{int}" />
+
+		<simple entity="MISSION_PROGRESS_MAX" type="{int}" />
+		<simple entity="NEW_HEIR_CHANCE" type="{float}" />
+		<simple entity="MIN_ELECTION_CANDIDATES" type="{int}" />
+		<simple entity="ELECTION_BASE_SUPPORT" type="{float}" />
+		<simple entity="ELECTION_INDEPENDENT_SUPPORT" type="{float}" />
+		<simple entity="ELECTION_SKILL_EFFECT" type="{float}" />
+
+		<simple entity="AI_FULL_RIGHTS_POLICY_FLAG" type="{string}" />
+		<simple entity="BORDERS_OPEN_POLICY_FLAG" type="{string}" />
+
+		<simple entity="SET_DEFENDER_WAR_GOAL_TIME_LIMIT" type="{int}" />
+
+		<simple entity="OCCUPATION_BASE_VALUE" type="{int}" />
+		<simple entity="OCCUPATION_PLANET_VALUE" type="{int}" />
+		<simple entity="OCCUPATION_POP_VALUE" type="{float}" />
+		<simple entity="OCCUPATION_STARBASE_VALUE" type="{int}" />
+
+		<simple entity="SYSTEM_LOST_CLAIM_STRENGTH" type="{int}" />
+
+		<simple entity="RESOURCE_CLUSTER_COUNT" type="{int}" />
+
+		<simple entity="RESEARCH_AGREEMENT_SPEED_MULT" type="{float}" />
+
+		<simple entity="MOVE_CAPITAL_INFLUENCE_COST" type="{int}" />
+		<simple entity="MOVE_CAPITAL_COOLDOWN_YEARS" type="{int}" />
+
+		<simple entity="INTEGRATE_SUBJECT_MIN_DAYS" type="{int}" />
+		<simple entity="SUBJECTS_INTEGRATION_CAP" type="{int}" />
+		<simple entity="SUBJECT_INTEGRATION_BASE_PROGRESS" type="{int}" />
+		<simple entity="SUBJECT_INTEGRATION_COST_BASE" type="{int}" />
+		<simple entity="SUBJECT_INTEGRATION_COST_PER_POP" type="{int}" />
+		<simple entity="SUBJECT_INTEGRATION_COST_PER_PLANET" type="{int}" />
+
+		<simple entity="COMMAND_LIMIT_MAX" type="{int}" />
+		<simple entity="COMMAND_LIMIT_BASE" type="{int}" />
+
+		<simple entity="NAVAL_CAPACITY_MAX" type="{int}" />
+		<simple entity="NAVAL_CAPACITY_BASE" type="{int}" />
+		<simple entity="NAVAL_CAPACITY_POP_MULT" type="{int}" />
+
+		<simple entity="NAVAL_CAPACITY_BASE_GALACTIC_COMMUNITY" type="{int}" />
+
+		<simple entity="STARBASE_CAPACITY_MAX" type="{int}" />
+		<simple entity="STARBASE_CAPACITY_BASE" type="{int}" />
+		<simple entity="STARBASE_CAPACITY_SYSTEM_MULT" type="{float}" />
+		<simple entity="STARBASE_CAPACITY_POP_MULT" type="{float}" />
+
+		<simple entity="STARBASE_BASE_LEVEL" type="{string}" />
+		<simple entity="UPGRADED_STARBASE_BASE_LEVEL" type="{string}" />
+
+		<simple entity="ASCENSION_PERKS_SLOTS" type="{int}" />
+
+		<simple entity="PLANET_ASCENSION_STARTING_POINT" type="{int}" />
+		<simple entity="PLANET_ASCENSION_MIN" type="{int}" />
+		<simple entity="PLANET_ASCENSION_COMPLETION_BONUS" type="{int}" />
+
+		<simple entity="PLANET_ASCENSION_SPRAWL_SCALE" type="{float}" />
+		<simple entity="PLANET_ASCENSION_SUM_SCALE" type="{float}" />
+		<simple entity="PLANET_ASCENSION_SPRAWL_MODIFIER" type="{float}" />
+
+		<simple entity="PLANET_ASCENSION_MODIFIER_SCALE" type="{float}" />
+
+		<simple entity="EVADE_HOSTILE_CANCEL_ORDERS_THRESHOLD_DAYS" type="{int}" />
+
+		<simple entity="EDICT_MAX_RESOURCE_COST" type="{int}" />
+		<simple entity="EXPERIMENTAL_SUBSPACE_NAVIGATION_TIME_MULT" type="{float}" />
+		<simple entity="MIA_TIME_MULT" type="{float}" />
+
+		<simple entity="SECTOR_RESOURCE_TRANSFER_AMOUNT_LARGE" type="{int}" />
+		<simple entity="SECTOR_RESOURCE_TRANSFER_AMOUNT" type="{int}" />
+
+		<simple entity="HIGH_PIRACY_RISK" type="{float}" />
+
+		<simple entity="MACHINE_EMPIRE_EXCLUSION_TRAIT" type="{string}" />
+		<simple entity="PSIONIC_TRAIT" type="{string}" />
+		<simple entity="CHOSEN_ONE_LEADER_TRAIT" type="{string}" />
+
+		<simple entity="ARCHAEOLOGICAL_SITE_DICE_ROLL_MIN" type="{int}" />
+		<simple entity="ARCHAEOLOGICAL_SITE_DICE_ROLL_MAX" type="{int}" />
+		<simple entity="ARCHAEOLOGICAL_SITE_DISCOVERY_SCORE" type="{int}" />
+		<simple entity="ARCHAEOLOGICAL_SITE_DISCOVERY_DAYS" type="{int}" />
+
+		<simple entity="ESPIONAGE_OPERATION_BASE_ROLL_FREQUENCY" type="{float}" />
+		<simple entity="ESPIONAGE_OPERATION_SUCCESS_SCORE" type="{float}" />
+		<simple entity="ESPIONAGE_OPERATION_DICE_ROLL_MIN" type="{int}" />
+		<simple entity="ESPIONAGE_OPERATION_DICE_ROLL_MAX" type="{int}" />
+
+		<simple entity="RELIC_VIEW_SLOTS_PER_ROW" type="{int}" />
+		<simple entity="RELIC_VIEW_SLOTS_PER_ROW_WIDE" type="{int}" />
+		<simple entity="RELIC_VIEW_DEFAULT_ROW_COUNT" type="{int}" />
+
+		<simple entity="MEGASTRUCTURE_BUILD_CAP_BASE" type="{float}" />
+
+		<simple entity="BASE_ENVOYS_REGULAR_EMPIRE" type="{int}" />
+
+		<simple entity="RESOLUTION_VOTE_TIMER" type="{int}" />
+		<simple entity="RESOLUTION_VOTE_PREMATURE_TIMER" type="{int}" />
+		<simple entity="SENATE_RECESS_TIMER" type="{int}" />
+		<simple entity="COUNCIL_DIPLOMACY_WEIGHT_MODIFIER" type="{float}" />
+		<simple entity="CHANGE_VOTE_COOLDOWN" type="{int}" />
+
+		<simple entity="DEFAULT_COUNCIL_SIZE" type="{int}" />
+		<simple entity="DEFAULT_COUNCIL_VETO" type="{bool}" />
+		<simple entity="DEFAULT_COUNCIL_EMERGENCY_MEASURES" type="{bool}" />
+		<simple entity="CATEGORY_VOTE_COOLDOWN" type="{int}" />
+		<simple entity="TYPE_VOTE_COOLDOWN" type="{int}" />
+		<simple entity="VETO_COOLDOWN" type="{int}" />
+		<simple entity="EMERGENCY_MEASURES_COOLDOWN" type="{int}" />
+		<simple entity="DEFAULT_VETO_COST_MULT" type="{int}" />
+		<simple entity="JOIN_COMMUNITY_INFLUENCE_COST" type="{int}" />
+		<simple entity="LEAVE_COMMUNITY_MIN_INFLUENCE_COST" type="{int}" />
+		<simple entity="LEAVE_COMMUNITY_MAX_INFLUENCE_COST" type="{int}" />
+		<simple entity="LEAVE_COMMUNITY_INFLUENCE_COST_FACTOR" type="{float}" />
+		<simple entity="LEFT_COMMUNITY_MODIFIER_TIMER" type="{int}" />
+		<simple entity="COUNCIL_ELECTION_TIMER" type="{int}" />
+		<simple entity="COUNCIL_ELECTION_SOON_CUTOFF" type="{int}" />
+		<simple entity="COMMUNITY_FREEZE_RESOLUTION_MONTHS" type="{int}" />
+		<simple entity="CUSTODIAN_TERM_LIMIT_DAYS" type="{int}" />
+		<simple entity="CUSTODIAN_TERM_LIMIT_EXPIRATION_MESSAGE_DAYS" type="{int}" />
+
+		<simple entity="ENVOY_STRENGTHEN_IMPERIAL_AUTHORITY_RELATION_GROWTH" type="{int}" />
+		<simple entity="ENVOY_STRENGTHEN_IMPERIAL_AUTHORITY_RELATION_DECAY" type="{int}" />
+		<simple entity="ENVOY_STRENGTHEN_IMPERIAL_AUTHORITY_RELATION_MAX" type="{int}" />
+		<simple entity="ENVOY_UNDERMINE_IMPERIAL_AUTHORITY_RELATION_GROWTH" type="{int}" />
+		<simple entity="ENVOY_UNDERMINE_IMPERIAL_AUTHORITY_RELATION_DECAY" type="{int}" />
+		<simple entity="ENVOY_UNDERMINE_IMPERIAL_AUTHORITY_RELATION_MIN" type="{int}" />
+
+		<simple entity="FEDERATION_LOW_COHESION_CUTOFF" type="{float}" />
+
+		<simple entity="OPINION_MAX" type="{int}" />
+		<simple entity="OPINION_EXCELLENT" type="{int}" />
+		<simple entity="OPINION_GOOD" type="{int}" />
+		<simple entity="OPINION_POOR" type="{int}" />
+		<simple entity="OPINION_TERRIBLE" type="{int}" />
+		<simple entity="OPINION_MIN" type="{int}" />
+
+		<simple entity="FAVOR_CAP" type="{int}" />
+		<simple entity="FAVORS_PER_RESOLUTION_CAP" type="{int}" />
+		<simple entity="BORROWED_DIPLO_WEIGHT_FAVOR_MULT" type="{float}" />
+
+		<simple entity="DECLINED_TO_LEAVE_FEDERATION_CASUS_BELLI_TYPE" type="{string}" />
+
+		<simple entity="FEDERATION_VOTE_RESUBMIT_DELAY" type="{int}" />
+		<simple entity="DEFAULT_ORIGIN" type="{string}" />
+
+		<simple entity="SPAWN_SYSTEM_BUFFER_DISTANCE" type="{float}" />
+		<simple entity="SPAWN_SYSTEM_ATTEMPTS" type="{int}" />
+
+		<simple entity="EDICT_CAPACITY_BASE" type="{int}" />
+		<simple entity="EDICT_UNITY_AMBITION_COST_MULT" type="{float}" />
+
+		<simple entity="INTEL_CAP" type="{int}" />
+		<simple entity="INTEL_YEARLY_DECREASE" type="{float}" />
+		<simple entity="INTEL_YEARLY_INCREASE" type="{float}" />
+		<simple entity="INTEL_FROM_TRUST_MULTIPLIER" type="{float}" />
+		<simple entity="INTEL_FROM_COMMUNICATIONS" type="{float}" />
+		<simple entity="INTEL_FROM_NON_AGGRESSION_PACT" type="{float}" />
+		<simple entity="INTEL_FROM_GALACTIC_COMMUNITY" type="{float}" />
+		<simple entity="INTEL_FROM_GALACTIC_CUSTODIAN" type="{float}" />
+		<simple entity="INTEL_FROM_GALACTIC_EMPEROR" type="{float}" />
+		<simple entity="INTEL_FROM_GALACTIC_EMPEROR_HEIGHTENED_SECURITY" type="{float}" />
+		<simple entity="INTEL_FROM_COMMERCIAL_PACT" type="{float}" />
+		<simple entity="INTEL_FROM_MIGRATION_PACT" type="{float}" />
+		<simple entity="INTEL_FROM_GUARANTEE" type="{float}" />
+		<simple entity="INTEL_FROM_DEFENSIVE_PACT" type="{float}" />
+		<simple entity="INTEL_FROM_FEDERATION_ASSOCIATION" type="{float}" />
+		<simple entity="INTEL_FROM_RESEARCH_AGREEMENT" type="{float}" />
+		<simple entity="INTEL_FROM_FEDERATION_CENTRALIZATION" type="{float}" />
+		<simple entity="INTEL_FROM_EMBASSY" type="{float}" />
+
+		<simple entity="FIRST_CONTACT_DICE_ROLL_MIN" type="{int}" />
+		<simple entity="FIRST_CONTACT_DICE_ROLL_MAX" type="{int}" />
+		<simple entity="FIRST_CONTACT_LOWER_INSIGHT_SCORE" type="{int}" />
+		<simple entity="FIRST_CONTACT_HIGHER_INSIGHT_SCORE" type="{int}" />
+		<simple entity="FIRST_CONTACT_LOWER_INSIGHT_REWARD" type="{int}" />
+		<simple entity="FIRST_CONTACT_HIGHER_INSIGHT_REWARD" type="{int}" />
+		<simple entity="FIRST_CONTACT_DISCOVERY_SCORE" type="{int}" />
+		<simple entity="FIRST_CONTACT_DISCOVERY_DAYS" type="{int}" />
+		<simple entity="FIRST_CONTACT_DISCOVERY_DAYS_AI" type="{int}" />
+		<simple entity="FIRST_CONTACT_FIRST_STAGE" type="{string}" />
+		<simple entity="FIRST_CONTACT_INTEL_TARGET" type="{int}" />
+		<simple entity="FIRST_CONTACT_POLICY" type="{string}" />
+		<simple entity="FIRST_CONTACT_POLICY_FLAG_CAUTIOUS" type="{string}" />
+		<simple entity="FIRST_CONTACT_POLICY_FLAG_PROACTIVE" type="{string}" />
+		<simple entity="FIRST_CONTACT_POLICY_FLAG_ATTACK_ALLOWED" type="{string}" />
+		<simple entity="FIRST_CONTACT_UNKNOWN_SPECIES_PORTRAITS_AMOUNT" type="{int}" />
+
+		<simple entity="SPY_NETWORK_LEVELS" type="{int}" />
+		<simple entity="SPY_NETWORK_MAX_LEVELS" type="{int}" />
+		<simple entity="SPY_NETWORK_ENCRYPTION_DECRYPTION_LEVELS_EFFECT" type="{int}" />
+		<simple entity="SPY_NETWORK_ENCRYPTION_DECRYPTION_LEVELS_MIN" type="{int}" />
+		<simple entity="SPY_NETWORK_ENCRYPTION_DECRYPTION_LEVELS_MAX" type="{int}" />
+		<simple entity="SPY_NETWORK_MAX_POWER" type="{int}" />
+		<simple entity="SPY_NETWORK_MAX_ENVOYS_COUNT" type="{int}" />
+		<simple entity="SPY_NETWORK_DAILY_ENVOY_SCORE" type="{float}" />
+		<simple entity="SPY_NETWORK_SPRAWL_SCORE_SCALE" type="{float}" />
+		<simple entity="SPY_NETWORK_BASE_LEVEL_SCORE" type="{float}" />
+		<simple entity="SPY_NETWORK_PER_LEVEL_SCORE" type="{float}" />
+		<simple entity="SPY_NETWORK_MONTHLY_DECAY" type="{float}" />
+		<simple entity="SPY_NETWORK_ENCRYPTION_DECRYPTION_BONUS_MULT" type="{float}" />
+		<simple entity="SPY_NETWORK_ENCRYPTION_DECRYPTION_BONUS_MIN" type="{float}" />
+		<simple entity="SPY_NETWORK_ENCRYPTION_DECRYPTION_BONUS_MAX" type="{float}" />
+		<simple entity="SPY_NETWORK_MAXIMUM_ASSIGNED_ASSETS" type="{int}" />
+		<simple entity="SPY_NETWORK_RELATIVE_ENCRYPTION_DIFFICULTY_MULT" type="{int}" />
+		<simple entity="SPY_NETWORK_RELATIVE_ENCRYPTION_DIFFICULTY_MIN" type="{int}" />
+		<simple entity="SPY_NETWORK_RELATIVE_ENCRYPTION_DIFFICULTY_MAX" type="{int}" />
+		<simple entity="SPY_NETWORK_RELATIVE_ENCRYPTION_MIN" type="{int}" />
+		<simple entity="SPY_NETWORK_RELATIVE_ENCRYPTION_MAX" type="{int}" />
+
+		<simple entity="GALACTIC_EMPIRE_BASE_AUTHORITY" type="{int}" />
+		<simple entity="GALACTIC_EMPIRE_MAX_AUTHORITY" type="{int}" />
+		<simple entity="GALACTIC_EMPIRE_ENVOY_AUTHORITY_CHANGE" type="{float}" />
+		<simple entity="IMPERIAL_COUNCIL_CHANGE_MEMBER_INFLUENCE_COST" type="{float}" />
+
+		<simple entity="MENACE_PERK_MINIMUM_ACTIVATION_TIME" type="{int}" />
+		<simple entity="SEEN_ALIENS" type="{string}" />
+
+		<simple entity="PLANET_COLONIZED_STRING" type="{string}" />
+		<simple entity="PLANET_ACQUIRED_STRING" type="{string}" />
+
+		<simple entity="TRADITION_CATEGORIES_MAX" type="{int}" />
+	</complex>
+	<complex entity="NSpecies">
+		<simple entity="MIN_ETHIC_POINTS" type="{int}" />
+
+		<simple entity="HALF_BREED_BASE_CHANCE" type="{float}" />
+		<simple entity="HALF_BREED_SAME_CLASS_CHANCE_ADD" type="{float}" />
+		<simple entity="HALF_BREED_SWAP_BASE_SPECIES_CHANCE" type="{float}" />
+		<simple entity="HALF_BREED_EXTRA_TRAIT_POINTS" type="{int}" />
+		<simple entity="HALF_BREED_EXTRA_TRAIT_PICKS" type="{int}" />
+
+		<simple entity="TRAIT_MODIFICATION_BASE_COST" type="{int}" />
+		<simple entity="TRAIT_CLIMATE_MODIFICATION_COST" type="{int}" />
+		<simple entity="TRAIT_MODIFICATION_COST_MULT" type="{int}" />
+		<simple entity="MODIFICATION_COST_MULT" type="{int}" />
+		<simple entity="ROBO_TRAIT_MODIFICATION_BASE_COST" type="{int}" />
+		<simple entity="ROBO_TRAIT_MODIFICATION_COST_MULT" type="{int}" />
+		<simple entity="ROBO_MODIFICATION_COST_MULT" type="{int}" />
+		<simple entity="UPLIFT_COST_BASE" type="{float}" />
+		<simple entity="TRAIT_MODIFICATION_TIME_LIMIT" type="{int}" />
+		<simple entity="HOMEWORLD_HABITABILITY" type="{float}" />
+
+		<simple entity="MUTATION_REMOVE_CHANCE" type="{int}" />
+		<simple entity="MUTATION_ADD_CHANCE" type="{int}" />
+		<simple entity="MUTATION_MIN_TRAITS" type="{int}" />
+		<simple entity="MUTATION_MAX_TRAITS" type="{int}" />
+
+		<simple entity="DEFAULT_GENDER_CHANCE" type="{int}" />
+		<simple entity="MALE_GENDER_CHANCE" type="{int}" />
+		<simple entity="FEMALE_GENDER_CHANCE" type="{int}" />
+		<simple entity="NON_GENDERED_CHANCE" type="{int}" />
+	</complex>
+	<complex entity="NShip">
+		<simple entity="AGGRESSIVE_STANCE_INVASION_ODDS_MULT" type="{float}" />
+		<simple entity="AGGRESSIVE_STANCE_MIN_POWER_MULT" type="{float}" />
+
+		<simple entity="DESIGNER_WEAPON_PREF_MUL" type="{float}" />
+		<simple entity="DESIGNER_WEAPON_STACKING_DIV" type="{float}" />
+
+		<simple entity="ABANDONED_STATION_DECAY_RATE" type="{float}" />
+
+		<simple entity="STRIKE_CRAFT_COMBAT_REGEN" type="{float}" />
+
+		<simple entity="MOVE_SHIP_TO_FLEET_MAX_DIST" type="{float}" />
+
+		<simple entity="OUT_OF_COMBAT_SHIELD_REGEN_MULT" type="{float}" />
+
+		<simple entity="SHIP_SPEED_SCALE" type="{float}" />
+
+		<simple entity="SHIP_MAX_EVASION" type="{float}" />
+
+		<simple entity="FLEET_BASE_FORMATION_SCALE" type="{float}" />
+		<simple entity="FLEET_BASE_FORMATION_DIV" type="{int}" />
+
+		<simple entity="FLEET_FORMATION_CIRCLE_SHIPS_PER_LAYER_MULT" type="{int}" />
+		<simple entity="FLEET_FORMATION_CIRCLE_RADIUS_PER_LAYER_MULT" type="{float}" />
+
+		<simple entity="FLEET_UPGRADE_QUEUE_FACTOR_MULT" type="{float}" />
+
+		<simple entity="LANDING_TIME_DAYS" type="{int}" />
+
+		<simple entity="MOVE_TO_ACTION_THRESHOLD" type="{float}" />
+
+		<simple entity="HYPERLANE_WINDUP" type="{int}" />
+		<simple entity="HYPERLANE_WINDDOWN" type="{int}" />
+		<simple entity="HYPERDRIVE_INTERSTELLAR_TRAVEL_SPEED" type="{float}" />
+		<simple entity="RULER_SHIP_SCALE_MULT" type="{float}" />
+		<simple entity="JUMP_DRIVE_WINDUP" type="{int}" />
+		<simple entity="JUMP_DRIVE_RANGE" type="{int}" />
+
+		<simple entity="SHIELD_RECHARGE_TICKS" type="{int}" />
+
+		<simple entity="MILITARY_POWER_HEALTH_WEIGHT" type="{float}" />
+		<simple entity="MILITARY_POWER_ARMOR_WEIGHT" type="{float}" />
+		<simple entity="MILITARY_POWER_SHIELD_WEIGHT" type="{float}" />
+		<simple entity="MILITARY_POWER_DAMAGE_WEIGHT" type="{float}" />
+		<simple entity="MILITARY_POWER_SCALE" type="{float}" />
+		<simple entity="MILITARY_POWER_EXPONENT" type="{float}" />
+
+		<simple entity="MILITARY_POWER_ARMOR_PENETRATION_WEIGHT" type="{float}" />
+		<simple entity="MILITARY_POWER_SHIELD_PENETRATION_WEIGHT" type="{float}" />
+		<simple entity="MILITARY_POWER_HULL_DAMAGE_WEIGHT" type="{float}" />
+		<simple entity="MILITARY_POWER_ARMOR_DAMAGE_WEIGHT" type="{float}" />
+		<simple entity="MILITARY_POWER_SHIELD_DAMAGE_WEIGHT" type="{float}" />
+		<simple entity="MILITARY_POWER_TRACKING_WEIGHT" type="{float}" />
+		<simple entity="MILITARY_POWER_RANGE_DIV" type="{int}" />
+		<simple entity="MILITARY_POWER_MISSILE_MULT" type="{float}" />
+		<simple entity="MILITARY_POWER_PD_MULT" type="{float}" />
+
+		<simple entity="DEFAULT_ARMOR_RATIO" type="{float}" />
+		<simple entity="DEFAULT_SHIELD_RATIO" type="{float}" />
+		<simple entity="MIN_SPEED_FOR_UTILITIES" type="{float}" />
+
+		<simple entity="EXCESS_POWER_BONUS_THRESHOLD_MAX" type="{float}" />
+		<simple entity="EXCESS_POWER_BONUS_THRESHOLD_MIN" type="{float}" />
+
+		<simple entity="SHIP_EXP_GAIN_COMBAT" type="{float}" />
+		<simple entity="SHIP_EXP_GAIN_PIRACY_SUP" type="{float}" />
+		<simple entity="SHIP_EXP_EXPERIENCED" type="{int}" />
+		<simple entity="SHIP_EXP_VETERAN" type="{int}" />
+		<simple entity="SHIP_EXP_ELITE" type="{int}" />
+
+		<simple entity="CAN_TRAVEL_BETWEEN_UNEXPLORED_SYSTEMS" type="{bool}" />
+	</complex>
+	<complex entity="NCombat">
+		<simple entity="COMBAT_BACK_OFF_RATE" type="{float}" />
+
+		<simple entity="SHIP_SMOOTH_ROTATION_THRESHOLD" type="{float}" />
+
+		<simple entity="FORCE_DISPARITY_BASE" type="{int}" />
+		<simple entity="FORCE_DISPARITY_MAX_EFFECT" type="{float}" />
+
+		<simple entity="COMBAT_DAYS_BEFORE_TARGET_STICKYNESS" type="{int}" />
+		<simple entity="COMBAT_TARGET_STICKYNESS_FACTOR" type="{float}" />
+		<simple entity="RANDOM_TARGETING_WEIGHT" type="{float}" />
+
+		<simple entity="ADMIRAL_DEATH_CHANCE" type="{float}" />
+
+		<simple entity="COMBAT_SHIP_TARGETING_SIZE_MULT" type="{float}" />
+		<simple entity="COMBAT_SHIP_TARGETING_SIZE_MAX" type="{int}" />
+		<simple entity="COMBAT_SHIP_TARGETING_TRACKING_MULT" type="{float}" />
+		<simple entity="COMBAT_SHIP_EVASION_TARGETING_WEIGHT" type="{float}" />
+		<simple entity="COMBAT_SHIP_LOW_HEALTH_THRESHOLD" type="{float}" />
+		<simple entity="COMBAT_SHIP_LOW_HEALTH_TARGETING_WEIGHT" type="{float}" />
+		<simple entity="COMBAT_SHIP_DISTANCE_TARGETING_WEIGHT" type="{float}" />
+		<simple entity="COMBAT_SHIP_DISTANCE_TARGETING_WEIGHT_MIN" type="{float}" />
+		<simple entity="COMBAT_SHIP_UNARMED_TARGETING_WEIGHT" type="{float}" />
+		<simple entity="COMBAT_SHIP_STARBASE_TARGETING_WEIGHT" type="{float}" />
+		<simple entity="COMBAT_SHIP_EVASION_AVOID_MIN_SHIP_SIZE" type="{int}" />
+		<simple entity="COMBAT_SHIP_EVASION_AVOID_THRESHOLD" type="{float}" />
+
+		<simple entity="COMBAT_DETECT_RANGE_MULT" type="{float}" />
+		<simple entity="COMBAT_DETECT_RANGE_MIN" type="{int}" />
+		<simple entity="COMBAT_AREA_MIN_ATTACK_RADIUS" type="{float}" />
+		<simple entity="COMBAT_EMERGENCY_FTL_LOST_RISK" type="{float}" />
+		<simple entity="COMBAT_EMERGENCY_FTL_DAMAGE_RISK" type="{float}" />
+		<simple entity="COMBAT_EMERGENCY_FTL_DAMAGE_AMOUNT" type="{float}" />
+		<simple entity="COMBAT_BASE_DAYS_UNTIL_EMERGENCY_FTL" type="{float}" />
+
+		<simple entity="MISSILE_HIGH_CONTROL_DISTANCE" type="{float}" />
+		<simple entity="MISSILE_HIGH_CONTROL_INTERPOLATION_RANGE" type="{float}" />
+		<simple entity="MISSILE_BASE_ROTATION_SPEED" type="{float}" />
+		<simple entity="MISSILE_RETARGET_CHANCE_START" type="{int}" />
+		<simple entity="MISSILE_RETARGET_CHANCE_REDUCTION" type="{int}" />
+
+		<simple entity="SHIP_DISENGAGE_BASE_CHANCE" type="{float}" />
+		<simple entity="SHIP_DISENGAGE_MAX_CHANCE" type="{float}" />
+		<simple entity="SHIP_DISENGAGE_HEALTH_THRESHOLD" type="{float}" />
+		<simple entity="SHIP_DISENGAGE_FRIENDLY_TERRITORY_MULT" type="{float}" />
+	</complex>
+	<complex entity="NPop">
+		<simple entity="FORCED_SPECIES_GROWTH_PENALTY" type="{float}" />
+		<simple entity="FORCED_SPECIES_ASSEMBLY_PENALTY" type="{float}" />
+
+		<simple entity="BASE_POLITICAL_POWER" type="{int}" />
+		<simple entity="MIN_POLITICAL_POWER_POSITIVE_STABILITY_IMPACT" type="{float}" />
+		<simple entity="MAX_POLITICAL_POWER_POSITIVE_STABILITY_IMPACT" type="{int}" />
+		<simple entity="MIN_POLITICAL_POWER_NEGATIVE_STABILITY_IMPACT" type="{float}" />
+		<simple entity="MAX_POLITICAL_POWER_NEGATIVE_STABILITY_IMPACT" type="{int}" />
+
+		<simple entity="BASE_POP_GROWTH" type="{int}" />
+		<simple entity="LOGISTIC_POP_GROWTH_R" type="{float}" />
+		<simple entity="LOGISTIC_POP_GROWTH_FLOOR" type="{float}" />
+		<simple entity="LOGISTIC_POP_GROWTH_MIN_POPS" type="{int}" />
+		<simple entity="LOGISTIC_POP_GROWTH_LOWER_THRESHOLD" type="{float}" />
+		<simple entity="MAX_CARRYING_CAPACITY" type="{int}" />
+		<simple entity="MAX_NEW_COLONIES_SCALE" type="{int}" />
+		<simple entity="REQUIRED_POP_GROWTH" type="{int}" />
+
+		<simple entity="OVERCROWDING_NO_GROWTH_THRESHOLD" type="{float}" />
+		<simple entity="OVERCROWDING_DECLINE_THRESHOLD" type="{float}" />
+		<simple entity="OVERCROWDING_ABSOLUTE_THRESHOLD_FOR_NO_GROWTH" type="{int}" />
+		<simple entity="MAX_NUM_GROWTH_OR_DECLINE_PER_MONTH" type="{int}" />
+
+		<simple entity="RESETTLE_UNEMPLOYED_BASE_RATE" type="{float}" />
+		<simple entity="RESETTLE_DESTROY_COLONY_COST" type="{int}" />
+
+		<simple entity="NEW_POP_SPECIES_RANDOMNESS" type="{float}" />
+		<simple entity="NEW_POP_SAME_SPECIES_WEIGHT" type="{float}" />
+		<simple entity="NEW_POP_EXACT_SPECIES_WEIGHT" type="{float}" />
+		<simple entity="NEW_POP_SLAVERY_WEIGHT" type="{float}" />
+		<simple entity="NEW_POP_SPECIES_DIV" type="{float}" />
+		<simple entity="NEW_POP_HABITABILITY_THRESHOLD" type="{float}" />
+		<simple entity="NEW_POP_LOW_HABITABILITY_PENALTY" type="{int}" />
+		<simple entity="NEW_POP_HOMEWORLD_MULT" type="{int}" />
+		<simple entity="NEW_POP_ASSEMBLY_TRAIT_MULT" type="{int}" />
+		<simple entity="NEW_POP_GROWTH_RATE_MULT" type="{float}" />
+		<simple entity="NEW_POP_IMMIGRATION_MOD_MULT" type="{int}" />
+
+		<simple entity="POP_ENSLAVE_MAX_RANK" type="{int}" />
+
+		<simple entity="BASE_POP_DECLINE" type="{int}" />
+		<simple entity="REQUIRED_POP_DECLINE" type="{int}" />
+		<simple entity="POP_DECLINE_THRESHOLD" type="{float}" />
+
+		<simple entity="BASE_POP_ASSEMBLY" type="{int}" />
+		<simple entity="REQUIRED_POP_ASSEMBLY" type="{int}" />
+
+		<simple entity="MAX_EMIGRATION_PUSH" type="{int}" />
+		<simple entity="MAX_GROWTH_FROM_IMMIGRATION" type="{int}" />
+		<simple entity="MAX_GROWTH_PENALTY_FROM_EMIGRATION" type="{float}" />
+
+		<simple entity="DEFAULT_CHANGE_JOB_THRESHOLD" type="{float}" />
+
+		<simple entity="LOW_HAPPINESS" type="{float}" />
+		<simple entity="HIGH_HAPPINESS" type="{float}" />
+
+		<simple entity="BASE_PRODUCTION" type="{float}" />
+		<simple entity="BASE_HAPPINESS" type="{float}" />
+
+		<simple entity="RECENTLY_CONQUERED_DAYS" type="{int}" />
+
+		<simple entity="SAME_STRATA_EMPLOYMENT_BONUS" type="{float}" />
+		<simple entity="FAVORITE_JOB_EMPLOYMENT_BONUS" type="{float}" />
+	</complex>
+	<complex entity="NArmy">
+		<simple entity="MONTHLY_REINFORCE" type="{float}" />
+
+		<simple entity="BASE_HEALTH" type="{float}" />
+		<simple entity="BASE_DAMAGE_MIN" type="{float}" />
+		<simple entity="BASE_DAMAGE_MAX" type="{float}" />
+
+		<simple entity="BASE_MORALE" type="{float}" />
+		<simple entity="MORALE_DAMAGE_MULT" type="{float}" />
+		<simple entity="MONTHLY_MORALE_REGENERATION" type="{float}" />
+		<simple entity="DISENGAGED_EFFECT" type="{float}" />
+		<simple entity="BROKEN_MORALE_EFFECT" type="{float}" />
+		<simple entity="LOW_MORALE_THRESHOLD" type="{float}" />
+		<simple entity="LOW_MORALE_EFFECT" type="{float}" />
+
+		<simple entity="ARMY_EXP_GAIN_DAMAGE_DEALT" type="{float}" />
+		<simple entity="ARMY_EXP_GAIN_DAMAGE_TAKEN" type="{float}" />
+		<simple entity="ARMY_EXP_EXPERIENCED" type="{int}" />
+		<simple entity="ARMY_EXP_VETERAN" type="{int}" />
+		<simple entity="ARMY_EXP_ELITE" type="{int}" />
+
+		<simple entity="NUM_DAYS_BEFORE_RETREAT" type="{int}" />
+		<simple entity="RETREAT_UNIT_LOST_MIN_CHANCE" type="{float}" />
+		<simple entity="RETREAT_UNIT_LOST_MAX_CHANCE" type="{float}" />
+
+		<simple entity="GROUND_COMBAT_RANDOM_TARGETING_WEIGHT" type="{float}" />
+		<simple entity="GROUND_COMBAT_LOW_HEALTH_THRESHOLD" type="{float}" />
+		<simple entity="GROUND_COMBAT_LOW_HEALTH_TARGETING_WEIGHT" type="{float}" />
+
+		<simple entity="ARMY_MILITARY_POWER_SCALE" type="{float}" />
+		<simple entity="ARMY_MILITARY_POWER_EXPONENT" type="{float}" />
+		<simple entity="ARMY_MILITARY_POWER_DAMAGE_MULT" type="{int}" />
+		<simple entity="ARMY_MILITARY_POWER_MORALE_DAMAGE_MULT" type="{float}" />
+		<simple entity="ARMY_MILITARY_POWER_HEALTH_MULT" type="{int}" />
+		<simple entity="ARMY_MILITARY_POWER_MORALE_MULT" type="{float}" />
+		<simple entity="ARMY_MILITARY_POWER_NO_MORALE_FACTOR" type="{int}" />
+
+		<simple entity="ARMY_DISENGAGE_BASE_CHANCE" type="{float}" />
+		<simple entity="ARMY_DISENGAGE_MAX_CHANCE" type="{float}" />
+		<simple entity="ARMY_DISENGAGE_HEALTH_THRESHOLD" type="{float}" />
+		<simple entity="ARMY_DISENGAGE_MORALE_DIV" type="{float}" />
+		<simple entity="ARMY_DISENGAGE_MORALE_MIN_DIV" type="{float}" />
+		<simple entity="ARMY_DISENGAGE_TARGET_PRIO" type="{float}" />
+	</complex>
+	<complex entity="NEconomy">
+		<simple entity="COLONY_MONTHLY_GROWTH" type="{int}" />
+		<simple entity="COLONY_MAINTENANCE_COST" type="{int}" />
+
+		<simple entity="FLEET_UPGRADE_TIME_COST_MULT" type="{float}" />
+		<simple entity="FLEET_UPGRADE_SECTION_COST_REFUND_MULT" type="{float}" />
+		<simple entity="FLEET_UPGRADE_COMPONENT_COST_REFUND_MULT" type="{float}" />
+
+		<simple entity="EXPANSION_COST_MAX" type="{float}" />
+		<simple entity="EXPANSION_COST_BASE" type="{float}" />
+		<simple entity="EXPANSION_COST_DISTANCE" type="{float}" />
+
+		<simple entity="CLAIM_COST_MAX" type="{float}" />
+		<simple entity="CLAIM_COST_BASE" type="{float}" />
+		<simple entity="CLAIM_COST_STARBASE" type="{float}" />
+		<simple entity="CLAIM_COST_COLONY" type="{float}" />
+		<simple entity="CLAIM_COST_DISTANCE" type="{float}" />
+		<simple entity="CLAIM_COST_MULT_OFFENSIVE_WAR" type="{float}" />
+		<simple entity="CLAIM_COST_RIVAL_DISCOUNT" type="{float}" />
+
+		<list entity="TRADITION_COST_RESOURCES" type="{string}" />
+		<list entity="TRADITION_COST_AMOUNTS" type="{int}" />
+
+		<simple entity="COMMERCIAL_PACT_VALUE_MULT" type="{float}" />
+
+		<list entity="TRADE_AMOUNT_MULTIPLIER" type="{int}" />
+		<simple entity="MARKET_TRADE_FEE_BASE" type="{float}" />
+		<simple entity="MARKET_TRADE_FEE_MIN" type="{float}" />
+		<simple entity="MARKET_FLUCTUATION_ABOVE_BASE_PRICE" type="{int}" />
+		<simple entity="MARKET_FLUCTUATION_BELOW_BASE_PRICE" type="{float}" />
+		<simple entity="MARKET_MIN_FLUCTUATION_FROM_BASE_PRICE" type="{int}" />
+		<simple entity="MARKET_MAX_FLUCTUATION_FROM_BASE_PRICE" type="{int}" />
+		<simple entity="MARKET_DAYS_TO_BASE_PRICE" type="{int}" />
+		<simple entity="MARKET_FLUCTUATION_EPSILON" type="{float}" />
+		<simple entity="MARKET_MONTHLY_TRADE_FRACTION" type="{float}" />
+		<simple entity="MARKET_MAX_BASE_AMOUNTS" type="{int}" />
+
+		<simple entity="INTERNAL_MARKET_DAYS_TO_BASE_PRICE" type="{int}" />
+		<simple entity="INTERNAL_MARKET_FLUCTUATION_MULT" type="{int}" />
+
+		<simple entity="MONTHLY_TRADES_ECONOMIC_CATEGORY" type="{string}" />
+
+		<simple entity="PRICE_CHANGE_EQ_POS_C" type="{int}" />
+		<simple entity="PRICE_CHANGE_EQ_POS_D" type="{float}" />
+		<simple entity="PRICE_CHANGE_EQ_POS_X0" type="{int}" />
+
+		<simple entity="PRICE_CHANGE_EQ_NEG_C" type="{int}" />
+		<simple entity="PRICE_CHANGE_EQ_NEG_D" type="{int}" />
+		<simple entity="PRICE_CHANGE_EQ_NEG_X0" type="{int}" />
+
+		<simple entity="PIRACY_FULL_GROWTH_DAYS_COUNT" type="{int}" />
+		<simple entity="PIRACY_SUPPRESSION_RATE" type="{float}" />
+		<simple entity="PIRACY_MAX_PIRACY_MULT" type="{float}" />
+
+		<simple entity="TRADE_DELIVERY_PERCENTAGE_HIGH" type="{int}" />
+		<simple entity="TRADE_DELIVERY_PERCENTAGE_LOW" type="{int}" />
+
+		<list entity="SLAVE_MARKET_SLAVE_BASE_COST_RESOURCES" type="{string}" />
+		<list entity="SLAVE_MARKET_SLAVE_BASE_COST_AMOUNT" type="{int}" />
+		<simple entity="SLAVE_MARKET_SIZE_CAP" type="{int}" />
+
+		<simple entity="SECTOR_AUTOMATION_CONTRUCTION_RAND_FACTOR" type="{float}" />
+		<simple entity="SECTOR_AUTOMATION_FREE_JOBS_BUILD_CAP" type="{int}" />
+		<simple entity="SECTOR_AUTOMATION_FREE_HOUSING_BUILD_CAP" type="{int}" />
+		<simple entity="SECTOR_AUTOMATION_BASE_FOCUS" type="{string}" />
+
+		<simple entity="MONTHLY_SUBJECT_TAX_ECONOMIC_CATEGORY" type="{string}" />
+		<simple entity="MONTHLY_SUBJECT_INTEGRATION_ECONOMIC_CATEGORY" type="{string}" />
+
+		<list entity="BORROW_DIPLO_WEIGHT_FAVOR_RESOURCE" type="{string}" />
+		<list entity="BORROW_DIPLO_WEIGHT_FAVOR_COST" type="{int}" />
+
+		<simple entity="POP_UNEMPLOYED_JOB_WEIGHT_BONUS" type="{float}" />
+	</complex>
+	<complex entity="NAI">
+		<simple entity="AI_FREE_JOBS_DISTRICT_BUILD_CAP" type="{int}" />
+		<simple entity="AI_FREE_JOBS_BUILDING_BUILD_CAP" type="{int}" />
+		<simple entity="AI_DEFICIT_SCORE_MULT" type="{int}" />
+		<simple entity="AI_FOCUS_SCORE_MULT" type="{int}" />
+		<simple entity="AI_AMENITIES_SCORE_MULT" type="{int}" />
+		<simple entity="AI_HOUSING_SCORE_MULT" type="{float}" />
+		<simple entity="AI_CRIME_REDUCTION_SCORE_MULT" type="{int}" />
+		<simple entity="AI_ADMIN_CAP_SCORE_MULT" type="{int}" />
+		<simple entity="AI_POPS_SCORE_MULT" type="{int}" />
+		<simple entity="AI_POP_GROWTH_JOB_TRESHOLD" type="{float}" />
+		<simple entity="AI_UPGRADE_SCORE_MULT" type="{float}" />
+		<simple entity="AI_MIN_CURRENCY_INCOME_TO_BUILD_STARBASE_MODULES" type="{int}" />
+
+		<simple entity="AI_UPPER_AMENITIES_LIMIT" type="{int}" />
+		<simple entity="AI_LOWER_AMENITIES_LIMIT" type="{int}" />
+		<simple entity="AI_IS_AMENITIES_JOB_FACTOR" type="{float}" />
+		<simple entity="POP_RANK_LIMIT_FOR_AMENITIES_ADJUSTMENT" type="{int}" />
+
+		<simple entity="AI_TECHNOLOGY_RARE_WEIGHT_MULT" type="{float}" />
+		<simple entity="AI_TECHNOLOGY_INFINITELY_REPEATABLE_WEIGHT_MULT" type="{float}" />
+
+		<simple entity="AI_IN_BREACH_THRESHOLD" type="{int}" />
+
+		<simple entity="AI_MAX_DISTANCE" type="{int}" />
+
+		<simple entity="AI_POP_MODIFICATION_DISCOUNT" type="{float}" />
+
+		<simple entity="MIN_DISTANCE_TO_JUMP" type="{int}" />
+		<simple entity="AI_JUMP_DRIVE_BRAVERY" type="{float}" />
+
+		<simple entity="STARBASE_COLONY_SCORE" type="{int}" />
+		<simple entity="STARBASE_HABITABLE_PLANET_SCORE" type="{int}" />
+		<simple entity="STARBASE_MEGASTRUCTURE_SCORE" type="{int}" />
+		<simple entity="STARBASE_BYPASS_SCORE" type="{int}" />
+		<simple entity="STARBASE_CHOKEPOINT_SCORE" type="{int}" />
+		<simple entity="STARBASE_HAZARD_CHOKEPOINT_SCORE_MULT" type="{float}" />
+
+		<simple entity="WAR_OCCUPIED_BORDER_PRIO" type="{int}" />
+		<simple entity="WAR_OWN_BORDER_PRIO" type="{int}" />
+		<simple entity="WAR_ALLY_BORDER_PRIO" type="{int}" />
+		<simple entity="WAR_NO_BORDER_PRIO" type="{float}" />
+		<simple entity="WAR_DEFENSE_OWN_PRIO" type="{int}" />
+		<simple entity="WAR_DEFENSE_CONTROLLED_PRIO" type="{int}" />
+		<simple entity="WAR_DEFENSE_ALLY_PRIO" type="{int}" />
+		<simple entity="WAR_NEUTRAL_SPACE_PRIO" type="{float}" />
+		<simple entity="WAR_ATTACK_CLAIM_PRIO" type="{float}" />
+		<simple entity="WAR_DEFENSE_CLAIM_PRIO" type="{float}" />
+		<simple entity="WAR_DEFENSE_OWN_PLANET_PRIO" type="{float}" />
+		<simple entity="WAR_DEFENSE_OWN_PLANET_ENEMY_CONTROL_PRIO" type="{int}" />
+
+		<simple entity="WAR_ATTACK_PLANET_PRIO" type="{float}" />
+		<simple entity="WAR_ATTACK_PLANET_CONTROLLED_SYSTEM_PRIO" type="{float}" />
+		<simple entity="WAR_ATTACK_STARBASE_PRIO" type="{int}" />
+		<simple entity="WAR_DEFEND_STARBASE_PRIO" type="{float}" />
+		<simple entity="WAR_ATTACK_MILITARY_FLEET_PRIO" type="{float}" />
+		<simple entity="WAR_ATTACK_JUMP_DRIVE_FLEET_PRIO" type="{float}" />
+
+		<simple entity="SPACE_MONSTER_MOVE_CHANCE" type="{int}" />
+		<simple entity="SPACE_MONSTER_WANDER_FACTOR" type="{float}" />
+
+		<simple entity="TERRAFORMING_RESOURCE_THRESHOLD_FACTOR" type="{float}" />
+
+		<simple entity="EXTRADIMENSIONAL_MIN_FLEETS" type="{int}" />
+
+		<simple entity="AI_NO_RETREAT_LIMIT" type="{int}" />
+
+		<simple entity="CRISIS_THREAT_THRESHOLD_UPPER" type="{int}" />
+		<simple entity="CRISIS_THREAT_THRESHOLD_LOWER" type="{int}" />
+
+		<simple entity="CRISIS_MILITARY_POWER_MULT_DEFAULT" type="{float}" />
+		<simple entity="CRISIS_MILITARY_POWER_MULT_CRISIS_FIGHTER" type="{float}" />
+		<simple entity="CRISIS_MILITARY_POWER_MULT_INHABITED_SYSTEM" type="{float}" />
+		<simple entity="CRISIS_MILITARY_POWER_MULT_OWN_SYSTEM" type="{float}" />
+		<simple entity="CRISIS_MILITARY_POWER_MULT_DESPERATION" type="{float}" />
+		<simple entity="CRISIS_MILITARY_AGGRESSIVENESS" type="{int}" />
+
+		<simple entity="BOSS_MILITARY_POWER" type="{int}" />
+
+		<simple entity="WAS_HUMAN_MONTHS" type="{int}" />
+
+		<simple entity="MIN_FLEET_FOR_OPERATIONS" type="{int}" />
+		<simple entity="MIN_FLEET_TO_RESTRICT_SYSTEM" type="{int}" />
+		<simple entity="MIN_FLEET_THREAT_TO_CRISIS" type="{int}" />
+
+		<simple entity="FLEET_GROUP_ABORT_MISSION_MULT" type="{float}" />
+
+		<simple entity="FLEET_COMBAT_INTERVENTION_MULT" type="{float}" />
+
+		<simple entity="OFFENSE_VS_DEFENSE_STRATEGY_ALLOTMENT" type="{float}" />
+
+		<simple entity="FLEET_DAMAGED_THRESHOLD_WAR" type="{float}" />
+		<simple entity="FLEET_DAMAGED_THRESHOLD_PEACE" type="{float}" />
+		<simple entity="FLEET_ARMOR_DAMAGED_THRESHOLD_WAR" type="{float}" />
+		<simple entity="FLEET_ARMOR_DAMAGED_THRESHOLD_PEACE" type="{float}" />
+
+		<simple entity="TARGET_BASE_SCORE" type="{float}" />
+		<simple entity="HOSTILE_FLEETS_TARGET_SCORE" type="{int}" />
+		<simple entity="CAPITAL_TARGET_SCORE" type="{int}" />
+		<simple entity="CRISIS_CONSTRUCTOR_TARGET_SCORE" type="{int}" />
+		<simple entity="CHOKEPOINT_TARGET_MULT" type="{int}" />
+
+		<simple entity="MIN_GIFT_SIZE" type="{int}" />
+		<simple entity="MAX_GIFT_SIZE" type="{int}" />
+		<simple entity="AI_TRADE_INTERVAL" type="{int}" />
+
+		<simple entity="MAX_TRUST" type="{int}" />
+		<simple entity="MAX_TRUST_DEFENSIVE_PACT" type="{int}" />
+		<simple entity="MAX_TRUST_ASSOCIATE" type="{int}" />
+		<simple entity="MAX_TRUST_NAP" type="{int}" />
+		<simple entity="MAX_TRUST_MIN" type="{int}" />
+		<simple entity="BASE_TRUST_CHANGE" type="{float}" />
+		<simple entity="MONTHLY_TRUST_GUARANTEE" type="{float}" />
+		<simple entity="MONTHLY_TRUST_RESEARCH_TREATY" type="{float}" />
+		<simple entity="MONTHLY_TRUST_MIGRATION_TREATY" type="{float}" />
+		<simple entity="MONTHLY_TRUST_NON_AGGRESSION_PACT" type="{float}" />
+		<simple entity="MONTHLY_TRUST_COMMERCIAL_PACT" type="{float}" />
+		<simple entity="MONTHLY_TRUST_ASSOCIATION_STATUS" type="{float}" />
+		<simple entity="MONTHLY_TRUST_DEFENSIVE_PACT" type="{float}" />
+		<simple entity="MONTHLY_TRUST_SUBJECT" type="{float}" />
+		<simple entity="MONTHLY_TRUST_FEDERATION" type="{float}" />
+		<simple entity="MONTHLY_TRUST_AT_WAR" type="{float}" />
+		<simple entity="MONTHLY_TRUST_RIVAL" type="{float}" />
+		<simple entity="MONTHLY_TRUST_EMBASSY" type="{float}" />
+
+		<simple entity="BROKEN_TRADE_DEAL_FACTOR" type="{float}" />
+
+		<simple entity="THREAT_PLANET_MULT" type="{float}" />
+		<simple entity="THREAT_STARBASE_MULT" type="{float}" />
+		<simple entity="THREAT_SYSTEM_MULT" type="{float}" />
+
+		<simple entity="HIGH_THREAT_THRESHOLD" type="{int}" />
+		<simple entity="SHARED_THREAT_MULT" type="{float}" />
+		<simple entity="THREAT_SHARED_THREAT_REDUCTION" type="{int}" />
+		<simple entity="SHARED_THREAT_MAX" type="{int}" />
+		<simple entity="THREAT_DECAY" type="{float}" />
+		<simple entity="THREAT_DISTANCE_FACTOR" type="{float}" />
+		<simple entity="THREAT_SIZE_FACTOR" type="{float}" />
+		<simple entity="THREAT_SIZE_FACTOR_MAX" type="{float}" />
+		<simple entity="THREAT_SIZE_FACTOR_MIN" type="{float}" />
+		<simple entity="THREAT_NAP_FACTOR" type="{float}" />
+		<simple entity="THREAT_POSITIVE_OPINION_FACTOR" type="{float}" />
+		<simple entity="THREAT_NEGATIVE_OPINION_FACTOR" type="{float}" />
+		<simple entity="THREAT_OPINION_MAX" type="{float}" />
+		<simple entity="THREAT_OPINION_MIN" type="{float}" />
+
+		<simple entity="AI_AGGRESSIVENESS_LOW_MULT" type="{float}" />
+		<simple entity="AI_AGGRESSIVENESS_HIGH_MULT" type="{float}" />
+		<simple entity="AI_AGGRESSIVENESS_BASE" type="{int}" />
+		<simple entity="AI_AGGRESSIVENESS_PROPAGATOR_BOXED_IN_MULT" type="{int}" />
+		<simple entity="AI_AGGRESSIVENESS_BOXED_IN_MULT" type="{int}" />
+		<simple entity="AI_AGGRESSIVENESS_NO_COLONY_TARGET_MULT" type="{int}" />
+
+		<simple entity="ACTION_MIN_DAYS_REJECTED" type="{int}" />
+		<simple entity="ACTION_DAYS_REJECTED_RANDOM" type="{int}" />
+		<simple entity="ACTION_MIN_DAYS_REJECTED_PEACE" type="{int}" />
+		<simple entity="ACTION_DAYS_REJECTED_RANDOM_PEACE" type="{int}" />
+		<simple entity="INSTANT_AI_DIPLOMACY" type="{int}" />
+		<simple entity="DIPLOMACY_RESPONSE_COOLDOWN_DAYS" type="{int}" />
+		<simple entity="DIPLO_BREAK_THRESHOLD" type="{int}" />
+
+		<simple entity="ACCEPTANCE_DEAL_BREAKER" type="{int}" />
+		<simple entity="ACCEPTANCE_DEAL_ALWAYS" type="{int}" />
+
+		<simple entity="MAX_GUARANTEES" type="{int}" />
+
+		<simple entity="FEDERATION_ACCEPTANCE_CRISIS_FACTOR" type="{int}" />
+		<simple entity="FEDERATION_ACCEPTANCE_OPINION_FACTOR" type="{float}" />
+		<simple entity="FEDERATION_ACCEPTANCE_VOTED_DOWN_PROPOSAL" type="{int}" />
+		<simple entity="FEDERATION_ACCEPTANCE_ATTITUDE_ALLIANCE" type="{int}" />
+		<simple entity="FEDERATION_ACCEPTANCE_ATTITUDE_COEXIST" type="{int}" />
+		<simple entity="FEDERATION_ACCEPTANCE_OTHER_ATTITUDE" type="{int}" />
+		<simple entity="FEDERATION_ACCEPTANCE_SHARED_RIVAL" type="{int}" />
+		<simple entity="FEDERATION_ACCEPTANCE_SHARED_RIVAL_IN_FEDERATION" type="{int}" />
+		<simple entity="FEDERATION_ACCEPTANCE_SHARED_THREAT" type="{float}" />
+		<simple entity="FEDERATION_CONQUEROR_DIFFERENCE" type="{int}" />
+		<simple entity="FEDERATION_ACCEPTANCE_RELATIVE_STRENGTH_FACTOR" type="{int}" />
+		<simple entity="FEDERATION_ACCEPTANCE_RELATIVE_STRENGTH_MAX" type="{int}" />
+		<simple entity="FEDERATION_ACCEPTANCE_MEMBER_VOTE" type="{int}" />
+		<simple entity="FEDERATION_ACCEPTANCE_MEMBER_VOTE_SIZE_FACTOR" type="{int}" />
+		<simple entity="FEDERATION_ACCEPTANCE_MEMBER_VOTE_MIN" type="{int}" />
+		<simple entity="FEDERATION_ACCEPTANCE_ASSOCIATION_VOTE" type="{int}" />
+		<simple entity="FEDERATION_ACCEPTANCE_DISTANCE_MULT" type="{float}" />
+		<simple entity="FEDERATION_LAW_SUPPORT_THRESHOLD" type="{int}" />
+		<simple entity="FEDERATION_ACCEPTANCE_SUPPORT" type="{int}" />
+		<simple entity="FEDERATION_PROPOSE_THRESHOLD" type="{int}" />
+		<simple entity="FEDERATION_WEIGHT_COHESION_FACTOR" type="{float}" />
+		<simple entity="FEDERATION_ALL_AI_LEADER_WEIGHT_FACTOR" type="{float}" />
+
+		<simple entity="DEFENSIVE_PACT_ACCEPTANCE_OPINION_FACTOR" type="{float}" />
+		<simple entity="DEFENSIVE_PACT_ACCEPTANCE_ATTITUDE_ALLIANCE" type="{int}" />
+		<simple entity="DEFENSIVE_PACT_ACCEPTANCE_ATTITUDE_COEXIST" type="{int}" />
+		<simple entity="DEFENSIVE_PACT_ACCEPTANCE_OTHER_ATTITUDE" type="{int}" />
+		<simple entity="DEFENSIVE_PACT_ACCEPTANCE_NUM_PACTS" type="{int}" />
+		<simple entity="DEFENSIVE_PACT_ACCEPTANCE_SHARED_RIVAL" type="{int}" />
+		<simple entity="DEFENSIVE_PACT_ACCEPTANCE_SHARED_ALLY" type="{int}" />
+		<simple entity="DEFENSIVE_PACT_ACCEPTANCE_SHARED_THREAT" type="{float}" />
+		<simple entity="DEFENSIVE_PACT_ACCEPTANCE_RELATIVE_STRENGTH_FACTOR" type="{int}" />
+		<simple entity="DEFENSIVE_PACT_ACCEPTANCE_RELATIVE_STRENGTH_MAX" type="{int}" />
+		<simple entity="DEFENSIVE_PACT_ACCEPTANCE_DISTANCE_MULT" type="{float}" />
+
+		<simple entity="EMBASSY_ACCEPTANCE_OPINION_FACTOR" type="{float}" />
+		<simple entity="EMBASSY_ACCEPTANCE_ATTITUDE_ALLIANCE" type="{int}" />
+		<simple entity="EMBASSY_ACCEPTANCE_ATTITUDE_COEXIST" type="{int}" />
+		<simple entity="EMBASSY_ACCEPTANCE_OTHER_ATTITUDE" type="{int}" />
+		<simple entity="EMBASSY_ACCEPTANCE_NUM_PACTS" type="{int}" />
+		<simple entity="EMBASSY_ACCEPTANCE_SHARED_RIVAL" type="{int}" />
+		<simple entity="EMBASSY_ACCEPTANCE_SHARED_ALLY" type="{int}" />
+		<simple entity="EMBASSY_ACCEPTANCE_SHARED_THREAT" type="{float}" />
+		<simple entity="EMBASSY_ACCEPTANCE_RELATIVE_STRENGTH_FACTOR" type="{int}" />
+		<simple entity="EMBASSY_ACCEPTANCE_RELATIVE_STRENGTH_MAX" type="{int}" />
+		<simple entity="EMBASSY_ACCEPTANCE_DISTANCE_MULT" type="{float}" />
+
+		<simple entity="NON_AGGRESSION_PACT_ACCEPTANCE_OPINION_FACTOR" type="{float}" />
+		<simple entity="NON_AGGRESSION_PACT_ACCEPTANCE_ATTITUDE_ALLIANCE" type="{int}" />
+		<simple entity="NON_AGGRESSION_PACT_ACCEPTANCE_ATTITUDE_COEXIST" type="{int}" />
+		<simple entity="NON_AGGRESSION_PACT_ACCEPTANCE_OTHER_ATTITUDE" type="{int}" />
+		<simple entity="NON_AGGRESSION_PACT_ACCEPTANCE_NUM_PACTS" type="{int}" />
+		<simple entity="NON_AGGRESSION_PACT_ACCEPTANCE_SHARED_RIVAL" type="{int}" />
+		<simple entity="NON_AGGRESSION_PACT_ACCEPTANCE_SHARED_THREAT" type="{float}" />
+		<simple entity="NON_AGGRESSION_PACT_ACCEPTANCE_RELATIVE_STRENGTH_FACTOR" type="{int}" />
+		<simple entity="NON_AGGRESSION_PACT_ACCEPTANCE_RELATIVE_STRENGTH_MAX" type="{int}" />
+		<simple entity="NON_AGGRESSION_PACT_ACCEPTANCE_DISTANCE_MULT" type="{float}" />
+
+		<simple entity="RESEARCH_AGREEMENT_ACCEPTANCE_OPINION_FACTOR" type="{float}" />
+		<simple entity="RESEARCH_AGREEMENT_ACCEPTANCE_ATTITUDE_ALLIANCE" type="{int}" />
+		<simple entity="RESEARCH_AGREEMENT_ACCEPTANCE_ATTITUDE_COEXIST" type="{int}" />
+		<simple entity="RESEARCH_AGREEMENT_ACCEPTANCE_OTHER_ATTITUDE" type="{int}" />
+		<simple entity="RESEARCH_AGREEMENT_ACCEPTANCE_NUM_PACTS" type="{int}" />
+		<simple entity="RESEARCH_AGREEMENT_ACCEPTANCE_DISTANCE_MULT" type="{float}" />
+		<simple entity="RESEARCH_AGREEMENT_ACCEPTANCE_GIVEN_TECHS" type="{float}" />
+		<simple entity="RESEARCH_AGREEMENT_ACCEPTANCE_TAKEN_TECHS" type="{float}" />
+		<simple entity="RESEARCH_AGREEMENT_ACCEPTANCE_TECHS_MIN" type="{int}" />
+		<simple entity="RESEARCH_AGREEMENT_ACCEPTANCE_TECHS_MAX" type="{int}" />
+
+		<simple entity="COMMERCIAL_PACT_ACCEPTANCE_OPINION_FACTOR" type="{float}" />
+		<simple entity="COMMERCIAL_PACT_ACCEPTANCE_ATTITUDE_ALLIANCE" type="{int}" />
+		<simple entity="COMMERCIAL_PACT_ACCEPTANCE_ATTITUDE_COEXIST" type="{int}" />
+		<simple entity="COMMERCIAL_PACT_ACCEPTANCE_OTHER_ATTITUDE" type="{int}" />
+		<simple entity="COMMERCIAL_PACT_ACCEPTANCE_NUM_PACTS" type="{int}" />
+		<simple entity="COMMERCIAL_PACT_ACCEPTANCE_DISTANCE_MULT" type="{float}" />
+		<simple entity="COMMERCIAL_PACT_ACCEPTANCE_GIVEN_VALUE" type="{float}" />
+		<simple entity="COMMERCIAL_PACT_ACCEPTANCE_GIVEN_VALUE_MIN" type="{int}" />
+		<simple entity="COMMERCIAL_PACT_ACCEPTANCE_GIVEN_VALUE_MAX" type="{int}" />
+		<simple entity="COMMERCIAL_PACT_ACCEPTANCE_TAKEN_VALUE" type="{int}" />
+		<simple entity="COMMERCIAL_PACT_ACCEPTANCE_TAKEN_VALUE_MIN" type="{int}" />
+		<simple entity="COMMERCIAL_PACT_ACCEPTANCE_TAKEN_VALUE_MAX" type="{int}" />
+
+		<simple entity="MIGRATION_PACT_ACCEPTANCE_OPINION_FACTOR" type="{float}" />
+		<simple entity="MIGRATION_PACT_ACCEPTANCE_ATTITUDE_ALLIANCE" type="{int}" />
+		<simple entity="MIGRATION_PACT_ACCEPTANCE_ATTITUDE_COEXIST" type="{int}" />
+		<simple entity="MIGRATION_PACT_ACCEPTANCE_THREAT_MULT" type="{float}" />
+		<simple entity="MIGRATION_PACT_ACCEPTANCE_OTHER_ATTITUDE" type="{int}" />
+		<simple entity="MIGRATION_PACT_ACCEPTANCE_DISTANCE_MULT" type="{float}" />
+
+		<simple entity="VASSALIZATION_ACCEPTANCE_PROTECTORATE_MULT" type="{float}" />
+		<simple entity="VASSALIZATION_ACCEPTANCE_PROTECTORATE_MAX" type="{int}" />
+		<simple entity="VASSALIZATION_ACCEPTANCE_NUM_POPS" type="{float}" />
+		<simple entity="VASSALIZATION_ACCEPTANCE_POWER_DIFFERENCE_MIN" type="{float}" />
+		<simple entity="VASSALIZATION_ACCEPTANCE_POWER_DIFFERENCE_MULT" type="{int}" />
+		<simple entity="VASSALIZATION_ACCEPTANCE_POWER_DIFFERENCE_MAX" type="{int}" />
+		<simple entity="VASSALIZATION_ACCEPTANCE_ATTITUDE_ALLIANCE" type="{int}" />
+		<simple entity="VASSALIZATION_ACCEPTANCE_ATTITUDE_COEXIST" type="{int}" />
+		<simple entity="VASSALIZATION_ACCEPTANCE_ATTITUDE_ATTACK" type="{int}" />
+		<simple entity="VASSALIZATION_ACCEPTANCE_OTHER_ATTITUDE" type="{int}" />
+		<simple entity="VASSALIZATION_ACCEPTANCE_OTHER_THREAT_MULT" type="{float}" />
+		<simple entity="VASSALIZATION_ACCEPTANCE_OTHER_THREAT_MAX" type="{int}" />
+		<simple entity="VASSALIZATION_ACCEPTANCE_DISTANCE_MULT" type="{float}" />
+
+		<simple entity="OFFER_VASSALIZATION_ACCEPTANCE_ATTITUDE_VASSALIZE" type="{int}" />
+		<simple entity="OFFER_VASSALIZATION_ACCEPTANCE_OTHER_ATTITUDE" type="{int}" />
+
+		<simple entity="OFFER_TRADE_ACCEPTANCE_ATTITUDE" type="{int}" />
+		<simple entity="OFFER_TRADE_MIN_RESOURCE_THRESHOLD" type="{float}" />
+
+		<simple entity="TRADE_MAX_RESOURCE_PERCENT" type="{float}" />
+		<simple entity="TRADE_MIN_RESOURCE_DELTA" type="{int}" />
+		<simple entity="TRADE_MIN_RESOURCE_STOCKPILE" type="{int}" />
+
+		<simple entity="TRADE_RESOURCE_STOCKPILE_UNDER" type="{float}" />
+		<simple entity="TRADE_RESOURCE_STOCKPILE_OVER" type="{float}" />
+		<simple entity="TRADE_RESOURCE_FRACTION_MIN" type="{float}" />
+		<simple entity="TRADE_RESOURCE_FRACTION_MAX" type="{float}" />
+
+		<simple entity="MIN_WILLINGNESS_TO_OFFER_TRADE" type="{float}" />
+
+		<simple entity="TRADE_VALUE_RESOURCE_INCOME_BASE" type="{int}" />
+		<simple entity="TRADE_VALUE_RESOURCE" type="{int}" />
+		<simple entity="TRADE_VALUE_RESOURCE_MONTHLY_MULT" type="{float}" />
+		<simple entity="TRADE_VALUE_SYSTEM" type="{int}" />
+		<simple entity="TRADE_VALUE_COLONY" type="{float}" />
+		<simple entity="TRADE_VALUE_SENSOR_CHARTS" type="{int}" />
+		<simple entity="TRADE_VALUE_SENSOR_CHARTS_MAX" type="{int}" />
+		<simple entity="TRADE_VALUE_SENSOR_LINK" type="{float}" />
+		<simple entity="TRADE_VALUE_SENSOR_LINK_MAX" type="{float}" />
+
+		<simple entity="AI_BUDGETING_START_YEARS" type="{int}" />
+		<simple entity="AI_BUDGETING_MID_YEARS" type="{int}" />
+		<simple entity="AI_BUDGETING_LATE_YEARS" type="{int}" />
+
+		<simple entity="BUILDING_DEMOLISH_THRESHOLD" type="{int}" />
+		<simple entity="BUILDING_BUILD_THRESHOLD" type="{int}" />
+
+		<simple entity="MIN_ASSAULT_ARMIES" type="{int}" />
+		<simple entity="MAX_ASSAULT_ARMIES" type="{int}" />
+		<simple entity="ASSAULT_ARMIES_PER_POP" type="{float}" />
+
+		<simple entity="BUILDING_EXISTS_DIV_SCORE" type="{int}" />
+
+		<simple entity="NUM_TRADITIONS_FOR_EDICTS" type="{int}" />
+
+		<simple entity="MAX_PLANETS_FOR_BUDGET_FACTOR" type="{int}" />
+
+		<simple entity="MIN_NAVY_SIZE_FOR_ADMIRAL" type="{int}" />
+
+		<simple entity="LEADER_FRACTION_SCIENTIST" type="{float}" />
+		<simple entity="LEADER_FRACTION_ADMIRAL" type="{float}" />
+		<simple entity="LEADER_FRACTION_GENERAL" type="{float}" />
+		<simple entity="LEADER_FRACTION_GOVERNOR" type="{float}" />
+		<simple entity="LEADER_FRACTION_CHANGE_CAP" type="{int}" />
+
+		<simple entity="ABORT_MISSION_LIMIT" type="{float}" />
+
+		<simple entity="WAR_EXHAUSTION_TO_INTERVENE" type="{float}" />
+
+		<simple entity="PEACE_WAR_EXHAUSTION_FACTOR" type="{int}" />
+		<simple entity="PEACE_OCCUPATION_FACTOR" type="{int}" />
+		<simple entity="PEACE_STATUS_QUO_FACTOR" type="{int}" />
+		<simple entity="PEACE_HIGH_WE_STATUS_QUO_FACTOR" type="{int}" />
+		<simple entity="PEACE_DEMAND_SURRENDER_FACTOR" type="{int}" />
+		<simple entity="PEACE_DEFENDING_CLAIM_SYSTEM_FACTOR" type="{int}" />
+		<simple entity="PEACE_DEFENDING_CLAIM_STARBASE_FACTOR" type="{int}" />
+		<simple entity="PEACE_DEFENDING_CLAIM_PLANET_FACTOR" type="{int}" />
+		<simple entity="PEACE_RELATIVE_NAVY_STRENGTH_FACTOR" type="{int}" />
+
+		<simple entity="MIN_WANTED_SCIENTISTS" type="{int}" />
+
+		<simple entity="ENEMY_FLEET_POWER_MULT" type="{float}" />
+		<simple entity="ENEMY_ARMY_POWER_MULT" type="{float}" />
+		<simple entity="ENEMY_FLEET_POWER_HOME_SYSTEM_MULT" type="{float}" />
+
+		<simple entity="CRISIS_NAVY_SIZE_LIMIT" type="{int}" />
+		<simple entity="HORDE_NAVY_SIZE_LIMIT" type="{int}" />
+		<simple entity="ANTI_CRISIS_NAVY_SIZE_LIMIT" type="{int}" />
+		<simple entity="CONTINGENCY_IGNORE_HUBS_THRESHOLD" type="{float}" />
+
+		<simple entity="ATTITUDE_CHANGE_BUFFER" type="{int}" />
+
+		<simple entity="AI_COMMUNICATIONS_RANDOM_VALUE" type="{int}" />
+
+		<simple entity="TRANSPORT_FLEET_SIZE" type="{int}" />
+		<simple entity="TRANSPORT_RETREAT_HEALTH_THRESHOLD" type="{float}" />
+
+		<simple entity="AUTO_EXPLORE_ATTRACTION_SCORE" type="{int}" />
+
+		<simple entity="MAX_EXPANSION_DISTANCE" type="{int}" />
+		<simple entity="MAX_EXPANSION_DISTANCE_SUBJECT" type="{int}" />
+		<simple entity="EXPANSION_OWN_PRIORITY" type="{int}" />
+		<simple entity="EXPANSION_CUT_OFF_SYSTEM_PRIORITY" type="{int}" />
+		<simple entity="EXPANSION_BORDERING_PRIORITY" type="{int}" />
+		<simple entity="EXPANSION_RESOURCE_PRIORITY" type="{int}" />
+		<simple entity="EXPANSION_COLONY_PRIORITY" type="{int}" />
+		<simple entity="EXPANSION_BYPASS_PRIORITY" type="{int}" />
+		<simple entity="EXPANSION_MIN_VALUE_FOR_HIGH_PRIO" type="{int}" />
+		<simple entity="EXPANSION_RANDOM_AMOUNT" type="{int}" />
+		<simple entity="EXPANSION_RESOURCE_GAIN_UPKEEP" type="{float}" />
+
+		<simple entity="MAX_CLAIM_DISTANCE" type="{int}" />
+		<simple entity="MAX_CLAIM_DISTANCE_SUBJECT" type="{int}" />
+		<simple entity="CLAIM_BASE_VALUE" type="{int}" />
+		<simple entity="CLAIM_RESOURCE_FACTOR" type="{int}" />
+		<simple entity="CLAIM_BYPASS_FACTOR" type="{int}" />
+		<simple entity="CLAIM_RELATIONS_FACTOR" type="{float}" />
+		<simple entity="CLAIM_COST_FACTOR" type="{float}" />
+		<simple entity="CLAIM_COLONY_FACTOR" type="{int}" />
+		<simple entity="CLAIM_BORDERING_FACTOR" type="{int}" />
+
+		<simple entity="NO_WARS_FLAG" type="{string}" />
+		<simple entity="NO_LEAVE_FED_FLAG" type="{string}" />
+
+		<simple entity="SURRENDER_ACCEPTANCE_HIGHEST" type="{int}" />
+		<simple entity="SURRENDER_ACCEPTANCE_HIGH" type="{int}" />
+		<simple entity="SURRENDER_ACCEPTANCE_LOW" type="{int}" />
+		<simple entity="SURRENDER_ACCEPTANCE_LOWEST" type="{int}" />
+
+		<list entity="AI_ALLOWED_TO_BUY" type="{string}" />
+		<list entity="AI_ALLOWED_TO_SELL" type="{string}" />
+		<simple entity="AI_MIN_CURRENCY_TO_SELL" type="{float}" />
+		<simple entity="AI_MIN_CURRENCY_INCOME_TO_SELL" type="{float}" />
+
+		<simple entity="AI_MIN_HABITABILITY_TO_COLONIZE" type="{float}" />
+		<simple entity="AI_MIN_BRANCH_OFFICE_WORTH_TO_ESTABLISH" type="{float}" />
+
+		<simple entity="AI_SLAVE_MARKET_BUY_INTERACTION_CHANCE" type="{float}" />
+		<simple entity="AI_SLAVE_MARKET_SELL_INTERACTION_CHANCE" type="{float}" />
+		<simple entity="AI_SLAVE_MARKET_SELL_LIMIT" type="{int}" />
+		<simple entity="SLAVE_BUY_EC_THRESHOLD" type="{int}" />
+		<simple entity="SLAVE_BUY_UNEMPLOYMENT_THRESHOLD" type="{int}" />
+		<simple entity="SLAVE_BUY_HABITABILITY_THRESHOLD" type="{float}" />
+
+		<simple entity="SLAVE_SELL_EC_THRESHOLD" type="{int}" />
+		<simple entity="SLAVE_SELL_UNEMPLOYMENT_THRESHOLD" type="{int}" />
+		<simple entity="SLAVE_SELL_MIN_POPS" type="{int}" />
+
+		<simple entity="SCIENTIST_HIRING_REPLACEMENT_THRESHOLD" type="{float}" />
+		<simple entity="SCIENTIST_HIRING_PREV_JOB_THRESHOLD" type="{float}" />
+		<simple entity="SCIENTIST_HIRING_UNEMPLOYMENT_MULT" type="{float}" />
+		<simple entity="SCIENTIST_HIRING_SURVEY_MULTIPLIER" type="{float}" />
+
+		<simple entity="SURVEY_COLONIZABLE_SYSTEM_MULTIPLIER" type="{int}" />
+
+		<simple entity="WAR_DECLARATION_MAX_DISTANCE" type="{int}" />
+		<simple entity="WAR_DECLARATION_MALUS_DISTANCE" type="{int}" />
+		<simple entity="WAR_DECLARATION_MALUS" type="{float}" />
+		<simple entity="WAR_DECLARATION_MINIMUM_SCORE" type="{float}" />
+
+		<simple entity="COLONY_AUTOMATION_COOLDOWN" type="{int}" />
+		<simple entity="COLONY_AUTOMATION_DISTRICT_PREFERENCE" type="{float}" />
+
+		<simple entity="DIPLO_ACTION_REPEAT_DELAY" type="{int}" />
+
+		<simple entity="IMPERIAL_AUTHORITY_ENVOY_WEIGHT_EMPEROR" type="{float}" />
+		<simple entity="IMPERIAL_AUTHORITY_ENVOY_WEIGHT_OPINION_EXCELLENT" type="{float}" />
+		<simple entity="IMPERIAL_AUTHORITY_ENVOY_WEIGHT_OPINION_GOOD" type="{float}" />
+		<simple entity="IMPERIAL_AUTHORITY_ENVOY_WEIGHT_OPINION_NEUTRAL" type="{float}" />
+		<simple entity="IMPERIAL_AUTHORITY_ENVOY_WEIGHT_OPINION_POOR" type="{float}" />
+		<simple entity="IMPERIAL_AUTHORITY_ENVOY_WEIGHT_OPINION_TERRIBLE" type="{float}" />
+		<simple entity="IMPERIAL_AUTHORITY_ENVOY_WEIGHT_COUNCIL_MEMBER_ADD" type="{float}" />
+		<simple entity="IMPERIAL_AUTHORITY_ENVOY_WEIGHT_MAX" type="{float}" />
+		<simple entity="IMPERIAL_AUTHORITY_ENVOY_WEIGHT_MIN" type="{float}" />
+		<simple entity="IMPERIAL_AUTHORITY_STRENGTHEN_ACCEPTABLE_THRESHOLD" type="{float}" />
+		<simple entity="IMPERIAL_AUTHORITY_UNDERMINE_ACCEPTABLE_THRESHOLD" type="{float}" />
+
+		<simple entity="RESOLUTION_VOTE_ABSTAIN_THRESHOLD" type="{float}" />
+		<simple entity="RESOLUTION_VOTE_SUPPORT_THRESHOLD" type="{float}" />
+		<simple entity="RESOLUTION_VOTE_VETO_THRESHOLD" type="{float}" />
+		<simple entity="RESOLUTION_VOTE_EMERGENCY_THRESHOLD" type="{float}" />
+		<simple entity="RESOLUTION_VOTE_FREEZE_THRESHOLD_DELTA" type="{float}" />
+		<simple entity="RESOLUTION_USE_FAVORS_THRESHOLD_DELTA" type="{float}" />
+
+		<simple entity="RESOLUTION_TARGET_OPINION_MIN_FACTOR" type="{float}" />
+		<simple entity="RESOLUTION_TARGET_OPINION_BASE_FACTOR" type="{float}" />
+		<simple entity="RESOLUTION_TARGET_OPINION_MAX_FACTOR" type="{float}" />
+		<simple entity="RESOLUTION_PROPOSER_OPINION_MIN_FACTOR" type="{float}" />
+		<simple entity="RESOLUTION_PROPOSER_OPINION_BASE_FACTOR" type="{float}" />
+		<simple entity="RESOLUTION_PROPOSER_OPINION_MAX_FACTOR" type="{float}" />
+
+		<simple entity="MAX_SUPPORT_PERCENTAGE_FOR_FAVORS_SUPPORTING" type="{int}" />
+		<simple entity="MIN_SUPPORT_PERCENTAGE_FOR_FAVORS_OPPOSING" type="{int}" />
+
+		<simple entity="DIPLO_ACTION_FAVOR_AI_ACCEPTANCE_VALUE" type="{int}" />
+		<simple entity="TRADE_VALUE_FAVORS_MULT" type="{int}" />
+		<simple entity="EXISTING_FAVORS_MAX" type="{int}" />
+		<simple entity="GIFT_FAVORS_MAX" type="{int}" />
+
+		<simple entity="AGREEMENT_INFLUENCED_BY_FAVORS_AI_BREAK_COOLDOWN" type="{int}" />
+
+		<simple entity="HORDE_INVASION_PLANNING_DEPTH" type="{int}" />
+
+		<simple entity="PLANETARY_ASCENSION_ALLOWED_SPENDING" type="{float}" />
+
+		<simple entity="SWARM_INVASION_PLANNING_DEPTH" type="{int}" />
+		<simple entity="SWARM_POP_TARGET_MULT" type="{float}" />
+		<simple entity="SWARM_UNEDIBLE_POP_TARGET_MULT" type="{float}" />
+		<simple entity="SWARM_NUM_DEFENSIVE_FLEETS" type="{int}" />
+
+		<simple entity="CONTINGENCY_LINKUP_DESIRE" type="{int}" />
+		<simple entity="CONTINGENCY_MEGASTRUCTURE_EXTRA_VALUE" type="{int}" />
+		<simple entity="CONTINGENCY_BASE_DEFENSIVE_FLEETS" type="{int}" />
+		<simple entity="CONTINGENCY_CONSTRUCTION_DEPTH" type="{int}" />
+
+		<simple entity="UNBIDDEN_PORTAL_EXTRA_VALUE" type="{int}" />
+		<simple entity="UNBIDDEN_BYPASSES_EXTRA_VALUE" type="{int}" />
+		<simple entity="UNBIDDEN_RIVALS_EXTRA_VALUE" type="{int}" />
+		<simple entity="UNBIDDEN_TARGET_EXTRA_VALUE" type="{int}" />
+		<simple entity="UNBIDDEN_PSIONIC_CONQUER_DESIRE" type="{int}" />
+		<simple entity="UNBIDDEN_CHOSEN_ONE_CONQUER_DESIRE" type="{int}" />
+
+		<simple entity="AVERAGE_FLEET_SIZE_FACTOR" type="{int}" />
+		<simple entity="FLEET_MAX_DISTANCE_LOOKUP" type="{int}" />
+
+		<simple entity="FLEET_MAX_DISTANCE_LOOKUP_LARGE" type="{int}" />
+		<simple entity="FLEET_MAX_DISTANCE_LOOKUP_HUGE" type="{int}" />
+
+		<simple entity="CONSTRUCTION_SHIP_DISTANCE_PENALTY" type="{int}" />
+
+		<simple entity="OWN_FLEET_POWER_FACTOR" type="{float}" />
+		<simple entity="ALLY_FLEET_POWER_FACTOR" type="{float}" />
+		<simple entity="ENEMY_FLEET_POWER_FACTOR" type="{float}" />
+		<simple entity="FLEET_SUPERIORITY_FACTOR" type="{float}" />
+		<simple entity="CRISIS_FLEET_SUPERIORITY_FACTOR" type="{float}" />
+
+		<simple entity="CRISIS_INHIBITOR_EXTRA_VALUE" type="{int}" />
+
+		<simple entity="AI_FOLLOW_FLEET_DESIRE" type="{int}" />
+		<simple entity="AI_FOLLOW_WAR_LEADER_DESIRE" type="{int}" />
+
+		<simple entity="CRISIS_EMPIRE_PROTECTIVE_MULT" type="{float}" />
+		<simple entity="AI_GALCOM_PATROL_ORBIT_TIME_DAYS" type="{int}" />
+
+		<simple entity="CRISIS_EMPIRE_DESTROY_DESIRE" type="{int}" />
+
+		<simple entity="SHIP_FLEET_POWER_UPGRADE_THRESHOLD" type="{float}" />
+		<simple entity="AI_DESIGNATION_RESOURCES_IN_ECONOMIC_PLAN_BONUS" type="{int}" />
+		<simple entity="AI_DESIGNATION_COOLDOWN" type="{int}" />
+	</complex>
+</reference>

@@ -1,0 +1,1037 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema targetNamespace="https://github.com/dfan97/types" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:this="https://github.com/dfan97/types" xmlns:base="https://github.com/dfan97">
+
+	<import namespace="https://github.com/dfan97" schemaLocation="common.xsd" />
+
+	<annotation id="default-values">
+		<documentation xml:lang="en">
+			Default values for attributes depending on the context.
+		</documentation>
+		<appinfo>
+			<!--
+** сделать через xsd задание max/min значений по умолчанию через appinfo (нужен какой-то синтаксис)
+**  (чтобы в коде тоже считывалось), так же из ненужных мест надо вырезать min/max атрибуты
+**
+** по умолчанию для выражений действует min=0 max=1
+** для custom штук: min=1 max=1
+** для seq=only|allowed min=0 max=1, причем изменять можно только min, т.е. complex с seq либо может быть, либо может не быть
+**   т.к. seq затрагивает значение элемента, а не сам элемент
+*** лучше сделать через appinfo, чтобы например в элементах file для всех конечных complex типов был max="*"
+-->
+			<complex max-default="*"> </complex>
+		</appinfo>
+	</annotation>
+
+	<simpleType name="reference">
+		<annotation>
+			<documentation xml:lang="en">
+				A direct reference to a declared type in other expression.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<pattern value="(\{\?\}|\{[-\w\d]+\})">
+				<annotation>
+					<documentation xml:lang="en">
+						{?} | {[-\w\d]+}
+						
+						A standard type reference.
+					</documentation>
+				</annotation>
+			</pattern>
+			<pattern value="(\{[-\w\d]+\}|@\d*)?(\.(\{[-\w\d]+\}|\S+))+(:(entity|type|count))?">
+				<annotation>
+					<documentation xml:lang="en">
+						1) ({[-\w\d]+} | @\d*) ?								An absolute (1st) or relative (2nd) reference inside the current type (move up '\d*' times).
+																										If the 1st is empty then use the current type.
+																										If '\d*' in the 2nd is empty then move up one times.
+						2) ( \. ( {[-\w\d]+} | [-\w\d]+ ) ) +		Elements entity path.
+						3) (: ( entity|type|count )) ?
+						    Reference to using attribute or function.
+					</documentation>
+				</annotation>
+			</pattern>
+			<pattern value=":(count)?">
+				<annotation>
+					<documentation xml:lang="en">
+						Specify to use referenced type attribute or function.
+					</documentation>
+				</annotation>
+			</pattern>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="entity">
+		<annotation>
+			<documentation xml:lang="en">
+				An expression entity.
+			</documentation>
+		</annotation>
+		<union memberTypes="this:simple">
+			<simpleType>
+				<restriction base="base:stringNotNull" />
+			</simpleType>
+		</union>
+	</simpleType>
+
+
+	<simpleType name="relation">
+		<annotation>
+			<documentation xml:lang="en">
+				A relation between left and right statements.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="assign">
+				<annotation>
+					<documentation xml:lang="en">
+						Value assigning relation.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="bool">
+				<annotation>
+					<documentation xml:lang="en">
+						Boolean relation.
+					</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+
+
+	<simpleType name="short">
+		<annotation>
+			<documentation xml:lang="en">
+				A shorthand for complex expression.
+			</documentation>
+		</annotation>
+		<union memberTypes="this:simple">
+			<simpleType>
+				<restriction base="string" />
+			</simpleType>
+		</union>
+	</simpleType>
+
+
+	<simpleType name="simple">
+		<annotation>
+			<documentation xml:lang="en">
+				A simple expression type.
+			</documentation>
+		</annotation>
+		<union memberTypes="this:common">
+			<simpleType>
+				<restriction base="this:reference">
+					<enumeration value="{bool}">
+						<annotation>
+							<documentation xml:lang="en">
+								Boolean type ('yes/no').
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="{int}">
+						<annotation>
+							<documentation xml:lang="en">
+								Integer numeric type.
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="{float}">
+						<annotation>
+							<documentation xml:lang="en">
+								Float numeric type.
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="{string}">
+						<annotation>
+							<documentation xml:lang="en">
+								String type.
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="{path}">
+						<annotation>
+							<documentation xml:lang="en">
+								Type, representing path to file.
+							</documentation>
+						</annotation>
+					</enumeration>
+					
+					
+					<enumeration value="{entity}">
+						<annotation>
+							<documentation xml:lang="en">
+								Entity key.
+							</documentation>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+
+	<simpleType name="list">
+		<annotation>
+			<documentation xml:lang="en">
+				A list expression type.
+			</documentation>
+		</annotation>
+		<union memberTypes="this:common">
+			<simpleType>
+				<restriction base="this:reference">
+					<enumeration value="{int}">
+						<annotation>
+							<documentation xml:lang="en">
+								A numeric list type.
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="{float}">
+						<annotation>
+							<documentation xml:lang="en">
+								A numeric list type.
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="{string}">
+						<annotation>
+							<documentation xml:lang="en">
+								A string list type.
+							</documentation>
+						</annotation>
+					</enumeration>
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+
+
+
+	<simpleType name="common">
+		<annotation>
+			<documentation xml:lang="en">
+				A type for any (simple or complex) expressions.
+			</documentation>
+		</annotation>
+		<union memberTypes="this:reference">
+			<simpleType>
+				<restriction base="this:reference">
+					<enumeration value="{?}">
+						<annotation>
+							<documentation xml:lang="en">
+								Unknown type.
+							</documentation>
+						</annotation>
+					</enumeration>
+					
+					<enumeration value="{ambient}" />
+					<enumeration value="{anomaly}" />
+					<enumeration value="{archeology}" />
+					<enumeration value="{army}" />
+					<enumeration value="{ascension}" />
+					<enumeration value="{asteroids}" />
+					<enumeration value="{building}" />
+					<enumeration value="{bypass}" />
+					<enumeration value="{category}">
+						<annotation>
+							<documentation xml:lang="en">
+								Game common category.
+								<!-- по факту это enum     pop_assembly, government, resource, manufacturing,
+									research, trade, amenity, unity, army и возможно в gui можно новые добавлять -->
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="{color}" />
+					<enumeration value="{country}" />
+					<enumeration value="{country-type}" />
+					<enumeration value="{deposit}" />
+					<enumeration value="{district}" />
+					<enumeration value="{economic}" />
+					<enumeration value="{economic-budget}" />
+					<enumeration value="{economic-trade}" />
+					<enumeration value="{edict}" />
+					<enumeration value="{effect}" />
+					<enumeration value="{ethic}" />
+					<enumeration value="{ethic-category}" />
+					<!--<enumeration value="{ethic-categories}" />-->
+					<enumeration value="{event}" />
+					<enumeration value="{flag}" />
+					<enumeration value="{fleet}" />
+					<enumeration value="{fleet-order}" />
+					<enumeration value="{fleet-stance}" />
+					<enumeration value="{galaxy-size}" />
+					<enumeration value="{galaxy-cluster}" />
+					<enumeration value="{game-consts}" />
+					<enumeration value="{government}" />
+					<enumeration value="{government-agenda}" />
+					<enumeration value="{government-authority}" />
+					<enumeration value="{government-civic}" />
+					<enumeration value="{government-mandate}" />
+					<enumeration value="{government-origin}" />
+					<enumeration value="{leader}" />
+					<enumeration value="{leader-category}" />
+					<enumeration value="{localisation}">
+						<annotation>
+							<documentation xml:lang="en">
+								Localisation key.
+							</documentation>
+						</annotation>
+					</enumeration>
+					<enumeration value="{megastructure}" />
+					<enumeration value="{mission}" />
+					<enumeration value="{modifier}" />
+					<enumeration value="{planet}" />
+					<enumeration value="{planet-namelist}" />
+					<enumeration value="{policy}" />
+					<enumeration value="{pop}" />
+					<enumeration value="{pop-faction}" />
+					<enumeration value="{pop-job}" />
+					<enumeration value="{project}" />
+					<!-- survey.project -->
+					<enumeration value="{relic}" />
+					<enumeration value="{relic-act}" />
+					<enumeration value="{resolution}" />
+					<enumeration value="{resolution-trigger}" />
+					<enumeration value="{resource}" />
+					<enumeration value="{scope}" />
+					<!-- ссылается на тип scope, который тут как в enum и еще from/prev/root -->
+					<enumeration value="{ship}" />
+					<enumeration value="{ship-behavior}" />
+					<enumeration value="{ship-class}" />
+					<enumeration value="{ship-design}" />
+					<enumeration value="{ship-design-component}" />
+					<enumeration value="{ship-design-component-strikecraft}" />
+					<enumeration value="{ship-design-component-utility}" />
+					<enumeration value="{ship-design-component-weapon}" />
+					<enumeration value="{ship-design-component-set}" />
+					<enumeration value="{ship-design-component-slot}" />
+					<enumeration value="{ship-design-component-tag}" />
+					<enumeration value="{ship-design-locator}" />
+					<enumeration value="{ship-design-section}" />
+					<enumeration value="{ship-size}" />
+					<!--<enumeration value="{ship-size-civilian}" />
+					<enumeration value="{ship-size-military}" />
+					<enumeration value="{ship-size-platform}" />
+					<enumeration value="{ship-size-starbase}" />
+					<enumeration value="{ship-size-station}" />-->
+					<enumeration value="{species-archotype}" />
+					<enumeration value="{species-class}" />
+					<enumeration value="{species-class-namelist}" />
+					<enumeration value="{species-class-asclist}" />
+					<enumeration value="{species-rights}" />
+					<enumeration value="{star}" />
+					<enumeration value="{star-namelist}" />
+					<enumeration value="{starbase}" />
+					<enumeration value="{starbase-building}" />
+					<enumeration value="{starbase-level}" />
+					<enumeration value="{starbase-module}" />
+					<enumeration value="{starbase-type}" />
+					<enumeration value="{system}" />
+					<enumeration value="{system-type}" />
+					<enumeration value="{terraform}" />
+					<enumeration value="{technology}" />
+					<!-- survey.tech -->
+					<enumeration value="{tradition}" />
+					<enumeration value="{tradition-category}" />
+					<enumeration value="{trait}" />
+					<enumeration value="{trigger}" />
+					
+					<enumeration value="{range-float}" />
+					<enumeration value="{range-int}" />
+					<enumeration value="{resources}" />
+					<enumeration value="{weight}" />
+				</restriction>
+			</simpleType>
+		</union>
+	</simpleType>
+
+	<simpleType name="scope">
+		<annotation>
+			<documentation xml:lang="en">
+				Scope list.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="all">
+				<annotation>
+					<documentation xml:lang="en">
+						Sets the scope to all available scope.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="no_scope">
+				<annotation>
+					<documentation xml:lang="en">
+						Sets the scope to no scope (empty scope used for certain generalized behavior).
+					</documentation>
+				</annotation>
+			</enumeration>
+
+
+			<enumeration value="sector">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from an object to the sector it is in. Works on all objects visible objects visible in star system view, plus star systems themselves and leaders (scopes to the sector the leader is currently located in, not necessarily the one they are assigned to as a governor).
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="sector_capital">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a sector to it's capital planet.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="solar_system">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from an object to the solar system it is in. Works on all objects visible in star system view.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="star">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from an object to the primary star (planet scope) of the system it is in. Works on all objects visible in star system view.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="planet">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from an object to the planet it is on. Works from army, megastructure, deposit and arc site scopes.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="starbase">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a solar system or planet to that system's starbase. Alternatively, scopes from a fleet or ship that is a starbase to it's matching starbase scope.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="fleet">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a ship, starbase or leader to it's fleet, or from an army to the fleet it's army transport is part of.
+					</documentation>
+				</annotation>
+			</enumeration>
+
+			<enumeration value="orbit">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the planet the current object is in orbit of. Works on ships, fleets, starbases, armies (when in military transports) and moons (scopes to the planet that a moon orbits).
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="orbital_station">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a planet to the station (mining station, research station, observation outpost) orbiting it.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="mining_station">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a planet to the mining station in orbit of it.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="research_station">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a planet to the research station in orbit of it.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="observation_outpost">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a planet to the observation outpost in orbit of it.
+					</documentation>
+				</annotation>
+			</enumeration>
+
+			<enumeration value="capital_star">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from an empire to the primary star (planet scope) of it's capital's system.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="system_star">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from an object to the primary star (planet scope) of the system it is in. Works on all objects visible in star system view.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="capital_scope">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from an empire to it's capital planet.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="home_planet">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to a species' home planet (also works from country, pop and leader; scopes to that object's species's home planet).
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="branch_office_owner">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a planet to the owner of a branch office.
+					</documentation>
+				</annotation>
+			</enumeration>
+
+			<enumeration value="archaeological_site">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from an object (e.g. planet) in star system view to the arc site in the same location.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="excavator_fleet">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from an arc site to the fleet whose leader is currently investigating it.
+					</documentation>
+				</annotation>
+			</enumeration>
+
+
+			<enumeration value="pop">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from an army to the pop that spawned it.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="pop_faction">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a pop or leader to it's pop faction.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="unhappiest_pop">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a country or planet to it's unhappiest pop.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="species">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a country, leader, pop, army or (colonist) ship to it's species.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="growing_species">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a planet to the species currently growing on it.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="assembling_species">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a planet to the species currently being assembled on it.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="declining_species">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a planet to the species currently declining on it.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="built_species">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a country to it's built species.
+					</documentation>
+				</annotation>
+			</enumeration>
+
+			<enumeration value="leader">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from an object to it's leader
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="ruler">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the ruler of a country (or the ruler of the object's owner).
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="heir">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the heir of a country (or the heir of the object's owner).
+					</documentation>
+				</annotation>
+			</enumeration>
+
+
+			<enumeration value="owner">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the owner of the current object. Works on any object that could be construed as being owned by a country (incl. planets, ships, fleets, leaders, pops, solar systems, pop factions, megastructures, first contacts, spy networks, espionage operations, armies, starbases, deposits, sectors, arc sites).
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="controller">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a planet (or starbase) to the empire controlling it (not necessarily the owner: a country occupying a planet is it's controller).
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="owner_species">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the main species of the owner of the current object. Works in every scope that 'owner' would work in.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="owner_main_species">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the main species of the owner of the current object. Works in every scope that 'owner' would work in.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="planet_owner">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from an object to the owner of the planet it is on. Works from army, megastructure, deposit and arc site scopes.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="space_owner">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from an object to the owner of the space it is in. Works on all objects visible in star system view.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="observation_outpost_owner">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a planet to the owner of the observation outpost in orbit of it.
+					</documentation>
+				</annotation>
+			</enumeration>
+
+
+			<enumeration value="attacker">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a war to its main attacker.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="defender">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a war to its main defender.
+					</documentation>
+				</annotation>
+			</enumeration>
+
+			<enumeration value="alliance">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a country to the federation it is a member of.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="federation">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a country to the federation it is a member of.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="overlord">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a country to it's overlord.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="subject">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a country to it's subject.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="federation_leader">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a federation to the empire leading it.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="associated_federation">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a country to the federation it is an associate of.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="galactic_emperor">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the ruling empire of the Galactic Imperium.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="galactic_custodian">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the Custodian empire of the Galactic Community.
+					</documentation>
+				</annotation>
+			</enumeration>
+
+
+			<enumeration value="reverse_first_contact">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a first contact site to the equivalent one that the 'contact_country' has on the site's owner.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="contact_country">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a first contact site to the country that the owner of the site is seeking to establish communications with.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="envoy_location_country">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from an envoy to the empire it is appointed to.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="target">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a spy network to it's target country, or from an espionage operation to it's target (can be various objects, as set in common/espionage_operation_types).
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="spynetwork">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from an espionage operation or spymaster envoy to it's spy network.
+					</documentation>
+				</annotation>
+			</enumeration>
+
+
+			<enumeration value="last_created_ambient_object">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the last ambient object that was created anywhere in the game.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="last_created_army">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the last army that was created anywhere in the game.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="last_created_country">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the last country that was created anywhere in the game.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="last_created_fleet">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the last fleet that was created anywhere in the game.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="last_created_leader">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the last leader that was created anywhere in the game.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="last_created_pop">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the last pop that was created anywhere in the game.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="last_created_pop_faction">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the last pop faction that was created anywhere in the game.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="last_created_ship">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the last ship that was created anywhere in the game.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="last_created_species">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the last species that was created anywhere in the game.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="last_created_system">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the last fleet that was created anywhere in the game.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="last_refugee_country">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes to the last country from which a pop fled to escape purge (via on_pop_displaced).
+					</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="scope.type">
+		<annotation>
+			<documentation xml:lang="en">
+				Scope type list.
+			</documentation>
+		</annotation>
+		<restriction base="string">
+			<!-- нужны тесты через is_scope_type -->
+			<enumeration value="no_scope">
+				<annotation>
+					<documentation xml:lang="en">
+						Sets the scope to no scope (empty scope used for certain generalized behavior).
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="first_contact">
+				<annotation>
+					<documentation xml:lang="en"> </documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="situation">
+				<annotation>
+					<documentation xml:lang="en"> </documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="starbase">
+				<annotation>
+					<documentation xml:lang="en">
+						Scopes from a solar system or planet to that system's starbase. Alternatively, scopes from a fleet or ship that is a starbase to it's matching starbase scope.
+					</documentation>
+				</annotation>
+			</enumeration>
+
+			<enumeration value="all">
+				<annotation>
+					<documentation xml:lang="en">
+						All scopes.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="alliance">
+				<annotation>
+					<documentation xml:lang="en">
+						A federation. Other than localisation of triggers, federation and alliance are interchangeable.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="ambient_object">
+				<annotation>
+					<documentation xml:lang="en">
+						A point-of-interest in a galactic_object.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="archaeological_site">
+				<annotation>
+					<documentation xml:lang="en">
+						A site of an archaeological dig, persists after it's completed.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="army">
+				<annotation>
+					<documentation xml:lang="en">
+						An army.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="country">
+				<annotation>
+					<documentation xml:lang="en">
+						An empire.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="deposit">
+				<annotation>
+					<documentation xml:lang="en">
+						A planetary feature, including blockers. Some are exploitable by orbiting stations, others are exploitable by colonizing the planet.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="design">
+				<annotation>
+					<documentation xml:lang="en">
+						A ship design.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="dlc_recommendation">
+				<annotation>
+					<documentation xml:lang="en">
+						???
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="espionage_asset">
+				<annotation>
+					<documentation xml:lang="en">
+						An espionage asset.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="espionage_operation">
+				<annotation>
+					<documentation xml:lang="en">
+						An espionage operation.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="federation">
+				<annotation>
+					<documentation xml:lang="en">
+						A federation. Other than localisation of triggers, federation and alliance are interchangeable.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="fleet">
+				<annotation>
+					<documentation xml:lang="en">
+						Every ship belongs to a fleet, even a lone ship. A starbase fleet includes its defense platforms.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="galactic_object">
+				<annotation>
+					<documentation xml:lang="en">
+						An object (solar system) on the galactic map.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="leader">
+				<annotation>
+					<documentation xml:lang="en">
+						A leader in a country. This includes the current ruler, as well as leaders in the hiring pool.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="megastructure">
+				<annotation>
+					<documentation xml:lang="en">
+						A system object built by constructor ships.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="planet">
+				<annotation>
+					<documentation xml:lang="en">
+						An entity within a galactic_object. Stars, asteroids, habitats, ringworlds and planets are all considered planet-type scopes. If a pop can live on it, it is a planet-type.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="pop">
+				<annotation>
+					<documentation xml:lang="en">
+						A pop.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="pop_faction">
+				<annotation>
+					<documentation xml:lang="en">
+						A political faction within a country.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="sector">
+				<annotation>
+					<documentation xml:lang="en">
+						A sector in an empire.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="ship">
+				<annotation>
+					<documentation xml:lang="en">
+						An empire controlled entity in space. This includes starbases and defense platforms.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="species">
+				<annotation>
+					<documentation xml:lang="en">
+						The specific pop (sub)species.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="spy_network">
+				<annotation>
+					<documentation xml:lang="en">
+						A spy network in a country.
+					</documentation>
+				</annotation>
+			</enumeration>
+			<enumeration value="war">
+				<annotation>
+					<documentation xml:lang="en">
+						A two-sided diplomatic war between two or more empires.
+					</documentation>
+				</annotation>
+			</enumeration>
+		</restriction>
+	</simpleType>
+</schema>

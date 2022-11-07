@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<references xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<reference type="{ambient}" definition="name">
+		<annotation>An ambient object</annotation>
+
+		<simple entity="name" type="{string}" min="1">
+			<annotation>The ambient object name</annotation>
+		</simple>
+		<simple entity="entity" type="{entity}">
+			<annotation>The ambient object entity</annotation>
+		</simple>
+
+		<simple entity="selectable" type="{bool}">
+			<annotation>Is the ambient object can be selected</annotation>
+		</simple>
+		<simple entity="show_name" type="{bool}">
+			<annotation>Is the ambient object name can be seen</annotation>
+		</simple>
+
+		<simple entity="tooltip" type="{localisation}">
+			<annotation>The ambient object tooltip</annotation>
+		</simple>
+		<simple entity="description" type="{localisation}">
+			<annotation>The ambient object description</annotation>
+		</simple>
+	</reference>
+
+	<reference type="{asteroids}">
+		<annotation>An asteroid belt</annotation>
+
+		<simple entity="mesh" type="{entity}">
+			<annotation />
+		</simple>
+		<simple entity="shader" type="{entity}">
+			<annotation />
+		</simple>
+	</reference>
+</references>

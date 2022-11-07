@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="utf-8"?>
+<references xmlns="https://github.com/dfan97" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://github.com/dfan97 ../Xsd/common.xsd">
+	<reference type="{ship-size}">
+		<list entity="graphical_culture" type="{?}" short="{bool}">
+			<annotation>A list of Graphical Cultures this ship size is valid to have. Can also specify as graphical_culture = no to indicate that this Ship Size doesn't need Graphical Cultures.</annotation>
+		</list>
+		<simple entity="icon" type="{string}">
+			<annotation>#ship_size_military_1 is default. The following sprite keys are generated from it: #GFX_text_[key] #GFX_[key] #GFX_[key]_top #GFX_[key]_top_damaged</annotation>
+		</simple>
+		<simple entity="icon_frame" type="{int}">
+			<annotation>Determines the index of the icon of this Ship Size in a shared icon file. (military)
+				now only used for starbases. Value of 2 or more means it shows up on the galaxy map, 1-5 denote which icon it uses on starbase sprite sheets (e.g. gfx/interface/icons/starbase_ship_sizes.dds)</annotation>
+		</simple>
+		<simple entity="ship_class_icon_frame" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="entity" type="{entity}">
+			<annotation>Defines the graphical entity used, replacing the default SHIPSIZE_entity lookup.</annotation>
+		</simple>
+		<simple entity="enable_3dview_in_ship_browser" type="{bool}" default="no">
+			<annotation>if yes, ship design will have a 3d view in the ship browser</annotation>
+		</simple>
+
+		<simple entity="takes_name_from_ship_design" type="{bool}" default="no">
+			<annotation />
+		</simple>
+		<simple entity="uses_name_prefix" type="{bool}">
+			<annotation />
+		</simple>
+		<simple entity="pre_communications_name" type="{string}">
+			<annotation />
+		</simple>
+		<simple entity="use_shipnames_from" type="{ship-size}">
+			<annotation>Allows a ship size to use names from another ship</annotation>
+		</simple>
+
+		<simple entity="max_hitpoints" type="{int}" min="1">
+			<annotation>Defines the base Hull Points of this ship size.</annotation>
+		</simple>
+		<simple entity="combat_disengage_chance" type="{float}">
+			<annotation>This property multiplies the chance this Ship disengages in battle.
+				Vanilla always have 0 or leave this property undefined. (Starbases 	Defense Platforms Civilian Stations)</annotation>
+		</simple>
+
+		<!-- Defines the base speed, acceleration and rotation speed of this ship size.
+		Vanilla Starbases usually have 0 for these properties, except for the Juggernaut.
+		Defense Platforms also need these properties because they need to move from the Starbase to their defense position. 
+		Vanilla Civilian Stations always have 0 for these properties. -->
+		<simple entity="max_speed" type="{float}" min="1">
+			<annotation />
+		</simple>
+		<simple entity="acceleration" type="{float}" min="1">
+			<annotation />
+		</simple>
+		<simple entity="rotation_speed" type="{float}" min="1">
+			<annotation />
+		</simple>
+
+		<simple entity="fleet_slot_size" type="{int}" min="1">
+			<annotation>This determines the order this ship size appears in a fleet, with Corvettes having 1 up to Titans having 8. (Military ship)</annotation>
+		</simple>
+		<!-- only Military Ships -->
+		<simple entity="formation_priority" type="{int}">
+			<annotation>Ships with higher formation priority trends to go ahead of the rest of the fleet</annotation>
+		</simple>
+		<simple entity="collision_radius" type="{float}">
+			<annotation>The radius other ships will try to avoid colliding with</annotation>
+		</simple>
+
+		<simple entity="build_block_radius" type="{int}">
+			<annotation>Since Military Stations have been reworked, it's still unclear what's the use of this property for now.</annotation>
+		</simple>
+
+		<!-- This also determines the number of Command Points needed to add this Ship Design to a Fleet. 
+		Vanilla Civilian Ships always have 1 for this property. 
+		Vanilla Starbases always have 4 for this property. 
+		This also determines the number of Defense Platform Capacities this Defense Platform will take up from a Starbase. 
+		Vanilla Civilian Stations always have 1 for this property. -->
+		<simple entity="size_multiplier" type="{float}">
+			<annotation>How large should the fleet battle AI consider this ship of.</annotation>
+		</simple>
+		<simple entity="combat_size_multiplier" type="{float}">
+			<annotation>How large should the fleet battle AI consider this ship of, overwriting the size_multiplier.</annotation>
+		</simple>
+
+		<simple entity="base_buildtime" type="{int}">
+			<annotation>Days it takes to build this ship/station or upgrade into this starbase</annotation>
+		</simple>
+		<complex entity="resources" type="{resources}">
+			<annotation>An Economy Unit to determine the construction cost and upkeep of this Ship. This is the final cost if this Ship Size has components_add_to_cost = no. Although vanilla unused, resource productions is also allowed here. </annotation>
+		</complex>
+		<complex entity="min_upgrade_cost">
+			<annotation>The minimal cost required to upgrade this Ship. Used to prevent zero-cost upgrades by shifting from a Component to another of exactly same cost.</annotation>
+
+			<simple entity="{resource}" type="{int}" max="*" />
+		</complex>
+
+		<simple entity="default_behavior" type="{ship-behavior}">
+			<annotation>Determines the default ship behavior the auto generated designs should try to pick when choosing the combat computer component</annotation>
+		</simple>
+		<simple entity="class" type="{ship-class}">
+			<annotation />
+		</simple>
+		<simple entity="construction_type" type="{string}">
+			<annotation>The ship construction tab</annotation>
+			<restriction>
+				<enum value="starbase_shipyard" />
+				<enum value="starbase_defenses" />
+			</restriction>
+		</simple>
+
+		<complex entity="empire_limit">
+			<annotation>Determines the max number of Ships of this Size an empire can have at the same time. The number is base plus empire naval capacity divided by naval_cap_div, rounded down, at most max.</annotation>
+
+			<simple entity="base" type="{int}" min="1">
+				<annotation />
+			</simple>
+			<simple entity="max" type="{int}">
+				<annotation />
+			</simple>
+			<simple entity="naval_cap_div" type="{int}">
+				<annotation />
+			</simple>
+			<complex entity="show" type="{trigger}" />
+		</complex>
+
+		<!-- only takes the following modifiers (может быть определяется от scope??)
+# hull, shield & armor add/mult and regen add perc/static
+# evasion add/mult
+# speed/base speed mult
+# weapon damage mult
+# upkeep mult
+# for other modifiers, use ship_modifier = { }-->
+		<complex entity="modifier" type="{modifier}">
+			<annotation>A block of Modifiers to be added to the ships of this size. These modifiers will come to effect even before the actual ships are built, you can see these in the Ship Designer. Only the following modifiers are allowed here.
+				ship_evasion_(add/mult)
+				ship_speed_mult ^ ship_base_speed_mult
+				ship_(hull/armor/shield)_(add/mult) ^ ship_(hull/armor/shield)_regen_add_(static/perc)
+				ship_weapon_damage ^ [weapon slot size]_weapon_damage_mult
+					ships_upkeep_mult ^ ships_[resource type]_upkeep_mult
+						ship_piracy_suppression_add
+						
+						Starbases can also use the following modifiers here.
+						
+						starbase_(module/building/defense_platform/shipyard)_capacity_add
+						starbase_(trade_collection_range/protection_range/protection)_add</annotation>
+		</complex>
+		<complex entity="ship_modifier" type="{modifier}">
+			<annotation>Another block of Modifiers to be added to the ships of this size. Modifiers like ship_fire_rate_mult and ship_weapon_range_mult go here. </annotation>
+		</complex>
+
+		<simple entity="is_civilian" type="{bool}">
+			<annotation>Vanilla always have is_civilian = yes (civ ships). Other Ship Sizes have either is_civilian = no or just have this property undefined, except for the Observation Station being yes.</annotation>
+		</simple>
+		<simple entity="is_space_station" type="{bool}">
+			<annotation>Vanilla always have is_space_station = yes. Other Ship Sizes have either is_space_station = no or just have this property undefined. (civ station and def platforms)</annotation>
+		</simple>
+		<simple entity="is_space_object" type="{bool}" default="no">
+			<annotation>Determines should this Ship Size have trailers when the Ships move in the Space. Space monsters usually have is_space_object = yes.</annotation>
+		</simple>
+		<simple entity="can_be_inspected" type="{bool}" default="yes">
+			<annotation>Determines should Designs of this Ship Size can be inspected by the player. Some space monsters have can_be_inspected = no.</annotation>
+		</simple>
+		<simple entity="can_disable" type="{bool}" default="no">
+			<annotation>Determines should this ship be disabled rather than be destroyed if at low health</annotation>
+		</simple>
+		<simple entity="flip_control_on_disable" type="{bool}" default="no">
+			<annotation>Determines can this ship be captured after it's disabled</annotation>
+		</simple>
+		<simple entity="valid_target_aggressive_stance" type="{bool}" default="yes">
+			<annotation>Determines should this ship be ignored by a military fleet in aggressive stance</annotation>
+		</simple>
+
+		<simple entity="is_designable" type="{bool}" default="yes">
+			<annotation>Determines should this ship be designable</annotation>
+		</simple>
+		<simple entity="can_have_federation_design" type="{bool}">
+			<annotation>Determines should this ship can have a federation design</annotation>
+		</simple>
+		<simple entity="enable_default_design" type="{bool}" default="no">
+			<annotation>Determines should a country start with an auto-generated design of this ship</annotation>
+		</simple>
+		<simple entity="auto_upgrade" type="{bool}" default="no">
+			<annotation>Determines should the design of this ship automatically upgrade based on the recent technologies. Existing ships will also be upgraded</annotation>
+		</simple>
+
+		<simple entity="is_listed" type="{bool}">
+			<annotation />
+		</simple>
+
+		<simple entity="components_add_to_cost" type="{bool}" default="yes">
+			<annotation>Determines should the ship construction cost and the ship upkeep take components and sections into account</annotation>
+		</simple>
+		<simple entity="required_component_set" type="{ship-design-component-set}" max="*">
+			<annotation>Requires a core component with a component set</annotation>
+		</simple>
+		<complex entity="section_slots">
+			<annotation>Determines the sections needed for this ship. The locators are pointers on the ship entity</annotation>
+
+			<complex entity="{string}" max="*">
+				<simple entity="locator" type="{ship-design-locator}" max="*" />
+			</complex>
+		</complex>
+
+		<complex entity="selectable" type="{trigger}">
+			<annotation />
+		</complex>
+		<list entity="prerequisites" type="{technology}">
+			<annotation>A list of Technologies required to design and build this Ship Size or upgrade existing Starbases into this level.</annotation>
+		</list>
+
+		<complex entity="potential_country" type="{trigger}">
+			<annotation />
+		</complex>
+		<complex entity="potential_construction" type="{trigger}">
+			<annotation>A block of Conditions to check should this Ship Size appear in the construction list of a Starbase or Megastructure. (Starbase or Megastructure scope, use is_scope_type to check scope type; FROM is the builder empire)</annotation>
+		</complex>
+		<complex entity="possible_construction" type="{trigger}">
+			<annotation>A block of Conditions to check can this Ship Size be built by a Starbase or Megastructure. If evaluated false, the construction option is still visible but grayed out with a tooltip. (Starbase or Megastructure scope, use is_scope_type to check scope type; FROM is the builder empire)</annotation>
+		</complex>
+	</reference>
+
+
+	<reference type="{ship-design-section}" definition="key">
+		<annotation>Ships consist of Ship Sections. They are defined at "common/section_templates/xxx.txt".</annotation>
+
+		<simple entity="key" type="{localisation}" min="1">
+			<annotation>Identification key of this section.</annotation>
+		</simple>
+		<simple entity="entity" type="{entity}" min="1">
+			<annotation>Specifies the entity of this section.</annotation>
+		</simple>
+		<simple entity="icon" type="{string}" min="1">
+			<annotation>Although most of the vanilla sections specified this as "GFX_ship_part_core_mid", there is no where for this to be seen</annotation>
+		</simple>
+		<simple entity="icon_frame" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="should_draw_components" type="{bool}" default="no">
+			<annotation>If no, weapon components on this Ship Section will not have entities (turrets).</annotation>
+		</simple>
+
+		<simple entity="ship_size" type="{ship-size}" min="1" max="*">
+			<annotation>Specifies the compatible Ship Size</annotation>
+		</simple>
+		<simple entity="fits_on_slot" type="{ship-size}.section_slots.{string}" min="1" max="*">
+			<annotation>Specifies the compatible section slot name</annotation>
+		</simple>
+
+		<complex entity="component_slot" max="*">
+			<annotation>A weapon slot. They appear in the Ship Designer in the order they are defined here. </annotation>
+
+			<simple entity="name" type="{string}" min="1">
+				<annotation>Identification of this weapon slot. No duplications allowed.</annotation>
+			</simple>
+			<simple entity="template" type="{ship-design-component-slot}" min="1">
+				<annotation>The Component Slot Template used for this weapon slot. This determines the weapon type (regular weapon or strike craft), weapon size (small, medium or large), and turret entity. </annotation>
+			</simple>
+			<simple entity="locatorname" type="{ship-design-locator}">
+				<annotation>The locators are pointers on the Ship Section entity and indicates where should the turret be, see Graphics modding for details. </annotation>
+			</simple>
+
+			<simple entity="is_side_slot" type="{bool}" default="no">
+				<annotation />
+			</simple>
+
+			<simple entity="rotation" type="{int}" min-value="0" max-value="360">
+				<annotation />
+			</simple>
+			<complex entity="position">
+				<annotation />
+
+				<simple entity="x" type="{float}" />
+				<simple entity="y" type="{float}" />
+			</complex>
+		</complex>
+
+		<!-- The number of utility slots of each size of this Ship Section. They appear in the Ship Designer in the reversed order they are defined here!!!!!!! -->
+		<simple entity="small_utility_slots" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="medium_utility_slots" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="large_utility_slots" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="aux_utility_slots" type="{int}">
+			<annotation />
+		</simple>
+
+		<list entity="prerequisites" type="{technology}">
+			<annotation>A list of Technologies. Unlike other game objects, Ship Sections only require ONE of the prerequisites, not all. </annotation>
+		</list>
+		<complex entity="resources" type="{resources}">
+			<annotation>An Economy Unit to determine the construction cost and upkeep of this Ship Section</annotation>
+		</complex>
+
+		<complex entity="ai_weight" type="{weight}">
+			<annotation>Determines how likely the AI and auto-designer will choose this Ship Section. (Country scope) </annotation>
+		</complex>
+	</reference>
+
+	<!--
+		нужен inherit="types:common"
+		либо возможность указывать несколько name'ов, тогда разруливание будет через контексты
+		
+		utility_component_template
+		weapon_component_template
+		strike_craft_component_template (через file, но нужны разные типы, т.е. нужен inherit)
+	-->
+	<reference type="{ship-design-component}">
+		<annotation>Components are attachments to ships for a weapon or a functional extension. They are defined at "common/component_templates/xxx.txt".</annotation>
+		<!-- три контекста -->
+		<simple entity="key" type="{localisation}">
+			<annotation>Identification key of this Component.</annotation>
+		</simple>
+
+		<simple entity="icon" type="{string}" min="1">
+			<annotation>Determines the icon of this Component, overwriting that of the Component Set.</annotation>
+		</simple>
+		<simple entity="icon_frame" type="{int}">
+			<annotation>Vanilla always have icon_frame = 1. For sprite sheet icons.</annotation>
+		</simple>
+
+		<simple entity="size" type="{string}">
+			<annotation />
+			<restriction>
+				<enum value="point_defence" />
+				<enum value="small" />
+				<enum value="medium" />
+				<enum value="large" />
+				<enum value="torpedo" />
+				<enum value="extra_large" />
+				<enum value="titanic" />
+				<enum value="planet_killer" />
+				<enum value="aux" />
+			</restriction>
+		</simple>
+		<simple entity="type" type="{string}">
+			<annotation>Kinetic and Energy weapons are "instant". Though their graphics might look like that their projectiles need time to reach the target, the actual damage is done in an instant.
+				
+				Point defenses is a stronger variant that it can target missiles and strike crafts.
+				
+				Missiles have additional properties to specify missile stats, like speed, retarget range, missile hitpoints, and missile evasion.
+				
+				Planet killers are no regular weapons. They can't be used in fleet battles, but can be used on planets by Colossi to trigger events.
+				
+				Without the Apocalypse.png Apocalypse DLC, the fleet command to invoke the Planet Killer weapon can't be used.</annotation>
+			<restriction>
+				<enum value="point_defence" />
+				<enum value="instant" />
+				<enum value="missile" />
+				<enum value="planet_killer" />
+			</restriction>
+		</simple>
+
+		<simple entity="weapon_type" type="{string}">
+			<annotation>for Strike Crafts</annotation>
+			<restriction>
+				<enum value="point_defence" />
+				<enum value="instant" />
+			</restriction>
+		</simple>
+		<simple entity="entity" type="{entity}">
+			<annotation>Determines what should the Strike Crafts be look like.</annotation>
+		</simple>
+
+		<simple entity="projectile_gfx" type="{?}">
+			<annotation>Specifies the projectile graphic of this Component.</annotation>
+		</simple>
+
+		<simple entity="prio_projectile" type="{bool}">
+			<annotation>If yes, the projectile graphic of this Component will be preferentially displayed if there are too many graphics to be displayed and some of them must be ignored.</annotation>
+		</simple>
+		<simple entity="planet_destruction_gfx" type="{?}">
+			<annotation>Only relevant to Planet Killer weapons. Specifies the projectile graphic.</annotation>
+		</simple>
+
+		<list entity="tags" type="{ship-design-component-tag}">
+			<annotation>Specifies the list of Component Tags. This determines what kind of modifiers can affect this weapon. For example, if a weapon has both the kinetic tag and the energy tag, repeatable technologies that affect either will both affect this weapon. </annotation>
+		</list>
+		<list entity="ai_tags" type="{ship-design-component-tag}">
+			<annotation>What role should the AI consider this weapon to be playing.</annotation>
+		</list>
+
+		<simple entity="ai_tag_weight" type="{float}">
+			<annotation>Multiplies the AI weight gained through the ai_tags. Vanilla use this for Missile components for unknown reason.</annotation>
+		</simple>
+
+		<list entity="prerequisites" type="{technology}">
+			<annotation>Technology prerequisites of this Component.</annotation>
+		</list>
+
+		<simple entity="power" type="{float}">
+			<annotation>If this value is positive, this Component will generate that much power. If this value is negative, this Component will consume that much power.</annotation>
+		</simple>
+
+		<complex entity="resources" type="{resources}">
+			<annotation>An Economy Unit to determine the construction cost and upkeep of this Component.</annotation>
+		</complex>
+
+		<complex entity="modifier" type="{modifier}">
+			<annotation>A block of Modifiers to be added to the Ship. These modifiers will come to effect even before the actual ships are built, you can see these in the Ship Designer. Only the following modifiers are allowed here.
+				
+				ship_evasion_(add/mult)
+				ship_speed_mult ^ ship_base_speed_mult
+				ship_(hull/armor/shield)_(add/mult) ^ ship_(hull/armor/shield)_regen_add_(static/perc)
+				ship_weapon_damage ^ [weapon slot size]_weapon_damage_mult
+					ships_upkeep_mult ^ ships_[resource type]_upkeep_mult
+						ship_piracy_suppression_add
+						
+						Starbases can also use the following modifiers here.
+						
+						starbase_(module/building/defense_platform/shipyard)_capacity_add
+						starbase_(trade_collection_range/protection_range/protection)_add
+						
+						It's not recommended to give Weapon Components and Strike Craft Components with modifiers, because the tooltips might go wild and confusing. </annotation>
+		</complex>
+		<complex entity="ship_modifier" type="{modifier}">
+			<annotation>Another block of Modifiers to be added to the Ship. Modifiers like ship_fire_rate_mult and ship_weapon_range_mult go here.
+				
+				It's not recommended to give Weapon Components and Strike Craft Components with modifiers, because the tooltips might go wild and confusing. </annotation>
+		</complex>
+
+		<simple entity="ship_behavior" type="{ship-behavior}">
+			<annotation>Determines the behavior pattern of the Strike Crafts. 	Determines the behavior pattern of this Ship.</annotation>
+		</simple>
+		<simple entity="component_set" type="{ship-design-component-set}">
+			<annotation>Specifies the Component Set of this Component.</annotation>
+		</simple>
+		<simple entity="upgrades_to" type="{ship-design-component}">
+			<annotation>Specifies the direct upgrade of this Component. When the direct upgrade has been unlocked, this Component will be considered obsolete and will be hidden from Ship Designer unless manually toggled off the "Hide Obsolete" option, and will be automatically replaced by the advanced variant for all existing Ship Designs that is set to auto-upgrade components.
+				
+				For Ship Sizes that are set to auto_upgrade = yes, existing Ships will instantly be upgraded for free. Starbases will redesign themselves and might pick different kind of Weapons. </annotation>
+		</simple>
+
+		<list entity="class_restriction" type="{ship-class}">
+			<annotation>Only Ships of Ship Classes listed here can equip this Component.</annotation>
+		</list>
+		<list entity="size_restriction" type="{ship-size}">
+			<annotation>Only Ships of Ship Sizes listed here can equip this Component.</annotation>
+		</list>
+		<list entity="slot_restriction" type="{ship-design-component-slot}">
+			<annotation>Only Slot Templates listed here can hold this Component.</annotation>
+		</list>
+
+		<simple entity="hidden" type="{bool}" default="no">
+			<annotation>Optional, default no. If yes, this Component is hidden from the Ship Designer and Generated designs and the AI will also be unable to pick this. Only global ship designs can have this component.</annotation>
+		</simple>
+
+		<complex entity="valid_for_country" type="{trigger}" />
+		<!-- Aura definitions. Head to the examples for details.
+
+With system_wide = yes, the aura affects all friendly or enemy ships in the same system.
+
+With system_wide = no or undefined, the aura affects all friendly ships in the same fleet or all enemy ships that are in battle with the aura bearer.
+
+The aura range property does nothing. The aura graphic property seemingly does nothing as well. -->
+		<complex entity="friendly_aura">
+			<simple entity="name" type="{string}" min="1">
+				<annotation />
+			</simple>
+
+			<choice min="1">
+				<simple entity="system_wide" type="{bool}">
+					<annotation />
+				</simple>
+				<simple entity="radius" type="{int}">
+					<annotation />
+				</simple>
+			</choice>
+			<simple entity="apply_on" type="{string}">
+				<annotation>seems to be with 'radius'</annotation>
+				<restriction>
+					<enum value="ships" />
+					<enum value="fleets" />
+				</restriction>
+			</simple>
+
+			<complex entity="stack_info">
+				<annotation>A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied</annotation>
+
+				<simple entity="id" type="{string}" min="1">
+					<annotation>сделать тип, чтобы можно было ссылаться, т.к. это допустимо</annotation>
+				</simple>
+				<simple entity="priority" type="{int}" min="1">
+					<annotation />
+				</simple>
+			</complex>
+
+			<complex entity="modifier" type="{modifier}">
+				<annotation />
+			</complex>
+
+			<complex entity="graphics">
+				<annotation />
+
+				<complex entity="area_effect">
+					<annotation />
+					<simple entity="entity" type="{int}" min="1">
+						<annotation />
+					</simple>
+					<simple entity="dynamic_scale" type="{bool}">
+						<annotation />
+					</simple>
+				</complex>
+				<complex entity="ship_effect" type="@.area_effect">
+					<annotation />
+				</complex>
+			</complex>
+		</complex>
+		<complex entity="hostile_aura" type=".friendly_aura">
+			<annotation />
+		</complex>
+
+		<simple entity="should_ai_use" type="{bool}">
+			<annotation>If no, AI cannot use this. Among vanilla Components, only empty FTL driver use this.</annotation>
+		</simple>
+		<simple entity="ftl" type="{bool}">
+			<annotation>If yes, this Ship can use the hyperlane and go FTL.</annotation>
+		</simple>
+		<simple entity="jumpdrive" type="{bool}">
+			<annotation>If yes, this Ship can use the jumpdrive command.</annotation>
+		</simple>
+		<simple entity="ftl_inhibitor" type="{bool}">
+			<annotation>If yes, this Ship can be FTL inhibitor.</annotation>
+		</simple>
+
+		<complex entity="damage" type="{range-float}">
+			<annotation>Determines the damage.</annotation>
+		</complex>
+		<complex entity="windup" type="{range-int}">
+			<annotation>The ticks it takes for this Weapon to get ready to fire. (1 day = 10 ticks)</annotation>
+		</complex>
+
+		<simple entity="total_fire_time" type="{int}">
+			<annotation>The ticks it takes for this Weapon to cooldown before it's next fire. (1 day = 10 ticks)</annotation>
+		</simple>
+		<simple entity="cooldown" type="{float}">
+			<annotation>The ticks it takes for this Weapon to cooldown before it's next fire. (1 day = 10 ticks) </annotation>
+		</simple>
+
+		<!-- Determines the damage efficiencies and penetration rates. -->
+		<simple entity="hull_damage" type="{float}">
+			<annotation />
+		</simple>
+		<simple entity="shield_damage" type="{float}">
+			<annotation />
+		</simple>
+		<simple entity="shield_penetration" type="{float}">
+			<annotation />
+		</simple>
+		<simple entity="armor_damage" type="{float}">
+			<annotation />
+		</simple>
+		<simple entity="armor_penetration" type="{float}">
+			<annotation />
+		</simple>
+
+		<!-- Determines the range, accuracy and tracking. -->
+		<simple entity="range" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="attack_range" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="accuracy" type="{float}">
+			<annotation />
+		</simple>
+		<simple entity="tracking" type="{float}">
+			<annotation />
+		</simple>
+
+		<!-- Missile stats.  -->
+		<simple entity="missile_speed" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="missile_evasion" type="{float}">
+			<annotation />
+		</simple>
+		<simple entity="missile_shield" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="missile_armor" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="missile_health" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="missile_retarget_range" type="{int}">
+			<annotation />
+		</simple>
+
+		<simple entity="firing_arc" type="{float}">
+			<annotation>Limits the arc this Weapon can fire in. </annotation>
+		</simple>
+		<simple entity="min_range" type="{float}">
+			<annotation>Limits the minimal range this Weapon can fire. </annotation>
+		</simple>
+
+		<simple entity="use_ship_kill_target" type="{bool}">
+			<annotation />
+		</simple>
+
+		<!-- Strike Craft stats. -->
+		<simple entity="count" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="regeneration_per_day" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="launch_time" type="{float}">
+			<annotation />
+		</simple>
+		<simple entity="speed" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="rotation_speed" type="{float}">
+			<annotation />
+		</simple>
+		<simple entity="acceleration" type="{float}">
+			<annotation />
+		</simple>
+		<simple entity="evasion" type="{float}">
+			<annotation />
+		</simple>
+		<simple entity="shield" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="armor" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="health" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="engagement_range" type="{int}">
+			<annotation />
+		</simple>
+
+		<simple entity="sensor_range" type="{int}">
+			<annotation />
+		</simple>
+		<simple entity="hyperlane_range" type="{int}">
+			<annotation />
+		</simple>
+
+		<simple entity="can_destroy_stars" type="{bool}">
+			<annotation />
+		</simple>
+
+		<complex entity="ai_weight" type="{weight}">
+			<annotation />
+		</complex>
+	</reference>
+
+
+	<reference type="{ship-design-component-set}" definition="key">
+		<annotation>Component Sets are groups of Components. They are defined at "common/component_sets/xxx.txt".
+			
+			There are two type of Component Sets.
+			
+			One is used to group weapon and utility components together to be used by Ship Designers that are usually the same type of Components of different sizes unlocked by a same Technology;
+			Another is used to group all components that fix a Core Core Component Slot which can be unlocked by different technologies.
+			
+			Core Components can be weapons and strike crafts, but such a weapon cannot fire and it doesn't have a turret entity. If it was a Planet Killer weapon, it can still be used but has no graphics. </annotation>
+
+		<simple entity="key" type="{localisation}" min="1">
+			<annotation>Identification key of this Component Set.</annotation>
+		</simple>
+		<simple entity="required_component_set" type="{bool}">
+			<annotation />
+		</simple>
+		<simple entity="icon" type="{string}" min="1">
+			<annotation>Although most of the vanilla sections specified this as "GFX_ship_part_core_mid", there is no where for this to be seen</annotation>
+		</simple>
+		<simple entity="icon_frame" type="{int}">
+			<annotation />
+		</simple>
+	</reference>
+
+
+	<reference type="{ship-design-component-slot}">
+		<annotation>Component Slot Templates are containers of actual Weapon Components attached to Section Templates, or to say "turrets". They are defined at "common/component_slot_templates/xxx.txt".</annotation>
+
+		<simple entity="component" type="{string}" min="1">
+			<annotation />
+			<restriction>
+				<enum value="weapon" />
+				<enum value="strike_craft" />
+			</restriction>
+		</simple>
+		<simple entity="size" type="{string}" min="1">
+			<annotation>допустимы разные контексты в зависимости от component</annotation>
+			<restriction>
+				<enum value="point_defence" />
+				<enum value="small" />
+				<enum value="medium" />
+				<enum value="large" />
+				<enum value="torpedo" />
+				<enum value="extra_large" />
+				<enum value="titanic" />
+				<enum value="planet_killer" />
+			</restriction>
+		</simple>
+
+		<complex entity="entities">
+			<annotation>Determines the Turret Entities of this Component Slot Template. Define with pairs of component tags and entities. недоступно для strike_craft</annotation>
+			<simple entity="{ship-design-component-tag}" type="{entity}" max="*" />
+		</complex>
+		<simple entity="is_fixed" type="{bool}" default="no">
+			<annotation>If yes, this "turret" cannot rotate and the entire ship will rotate to have this "turret" face the target. недоступно для strike_craft </annotation>
+		</simple>
+	</reference>
+
+
+	<reference custom="true" type="{ship-design-component-tag}">
+		<annotation>
+			Component tags can be given scripted in component_templates and is used to group components together for the use of common modifiers.
+			They are also used in component_slot_templates for selecting approperative GFX
+		</annotation>
+		
+		<simple type="{string}">
+			<restriction>
+				<enum value="weapon_type_energy" />
+				<enum value="weapon_type_kinetic" />
+				<enum value="weapon_type_explosive" />
+				<enum value="weapon_type_strike_craft" />
+				<enum value="weapon_type_point_defense" />
+				<enum value="weapon_role_anti_armor" />
+				<enum value="weapon_role_anti_shield" />
+				<enum value="weapon_role_artillery" />
+				<enum value="weapon_role_anti_hull" />
+				<enum value="weapon_role_point_defense" />
+			</restriction>
+		</simple>
+	</reference>
+	
+	
+	<reference type="{ship-behavior}" definition="name">
+		<simple entity="name" type="{localisation}" min="1">
+			<annotation>Identification key of this Ship Behavior.</annotation>
+		</simple>
+		<simple entity="desc" type="{localisation}">
+			<annotation>A description used in tooltip</annotation>
+		</simple>
+
+		<simple entity="preferred_attack_range" type="{int}" min="1">
+			<annotation>The distance from target the ship wants to keep when using 'attack_movement_pattern'.</annotation>
+			<extension>
+				<!-- может ли быть такое или все-таки только для int только цифры? -->
+				<enum value="min" />
+				<enum value="max" />
+				<enum value="median" />
+			</extension>
+		</simple>
+		<simple entity="formation_distance" type=".preferred_attack_range" min="1">
+			<annotation>The ship will switch to 'attack_movement_pattern' when it crosses inside this distance from a target. The ship will also try to stay at this distance while using 'passive_movement_pattern'.
+				when orbing/following ship will try to keep this distance to assigned position</annotation>
+		</simple>
+		<simple entity="return_to_formation_distance" type=".preferred_attack_range" min="1">
+			<annotation>The ship will switch to 'passive_move_pattern' when it crosses outside this distance from a target
+				when attacking the ship will switch to passive mode if distance to assigned position is greater that this</annotation>
+		</simple>
+
+		<simple entity="collision_awareness" type="{float}">
+			<annotation>how much we try to avoid other ships</annotation>
+		</simple>
+		<simple entity="collision_strafe" type="{float}">
+			<annotation>Allows the ship to move in any direction while colliding with another</annotation>
+		</simple>
+		<simple entity="collision_radius" type="{float}">
+			<annotation>Multiplier on the radius specified in the ship size</annotation>
+		</simple>
+
+		<simple entity="source_target_anchor_factor" type="{float}">
+			<annotation>Weight factor where this ship wants to position itself between 'combat_source_anchor' and 'combat_target_anchor', this is the combat position.</annotation>
+		</simple>
+		<simple entity="combat_source_anchor" type="{string}">
+			<annotation>What anchor to use for source when calculating the combat position for this ship, this is the actual position of the anchor ship.</annotation>
+			<restriction>
+				<enum value="parent">
+					<annotation>The immediate parent ship</annotation>
+				</enum>
+				<enum value="root">
+					<annotation>The fleet leader ship</annotation>
+				</enum>
+			</restriction>
+		</simple>
+		<simple entity="combat_target_anchor" type=".combat_source_anchor">
+			<annotation>What anchor to use for target when calculating the combat position for this ship, this is the combat position of the anchor ship. For `root` this will be the actual target.</annotation>
+		</simple>
+
+		<simple entity="attack_move_pattern" type="{string}" min="1">
+			<annotation />
+			<restriction>
+				<enum value="none" />
+				<enum value="charge" />
+				<enum value="flee" />
+				<enum value="follow" />
+				<enum value="orbit" />
+				<enum value="stationary" />
+				<enum value="stay_at_range" />
+			</restriction>
+		</simple>
+		<simple entity="passive_move_pattern" type=".attack_move_pattern" min="1">
+			<annotation />
+		</simple>
+
+		<simple entity="ignore_combat_movement" type="{bool}" default="no">
+			<annotation>If yes, this ship will totally ignore auto movement patterns. If it is the fleet's leader, you retain control to move to any point you direct while the rest of the fleet follows their movement patterns. If the ship goes through a hyperlane, the whole fleet will warp out.</annotation>
+		</simple>
+	</reference>
+
+
+	<reference type="{ship-design}" definition="name">
+		<simple entity="name" type="{localisation}" min="1">
+			<annotation>Identification key of this Global Ship Design</annotation>
+		</simple>
+		<simple entity="ship_size" type="{ship-size}" min="1">
+			<annotation>Marks the Ship Size of this Ship</annotation>
+		</simple>
+		<simple entity="country_type" type="{country-type}">
+			<annotation />
+		</simple>
+
+		<simple entity="is_event_design" type="{bool}" default="no">
+			<annotation>Marks this design an Event Design that should be blocked by the Fleet Manager</annotation>
+		</simple>
+		<simple entity="is_special_buildable" type="{bool}" default="no">
+			<annotation />
+		</simple>
+		<simple entity="hide_size" type="{bool}" default="no">
+			<annotation>Hide the Ship Size of this Ship, so you won't see something like "Amoeba-class Amoeba"</annotation>
+		</simple>
+		<simple entity="regenerates_when_disabled" type="{bool}">
+			<annotation />
+		</simple>
+		<simple entity="use_design_name" type="{bool}" default="no">
+			<annotation />
+		</simple>
+
+		<simple entity="allow_buildable_trigger" type="{trigger}">
+			<annotation />
+		</simple>
+
+		<complex entity="section" max="*">
+			<annotation>Specifies the sections</annotation>
+
+			<simple entity="slot" type="{string}">
+				<annotation>какой-то тип походу</annotation>
+			</simple>
+			<simple entity="template" type="{ship-design-section}">
+				<annotation />
+			</simple>
+
+			<complex entity="component" max="*">
+				<annotation>Specifies the component</annotation>
+
+				<simple entity="slot" type="{string}">
+					<annotation>The component slot name of Weapon Component Slots are the slot names defined there.</annotation>
+				</simple>
+				<simple entity="template" type="{ship-design-component}">
+					<annotation>The names of Utility Component Slots are (SMALL|MEDIUM|LARGE|AUX)_UTILITY_[int]. The index starts from 1.</annotation>
+				</simple>
+			</complex>
+		</complex>
+		<simple entity="required_component" type="{ship-design-component}" max="*">
+			<annotation />
+		</simple>
+	</reference>
+</references>

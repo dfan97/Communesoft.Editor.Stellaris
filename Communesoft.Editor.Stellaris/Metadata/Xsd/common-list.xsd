@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema targetNamespace="https://github.com/dfan97" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:this="https://github.com/dfan97" xmlns:types="https://github.com/dfan97/types">
+
+	<include schemaLocation="common.xsd" />
+	<import namespace="https://github.com/dfan97/types" schemaLocation="types.xsd" />
+
+	<attributeGroup name="value.count.interval.attrs">
+		<attribute name="value-count" type="positiveInteger">
+			<annotation>
+				<documentation xml:lang="en">
+					List elements count.
+				</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="min-value-count" type="nonNegativeInteger">
+			<annotation>
+				<documentation xml:lang="en">
+					Minimum list elements count.
+				</documentation>
+			</annotation>
+		</attribute>
+		<attribute name="max-value-count" type="positiveInteger">
+			<annotation>
+				<documentation xml:lang="en">
+					Maximum list elements count.
+				</documentation>
+			</annotation>
+		</attribute>
+	</attributeGroup>
+
+	<element name="list">
+		<complexType>
+			<annotation>
+				<documentation xml:lang="en">
+					A complex expression, containing values with identical type.
+				</documentation>
+			</annotation>
+
+			<complexContent>
+				<extension base="this:enum">
+					<attribute name="entity" type="types:entity" use="required" />
+					<attribute name="relation" type="types:relation" default="assign" />
+					<attribute name="type" type="types:list" use="required" />
+
+					<attribute name="short" type="types:short" />
+					<attributeGroup ref="this:value.interval.attrs" />
+					<attributeGroup ref="this:value.count.interval.attrs" />
+				</extension>
+			</complexContent>
+		</complexType>
+
+		<unique name="UX_list_enum">
+			<selector xpath="this:extension/this:enum | this:restriction/this:enum" />
+			<field xpath="@value" />
+		</unique>
+	</element>
+</schema>
