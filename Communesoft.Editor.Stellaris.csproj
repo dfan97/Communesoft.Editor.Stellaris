@@ -9,15 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Remove="Serialization (numbertoken)\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Remove="Serialization (numbertoken)\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Serialization (numbertoken)\**" />
       <None Update="Metadata\Xml\ascension_perks.xml">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
@@ -129,11 +120,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Page Remove="Serialization (numbertoken)\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\Communesoft\Communesoft.Editor.Interface\Communesoft.Editor.Interface.csproj" />
+      <ProjectReference Include="..\Communesoft\Communesoft.Editor.Interface\Communesoft.Editor.Interface.csproj" />
     </ItemGroup>
 
 </Project>

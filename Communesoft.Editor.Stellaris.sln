@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communesoft.Editor.Stellaris", "Communesoft.Editor.Stellaris\Communesoft.Editor.Stellaris.csproj", "{BC7804E3-0400-4B84-B12C-24326C2AED78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communesoft.Editor.Stellaris", "Communesoft.Editor.Stellaris.csproj", "{BC7804E3-0400-4B84-B12C-24326C2AED78}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{29894D70-F861-4BFD-92B8-6974BD96C370}"
 EndProject
